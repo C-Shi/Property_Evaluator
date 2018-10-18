@@ -1,0 +1,26 @@
+
+.search {
+  width : 70%;
+  line-height: 500px;
+  position: absolute;
+  left: 15%;
+  top: 20vh;
+}
+.search .search-bar {
+    height: 15vh;
+    font-size:12vh;
+}
+.search .search-btn {
+  font-size: 12vh;
+  width: 15vh;
+  height: 15vh;
+  padding: 0;
+  margin: 0;
+
+}
+.search .fa-search {
+  height:100%;
+  width:100%;
+  top:-5px;
+  vertical-align: middle;
+}

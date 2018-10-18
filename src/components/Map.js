@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import Landing from './components/Landing.js'
 
-class App extends Component {
+class Map extends Component {
   componentDidMount(){
     console.log(process.env)
   }
 
   render() {
     return (
-      <div className="App">
-      <Landing />
+      <div className="Map">
+      <h1>Map</h1>
+      <div id="map"></div>
       </div>
     );
   }
 }
-
-export default App;
+export default Map
