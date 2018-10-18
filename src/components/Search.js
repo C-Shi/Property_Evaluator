@@ -9,11 +9,11 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-      
-              <div class="input-group mb-3">
-                <input type="text" class="form-control search-bar" placeholder="Search here" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary search-btn" type="button" id="button-addon2"> <i class="fa fa-search" aria-hidden="true"></i></button>
+
+              <div className="input-group mb-3">
+                <input type="text" className="form-control search-bar" placeholder="Search here" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                  <div className="input-group-append">
+                    <button className="btn btn-outline-secondary search-btn" type="button" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
                   </div>
                 </div>
       </div>

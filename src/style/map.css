@@ -1,0 +1,8 @@
+.landingPage-map {
+    position: absolute;
+    top: 40vh;
+    left: 18vw;
+    width: 64vw;
+    height: 50vh;
+    z-index: -1
+}
