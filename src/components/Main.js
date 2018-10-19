@@ -32,6 +32,16 @@ class Main extends Component {
             })
         })
     }
+
+    addCommunityPopulationToLocation(newLocation, data){
+        newLocation.comm_population = [];
+        data.forEach((community) => {
+            newLocation.comm_population.push({
+                year: community.census_year.slice(0, 4),
+                population: community.population
+            })
+        })
+    }
     
     componentDidMount(){
         let newLocation = {};
@@ -42,7 +52,7 @@ class Main extends Component {
         .then(() => { 
             getCommPopulation(newLocation.comm_code)
             .then((res) => {
-                console.log(res.data);
+                this.addCommunityPopulationToLocation(newLocation, res.data)
             })
         })
         
