@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import Search from './Search.js'
+import Search from './Search'
 import DisplayMap from './DisplayMap.js'
 import Comparison from './Comparison.js'
 import getData from '../lib/getData'

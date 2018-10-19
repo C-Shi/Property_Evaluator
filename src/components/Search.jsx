@@ -79,6 +79,7 @@ class SearchContainer extends Component {
   }
 
   render() {
+    const url = "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_MAP + "&libraries=places"
     return (
       <div className="search">
 
@@ -89,7 +90,7 @@ class SearchContainer extends Component {
             </div>
           </div>
 
-          <Script url="https://maps.googleapis.com/maps/api/js?key={REACT_APP_GOOGLE_PLACES_API_KEY}=places" onLoad={this.handleScriptLoad} />
+          <Script url={url} onLoad={this.handleScriptLoad} />
 
       </div>
     );
