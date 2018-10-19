@@ -5,7 +5,7 @@ class Comparison extends Component {
     componentDidMount(){
 
     }
-  
+
     render() {
       return (
         <div className="main-page">
