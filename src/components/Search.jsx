@@ -54,13 +54,64 @@ class SearchContainer extends Component {
     this.setState({ query: event.target.value });
   }
 
-  // quadrants = {
- //   southwest: 'SW',
- //   northwest: 'NW',
- //   southeast: 'SE',
- //   northeast: 'NE'
- // }
+  quadrants = {
+   southwest: 'SW',
+   northwest: 'NW',
+   southeast: 'SE',
+   northeast: 'NE',
+ }
 
+  roadname = {
+    avenue:'AV',
+    ave:'AV',
+    alley:'AL',
+    bay:'BA',
+    boulevard:'BV',
+    cape:'CA',
+    center:'CE',
+    circle:'CI',
+    close:'CL',
+    common:'CM',
+    court:'CO',
+    cove:'CV',
+    crescent:'CR',
+    drive:'DR',
+    gardens:'GD',
+    gate:'GA',
+    green:'GR',
+    grove:'GV',
+    heath:'HE',
+    heights:'HT',
+    highway:'HI',
+    hill:'HL',
+    island:'IS',
+    landing:'LD',
+    lane:'LN',
+    link:'LI',
+    manor:'MR',
+    mews:'MW',
+    mount:'MT',
+    parade:'PR',
+    park:'PA',
+    parkway:'PY',
+    passage:'PS',
+    path:'PH',
+    place:'PL',
+    plaza:'PZ',
+    point:'PT',
+    rise:'RS',
+    road:'RD',
+    row:'RO',
+    square:'SQ',
+    street:'ST',
+    terrace:'TC',
+    trail:'TR',
+    view:'VW',
+    villas:'VI',
+    walk:'WK',
+    walkway:'WK',
+    way:'WY'
+  }
  /** handleSubmit
  * activated on an event, returns an object with a google address and a formatted address.
  * params {Object}event the event that gets called.
@@ -69,29 +120,24 @@ class SearchContainer extends Component {
    // breaking the address into seperate elements
    event.preventDefault();
    let resultant = this.state.query;
-   console.log(resultant);
    resultant = (resultant.split(',')[0]).split(' ');
-
    // working on the quadrant
-   let quadrant = resultant.pop();
+   let quadrant = resultant.pop().toLowerCase();
+   let road = resultant.pop().toLowerCase();
+   quadrant = ( this.quadrants[quadrant] ? this.quadrants[quadrant] : quadrant );
 
-   // const quadrantValues = (/([southwest][southeast][northwest][northeast])/i);
-
-   // quadrant = quadrant.replace(quadrantValues, (string) => {
-   //   // console.log('inside the replacer function', string);
-   // });
-
+   road = ( this.roadname[road] ? this.roadname[road] : road );
    // putting the resultant back together
+   resultant.push(road);
    resultant.push(quadrant);
 
    // turning the autocomplete bar blank
    this.setState({ query: '' });
    document.getElementById('autocomplete').value = '';
-
    // the 'final product'
    console.log(resultant.join(' '));
+   return resultant;
  }
-
   componentDidMount(){
   }
 
