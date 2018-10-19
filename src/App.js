@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Landing from './components/Landing.js'
+import Main from './components/Main'
 
 class App extends Component {
   componentDidMount(){

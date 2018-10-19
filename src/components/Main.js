@@ -10,10 +10,7 @@ class Main extends Component {
     constructor(){
         super();
         this.state = {
-<<<<<<< HEAD
             locations: []
-=======
->>>>>>> 3197b50d6132c7cfa6b193e3dd2a4a29f06debe3
         }
     }
     /*
