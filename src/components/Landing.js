@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Search from './Search.js'
+import SearchPresenter from './Search'
 import Map from './Map'
 
 class Landing extends Component {
@@ -12,7 +12,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="Landing">
-      <Search />
+      <SearchPresenter />
       <Map />
 
       </div>

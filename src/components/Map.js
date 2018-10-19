@@ -4,12 +4,6 @@ import '../style/map.css';
 
 export class MapContainer extends Component {
 
-  fetchPlaces(mapProps, map) {
-    const {google} = mapProps;
-    const service = new google.maps.places.PlacesService(map);
-
-  }
-
   render() {
     return (
       <div className="landingPage-map">
@@ -39,5 +33,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: (process.env.GOOGLE_MAP_API_KEY)
+  apiKey: (process.env.REACT_APP_GOOGLE_MAP_API_KEY)
 })(MapContainer)
