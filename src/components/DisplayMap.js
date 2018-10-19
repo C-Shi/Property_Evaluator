@@ -4,7 +4,17 @@ import '../style/map.css';
 
 export class MapContainer extends Component {
 
+  fetchPlaces(mapProps, map) {
+    const {google} = mapProps;
+    const service = new google.maps.places.PlacesService(map);
+    
+  }
+  
   render() {
+    const allLocations = this.props.locations.map(location => 
+    <Marker position={location} />
+    )
+    
     return (
       <div className="landingPage-map">
         <Map
@@ -17,9 +27,7 @@ export class MapContainer extends Component {
             onReady={this.fetchPlaces}
             onClick={this.onMapClicked}
           >
-
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'} />
+          {allLocations}
 
           <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
@@ -33,8 +41,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-
-
   apiKey: (process.env.REACT_APP_GOOGLE_MAP)
-
 })(MapContainer)
