@@ -5,6 +5,7 @@ import DisplayMap from './DisplayMap.js'
 import Comparison from './Comparison.js'
 import getAddress from '../lib/getAddress'
 import getCommPopulation from '../lib/getCommPopulation'
+import getCrime from "../lib/getCrime"
 
 
 class Main extends Component {
@@ -42,20 +43,33 @@ class Main extends Component {
             })
         })
     }
+
+    addCommunityCrimeToLocation(newLocation, data){
+        newLocation.crime = {}
+        data.forEach((crime) => {
+            if (newLocation.crime[crime.category]) {
+                newLocation.crime[crime.category] += Number(crime.count)
+            } else {
+                newLocation.crime[crime.category] = Number(crime.count)
+            }
+        })
+    }
     
     componentDidMount(){
         let newLocation = {};
         getAddress('132 10 AV NW')
         .then((res) => {
             this.buildInitialPropertyInfo(newLocation, res.data)
-        })
-        .then(() => { 
             getCommPopulation(newLocation.comm_code)
             .then((res) => {
                 this.addCommunityPopulationToLocation(newLocation, res.data)
+                getCrime(newLocation.comm_name)
+                .then(res => {
+                    this.addCommunityCrimeToLocation(newLocation, res.data)
+                    console.log(newLocation)
+                })
             })
         })
-        
     }
     
 
