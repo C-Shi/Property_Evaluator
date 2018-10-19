@@ -75,7 +75,6 @@ class SearchContainer extends Component {
   }
 
   componentDidMount(){
-    console.log(process.env)
   }
 
   render() {

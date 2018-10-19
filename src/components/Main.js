@@ -22,24 +22,22 @@ class Main extends Component {
             detail: {}
         }
     }
-  
+
     componentDidMount(){
-        getData((result) => {
-            console.log(result)
-            this.setState({
-                detail: result[0]
-            })
+        getData()
+        .then((res) => {
+            console.log(res.data)
         })
     }
 
-  render() {
+    render() {
     return (
-      <div className="main-page">
-          Main Page
-      <DisplayMap locations={this.state.locations}/>
-      <Comparison detail = {this.state.detail} />
-      </div>
+        <div className="main-page">
+            Main Page
+        <DisplayMap locations={this.state.locations}/>
+        <Comparison detail = {this.state.detail} />
+        </div>
     );
-  }
+    }
 }
 export default Main;
