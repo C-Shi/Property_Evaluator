@@ -10,7 +10,7 @@ class Comparison extends Component {
       return (
         <div className="main-page">
             Comparison
-            <NeighborInfo detail={this.props.detail}/>
+            <NeighborInfo locations={this.props.locations}/>
         </div>
       );
     }

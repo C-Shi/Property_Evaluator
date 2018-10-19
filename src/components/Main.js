@@ -3,16 +3,14 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Search from './Search'
 import DisplayMap from './DisplayMap.js'
 import Comparison from './Comparison.js'
-import getAddress from '../lib/getAddress'
-import getCommPopulation from '../lib/getCommPopulation'
-import getCrime from "../lib/getCrime"
+import LocationHelper from "../lib/LocationHelper"
 
 
 class Main extends Component {
     constructor(){
         super();
         this.state = {
-            
+            locations: []
         }
     }
     /*
@@ -57,16 +55,23 @@ class Main extends Component {
     
     componentDidMount(){
         let newLocation = {};
-        getAddress('132 10 AV NW')
+        LocationHelper.getAddress('132 10 AV NW')
         .then((res) => {
             this.buildInitialPropertyInfo(newLocation, res.data)
-            getCommPopulation(newLocation.comm_code)
+            LocationHelper.getCommPopulation(newLocation.comm_code)
             .then((res) => {
                 this.addCommunityPopulationToLocation(newLocation, res.data)
-                getCrime(newLocation.comm_name)
+                LocationHelper.getCrime(newLocation.comm_name)
                 .then(res => {
                     this.addCommunityCrimeToLocation(newLocation, res.data)
-                    console.log(newLocation)
+                    LocationHelper.getFloodChance(newLocation.lat, newLocation.lng)
+                    .then((res) => {
+                        newLocation.flood = Boolean(res.data.length)
+                        const oldState = this.state
+                        oldState.locations.push(newLocation)
+                        this.setState(oldState)
+                        console.log(this.state)
+                    })
                 })
             })
         })
@@ -77,8 +82,8 @@ class Main extends Component {
     return (
         <div className="main-page">
             Main Page
-        {/* <DisplayMap locations={this.state.locations}/> */}
-        {/* <Comparison detail = {this.state.detail} /> */}
+        <DisplayMap locations={this.state.locations}/>
+        <Comparison locations = {this.state.locations} />
         </div>
     );
     }
