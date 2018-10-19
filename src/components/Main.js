@@ -24,11 +24,9 @@ class Main extends Component {
     }
 
     componentDidMount(){
-        getData((result) => {
-            console.log(result)
-            this.setState({
-                detail: result[0]
-            })
+        getData()
+        .then((res) => {
+            console.log(res.data)
         })
     }
 
