@@ -22,7 +22,7 @@ class Main extends Component {
             detail: {}
         }
     }
-  
+
     componentDidMount(){
         getData((result) => {
             console.log(result)
@@ -32,14 +32,14 @@ class Main extends Component {
         })
     }
 
-  render() {
+    render() {
     return (
-      <div className="main-page">
-          Main Page
-      <DisplayMap locations={this.state.locations}/>
+        <div className="main-page">
+            Main Page
+        <DisplayMap locations={this.state.locations}/>
         <Comparison detail = {this.state.detail} />
-      </div>
+        </div>
     );
-  }
+    }
 }
 export default Main;
