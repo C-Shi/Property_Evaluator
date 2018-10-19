@@ -2,15 +2,17 @@ import React, {Component} from 'react';
 
 class NeighborInfo extends Component {
     componentDidMount(){
-      console.log(process.env)
-      console.log(process.env.GOOGLE_MAP_API_KEY)
+  
     }
   
     render() {
       return (
         <div className="neighbor-info">
-            NeighborInfo
-  
+            NeighborInfo 
+            <h1>{this.props.detail.address}</h1>
+            <h1>{this.props.detail.assessed_value}</h1>
+            <h1>{this.props.detail.comm_name}</h1>
+            <h1>{this.props.detail.roll_year}</h1>
         </div>
       );
     }

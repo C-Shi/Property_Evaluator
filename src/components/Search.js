@@ -3,7 +3,6 @@ import '../style/Search.css';
 
 class Search extends Component {
   componentDidMount(){
-    console.log(process.env)
   }
 
   render() {

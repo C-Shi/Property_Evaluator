@@ -4,7 +4,6 @@ import Main from './components/Main.js'
 
 class App extends Component {
   componentDidMount(){
-    console.log(process.env)
   }
 
   render() {

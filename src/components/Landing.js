@@ -5,8 +5,6 @@ import Map from './Map'
 
 class Landing extends Component {
   componentDidMount(){
-    console.log(process.env)
-    console.log(process.env.GOOGLE_MAP_API_KEY)
   }
 
   render() {
