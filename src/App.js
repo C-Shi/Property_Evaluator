@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Landing from './components/Landing.js'
-import Main from './components/Main.js'
 
 class App extends Component {
   componentDidMount(){
@@ -9,6 +8,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+      <Landing />
       <Main />
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import Search from './Search'
+import Search from './Search.jsx'
 import DisplayMap from './DisplayMap.js'
 import Comparison from './Comparison.js'
 import LocationHelper from "../lib/LocationHelper"
@@ -10,7 +10,10 @@ class Main extends Component {
     constructor(){
         super();
         this.state = {
+<<<<<<< HEAD
             locations: []
+=======
+>>>>>>> 3197b50d6132c7cfa6b193e3dd2a4a29f06debe3
         }
     }
     /*
