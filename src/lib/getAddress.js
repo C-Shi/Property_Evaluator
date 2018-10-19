@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-const getData = function(){
+const getAddress = function(address){
     return axios.get('https://data.calgary.ca/resource/6mnx-r99s.json',{
         params: {
-        address: '132 10 AV NW',
-        'ROLL_YEAR': '2010'
+        address
         }
     })
 }
 
-export default getData;
+export default getAddress;
 
 
 
