@@ -1,27 +1,7 @@
 import React, { Component } from 'react';
 import Script from 'react-load-script';
 import '../style/Search.css';
-
-// class SearchPresenter extends Component {
-//   render() {
-
-//     return (
-//       <div className="search">
-
-//           <div className="input-group mb-3">
-//             <input onKeyPress={this.props.handleChange} type="text" className="form-control search-bar" id="autocomplete" defaultValue={this.props.query} aria-label="Recipient's username" aria-describedby="button-addon2" />
-//             <div className="input-group-append">
-//               <button className="btn btn-outline-secondary search-btn" type="button" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
-//             </div>
-//           </div>
-
-//           <Script url="https://maps.googleapis.com/maps/api/js?key={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}&libraries=places" onLoad={this.props.handleScriptLoad} />
-
-//       </div>
-//     );
-
-//   }
-// }
+import {formatAddress} from '../utility/search_helper'
 
 class SearchContainer extends Component {
 
@@ -35,7 +15,7 @@ class SearchContainer extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleScriptLoad = this.handleScriptLoad.bind(this);
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
 
@@ -74,19 +54,60 @@ class SearchContainer extends Component {
     this.setState({ query: event.target.value });
   }
 
+  // quadrants = {
+ //   southwest: 'SW',
+ //   northwest: 'NW',
+ //   southeast: 'SE',
+ //   northeast: 'NE'
+ // }
+
+ /** handleSubmit
+ * activated on an event, returns an object with a google address and a formatted address.
+ * params {Object}event the event that gets called.
+ */
+ handleSubmit(event) {
+   // breaking the address into seperate elements
+   event.preventDefault();
+   let resultant = this.state.query;
+   console.log(resultant);
+   resultant = (resultant.split(',')[0]).split(' ');
+
+   // working on the quadrant
+   let quadrant = resultant.pop();
+
+   // const quadrantValues = (/([southwest][southeast][northwest][northeast])/i);
+
+   // quadrant = quadrant.replace(quadrantValues, (string) => {
+   //   // console.log('inside the replacer function', string);
+   // });
+
+   // putting the resultant back together
+   resultant.push(quadrant);
+
+   // turning the autocomplete bar blank
+   this.setState({ query: '' });
+   document.getElementById('autocomplete').value = '';
+
+   // the 'final product'
+   console.log(resultant.join(' '));
+ }
+
   componentDidMount(){
   }
 
   render() {
     const url = "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_MAP + "&libraries=places"
+    console.log(url);
     return (
       <div className="search">
-
           <div className="input-group mb-3">
+          <form>
             <input onKeyPress={this.handleChange} type="text" className="form-control search-bar" id="autocomplete" defaultValue={this.query} aria-label="Recipient's username" aria-describedby="button-addon2" />
             <div className="input-group-append">
-              <button className="btn btn-outline-secondary search-btn" type="button" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
+
+              <button className="btn btn-outline-secondary search-btn" onClick={this.handleSubmit} id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
             </div>
+            </form>
           </div>
 
           <Script url={url} onLoad={this.handleScriptLoad} />
