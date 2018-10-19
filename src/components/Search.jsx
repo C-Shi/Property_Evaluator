@@ -119,24 +119,27 @@ class SearchContainer extends Component {
  handleSubmit(event) {
    // breaking the address into seperate elements
    event.preventDefault();
+
    let resultant = this.state.query;
+
    resultant = (resultant.split(',')[0]).split(' ');
-   // working on the quadrant
+
+   // working on the elements
    let quadrant = resultant.pop().toLowerCase();
    let road = resultant.pop().toLowerCase();
-   quadrant = ( this.quadrants[quadrant] ? this.quadrants[quadrant] : quadrant );
 
+   quadrant = ( this.quadrants[quadrant] ? this.quadrants[quadrant] : quadrant );
    road = ( this.roadname[road] ? this.roadname[road] : road );
+
    // putting the resultant back together
    resultant.push(road);
    resultant.push(quadrant);
+   resultant = resultant.join(' ');
 
    // turning the autocomplete bar blank
-   this.setState({ query: '' });
+   this.setState({ query: resultant });
    document.getElementById('autocomplete').value = '';
    // the 'final product'
-   console.log(resultant.join(' '));
-   return resultant;
  }
   componentDidMount(){
   }
