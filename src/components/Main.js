@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import Search from './Search'
+import Search from './Search.jsx'
 import DisplayMap from './DisplayMap.js'
 import Comparison from './Comparison.js'
 import getAddress from '../lib/getAddress'
@@ -12,7 +12,6 @@ class Main extends Component {
     constructor(){
         super();
         this.state = {
-            
         }
     }
     /*
