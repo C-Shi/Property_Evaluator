@@ -37,7 +37,7 @@ class Main extends Component {
       <div className="main-page">
           Main Page
       <DisplayMap locations={this.state.locations}/>
-        <Comparison detail = {this.state.detail} />
+      <Comparison detail = {this.state.detail} />
       </div>
     );
   }
