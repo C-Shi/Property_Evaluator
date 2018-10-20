@@ -214,7 +214,7 @@ class App extends Component {
       <div className="App">
 
       <Landing handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
-      <Main />
+      <Main locations={this.state.locations}/>
       </div>
     );
   }

@@ -7,21 +7,13 @@ import LocationHelper from "../lib/LocationHelper"
 
 
 class Main extends Component {
-    constructor(){
-        super();
-        this.state = {
-            locations: []
-        }
-    }
-
-    
 
     render() {
         return (
             <div className="main-page">
                 Main Page
-            <DisplayMap locations={this.state.locations}/>
-            <Comparison locations = {this.state.locations} />
+            {/* <DisplayMap locations={this.props.locations}/> */}
+            <Comparison locations = {this.props.locations} />
             </div>
         );
     }

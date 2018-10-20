@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
 
 class NeighborInfo extends Component {
-    componentDidMount(){
-  
-    }
-  
+
     render() {
+      let crimeInfo = []
+      for (var key in this.props.location.crime) {
+        crimeInfo.push({type: key, count: this.props.location.crime[key]})
+      }
+
+      crimeInfo = crimeInfo.map(each => {
+        return <li>{each.type} - {each.count}</li>
+      })
       return (
-        <div className="neighbor-info">
-            NeighborInfo 
-            <h1>{this.props.locations.address}</h1>
-            <h1>{this.props.locations.assessed_value}</h1>
-            <h1>{this.props.locations.comm_name}</h1>
-            <h1>{this.props.locations.roll_year}</h1>
+        <div className="card neighbor-info">
+          <div className="card-body">
+            <h5 className="card-title">{this.props.location.address}</h5>
+            <ul>
+              <li>{this.props.location.value[0].price}</li>
+              {crimeInfo}
+            </ul>
+          </div>
         </div>
       );
     }
