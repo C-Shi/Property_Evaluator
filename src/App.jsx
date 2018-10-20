@@ -154,7 +154,7 @@ class App extends Component {
     return (
       <div className="App">
       <SearchBox handleSubmit={this.handleSubmit}/>
-      <PropertyList />
+      <PropertyList locations={this.state.locations}/>
       </div>
     );
   }
