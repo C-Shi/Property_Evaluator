@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 import PropertyList from './components/PropertyList.jsx';
 import SearchBox from './components/SearchBox.jsx'
 // import helper
-import LocationFinder from "./lib/LocationFinder"
-import LocationBuilder from "./lib/LocationBuilder"
+import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper"
 
 class App extends Component {
@@ -20,6 +19,7 @@ class App extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.addProperty = this.addProperty.bind(this)
   }
 
   // this handler handle address covert event on search box submit
@@ -34,33 +34,9 @@ class App extends Component {
     const address = AddressHelper.convertGoogleAddress(googleAddress)
     // update address query state and start querying open data
     this.setState({ address: address, landing: false }, () => {
-      this.collectPropertyInfo()
+      LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty)
     });
     document.getElementById('searchBox').value = '';
-  }
-
-  // this function is querying differnt open data calgary API in sequence
-  collectPropertyInfo(){
-    let newLocation = {};
-    LocationFinder.getAddress(this.state.address)
-    .then((res) => {
-        if (!res.data.length) return;
-        LocationBuilder.buildInitialPropertyInfo(newLocation, res.data)
-        LocationFinder.getCommPopulation(newLocation.comm_code)
-        .then((res) => {
-          LocationBuilder.addCommunityPopulationToLocation(newLocation, res.data)
-          LocationFinder.getCrime(newLocation.comm_name)
-            .then(res => {
-              LocationBuilder.addCommunityCrimeToLocation(newLocation, res.data)
-              LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)
-                .then((res) => {
-                    // all info is ready in a templateVar 'newLocation'
-                    // ready to update locations lists
-                    this.addProperty(newLocation, Boolean(res.data.length))
-                })
-            })
-        })
-    })
   }
 
   // take in a newLocation with complete into and add to state.locations array
