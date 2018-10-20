@@ -13,7 +13,15 @@ class PropertyList extends Component {
       center: location,
       mapTypeControlOptions: {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
-      }
+      },
+      resize: function() {
+        this.map.maps.event.trigger(this.map, 'resize');
+      },
+    });
+
+    this.map.addListener('resize', function() {
+      console.log('resizing');
+      this.map.maps.event.trigger(this.map, 'resize');
     });
   }
 
