@@ -11,9 +11,15 @@ export class MapContainer extends Component {
   }
   
   render() {
-    const allLocations = this.props.locations.map(location => 
-    <Marker position={location} />
-    )
+    // const allLocations = this.props.locations.map(location => {
+    //     return <Marker position={{lat: location.lat, lng: location.lng}} />
+    //   }
+    // )
+
+    // const lot = [
+    //   <Marker position={{lat: 51.0529778076597, lng: -114.10594520819}} />,
+    //   <Marker position={{lat: 51.0420, lng: -114.0764}} />
+    // ]
     
     return (
       <div className="landingPage-map">
@@ -27,7 +33,8 @@ export class MapContainer extends Component {
             onReady={this.fetchPlaces}
             onClick={this.onMapClicked}
           >
-          {allLocations}
+
+          <Marker position={{lat: 51.0529778076597, lng: -114.10594520819}} />
 
           <InfoWindow onClose={this.onInfoWindowClose}>
               <div>

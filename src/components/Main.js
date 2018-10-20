@@ -11,8 +11,7 @@ class Main extends Component {
     render() {
         return (
             <div className="main-page">
-                Main Page
-            {/* <DisplayMap locations={this.props.locations}/> */}
+            <DisplayMap locations={this.props.locations}/>
             <Comparison locations = {this.props.locations} />
             </div>
         );

@@ -22,6 +22,8 @@ class NeighborInfo extends Component {
             <ul>
               {priceInfo}
               {crimeInfo}
+              <li>{this.props.location.lat}</li>
+              <li>{this.props.location.lng}</li>
             </ul>
           </div>
         </div>

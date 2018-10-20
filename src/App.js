@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Landing from './components/Landing.js'
 import Main from './components/Main'
 import LocationHelper from "./lib/LocationHelper"
+import LocationBuilder from "./lib/LocationBuilder"
 
 class App extends Component {
   constructor(){
@@ -10,7 +11,10 @@ class App extends Component {
       city: '',
       query: 'Search',
       address: '',
-      locations: []
+      locations: [],
+      landing: true,
+      main: false,
+      heatMap: false
     };
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -97,7 +101,7 @@ class App extends Component {
  
   
     // turning the autocomplete bar blank
-    this.setState({ address: resultant }, () => {
+    this.setState({ address: resultant, landing: false }, () => {
       this.addLocation()
     });
     
@@ -142,53 +146,34 @@ class App extends Component {
       /*
     query address from json file, and returns address, comm_code, comm_name, lat, lng, value over years
     */
-   buildInitialPropertyInfo(newLocation, data){
+   componentDidMount(){
+     if (this.state.locations.length) {
+       this.setState({main: true})
+     } else {
+       this.setState({main: false})
+     }
+   }
 
-        newLocation.address = data[0].address;
-        newLocation.comm_code= data[0].comm_code;
-        newLocation.comm_name= data[0].comm_name;
-        newLocation.lat= data[0].latitude;
-        newLocation.lng= data[0].longitude;
-        newLocation.value= [];
-    data.forEach(location => {
-        newLocation.value.push({
-        year: location.roll_year,
-        price: location.assessed_value
-        })
-    })
-  }
-
-
-    addCommunityCrimeToLocation(newLocation, data){
-      newLocation.crime = {}
-      data.forEach((crime) => {
-          if (newLocation.crime[crime.category]) {
-              newLocation.crime[crime.category] += Number(crime.count)
-          } else {
-              newLocation.crime[crime.category] = Number(crime.count)
-          }
-      })
-    }
 
     addLocation(){
-      console.log(this.state.address)
       let newLocation = {};
       LocationHelper.getAddress(this.state.address)
       .then((res) => {
-          this.buildInitialPropertyInfo(newLocation, res.data)
+          if (!res.data.length) return;
+          LocationBuilder.buildInitialPropertyInfo(newLocation, res.data)
           LocationHelper.getCommPopulation(newLocation.comm_code)
           .then((res) => {
-              this.addCommunityPopulationToLocation(newLocation, res.data)
+            LocationBuilder.addCommunityPopulationToLocation(newLocation, res.data)
               LocationHelper.getCrime(newLocation.comm_name)
               .then(res => {
-                  this.addCommunityCrimeToLocation(newLocation, res.data)
+                LocationBuilder.addCommunityCrimeToLocation(newLocation, res.data)
                   LocationHelper.getFloodChance(newLocation.lat, newLocation.lng)
                   .then((res) => {
                       newLocation.flood = Boolean(res.data.length)
                       const oldState = this.state
                       oldState.locations.push(newLocation)
                       this.setState(oldState, () => {
-                        console.log(this.state)
+ 
                       })
                   })
               })
@@ -199,8 +184,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-      <Landing handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+      <Landing handleSubmit={this.handleSubmit} handleChange={this.handleChange} display={this.state.landing}/>
       <Main locations={this.state.locations}/>
       </div>
     );

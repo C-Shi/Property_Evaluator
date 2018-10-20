@@ -9,8 +9,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="Landing">
-      <SearchContainer handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange}/>
-
+      <SearchContainer handleSubmit={this.props.handleSubmit} handleChange={this.props.handleChange} display={this.props.display}/>
       </div>
     );
   }

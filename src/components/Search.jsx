@@ -20,11 +20,11 @@ class SearchContainer extends Component {
 
   render() {
     const url = "https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_GOOGLE_MAP + "&libraries=places"
-    console.log(url);
+    const className = (this.props.display) ?  "search" : "search-header"
     return (
-      <div className="search">
+      <div className={className}>
           <div className="input-group mb-3">
-          <form>
+          <form className="form-inline">
             <input onInput={this.props.handleChange} type="text" className="form-control search-bar" id="autocomplete" defaultValue={this.query} aria-label="Recipient's username" aria-describedby="button-addon2" />
             <div className="input-group-append">
 
