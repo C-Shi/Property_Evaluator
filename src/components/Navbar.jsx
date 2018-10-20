@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import SearchBox from '../components/SearchBox.jsx'
+import GoogleMap from "../lib/GoogleMap"
 
 class Navbar extends Component {
+  componentDidMount() {
+    GoogleMap.autocomplete()
+  }
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
