@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const LocationHelper = {
+const LocationFinder = {
   getAddress: function (address){
     return axios.get('https://data.calgary.ca/resource/6mnx-r99s.json',{
         params: {
@@ -42,4 +42,4 @@ const LocationHelper = {
 
 }
 
-export default LocationHelper
+export default LocationFinder
