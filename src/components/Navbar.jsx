@@ -17,7 +17,10 @@ class Navbar extends Component {
             </li>
           </ul>
 
-          <SearchBox />
+        <form onSubmit={this.props.handleSubmit} className="form-inline my-lg-0">
+            <input type="text" id="searchBox" name="address" className="form-control mr-sm-2"/>
+              <button className="btn btn-outline-secondary my-2 my-sm-0" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
+        </form>
         </div>
       </nav>
     );
