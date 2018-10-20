@@ -1,6 +1,7 @@
 // import React
 import React, { Component } from 'react';
 // import Component
+import Navbar from './components/Navbar.jsx';
 import PropertyList from './components/PropertyList.jsx';
 import SearchBox from './components/SearchBox.jsx'
 // import helper
@@ -49,12 +50,21 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-      <SearchBox handleSubmit={this.handleSubmit}/>
-      <PropertyList locations={this.state.locations}/>
-      </div>
-    );
+    if(this.state.locations.length === 0) {
+      return (
+        <div className="App">
+          <SearchBox handleSubmit={this.handleSubmit}/>
+          <PropertyList locations={this.state.locations}/>
+        </div>
+      )
+    }else {
+      return (
+        <div className="App">
+          <Navbar handleSubmit={this.handleSubmit}/>
+          <PropertyList locations={this.state.locations}/>
+        </div>
+      )
+    }
   }
 }
 
