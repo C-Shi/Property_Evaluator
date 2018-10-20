@@ -1,5 +1,4 @@
 const GoogleMap = {
-  googleMaps: window.google.maps,
 
   autocomplete: function () {
     const googleMaps = window.google.maps;
