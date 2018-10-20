@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Landing from './components/Landing.js'
-import Main from './components/Main'
+import PropertyList from './components/PropertyList.jsx';
+import SearchBox from './components/SearchBox.jsx'
 import LocationHelper from "./lib/LocationHelper"
 import LocationBuilder from "./lib/LocationBuilder"
 
@@ -16,8 +16,8 @@ class App extends Component {
       main: false,
       heatMap: false
     };
+
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
   quadrants = {
@@ -82,8 +82,10 @@ class App extends Component {
   handleSubmit(event) {
     // breaking the address into seperate elements
     event.preventDefault();
- 
-    let resultant = this.state.query;
+
+    const address = document.getElementById('searchBox').value
+    
+    let resultant = address;
  
     resultant = (resultant.split(',')[0]).split(' ');
  
@@ -105,42 +107,9 @@ class App extends Component {
       this.addLocation()
     });
     
-    document.getElementById('autocomplete').value = '';
+    document.getElementById('searchBox').value = '';
     // the 'final product'
     
-  }
-
-  handleChange(event) {
-    this.setState({ query: event.target.value });
-  }
-
-  handleScriptLoad() {
-
-    // Declare options for autocomplete
-    var options = { types: [], };
-
-    // Initialize google autocomplete
-    /*global google*/
-    this.autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById('autocomplete'),
-      options,
-    );
-
-    // Fire event when a suggested name is selected
-    this.autocomplete.addListener('place_changed', this.handlePlaceSelect);
-  }
-
-  handlePlaceSelect() {
-
-    let addressObject = this.autocomplete.getPlace();
-    let address = addressObject.address_components;
-
-    if (address) {
-      this.setState({
-          city: address[0].long_name,
-          query: addressObject.formatted_address
-      });
-    }
   }
 
       /*
@@ -184,8 +153,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Landing handleSubmit={this.handleSubmit} handleChange={this.handleChange} display={this.state.landing}/>
-      <Main locations={this.state.locations}/>
+      <SearchBox handleSubmit={this.handleSubmit}/>
+      <PropertyList />
       </div>
     );
   }

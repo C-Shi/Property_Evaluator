@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class NeighborInfo extends Component {
+class Property extends Component {
 
     render() {
       let crimeInfo = []
@@ -32,4 +32,4 @@ class NeighborInfo extends Component {
   }
 
 
-export default NeighborInfo;
+export default Property;
