@@ -52,7 +52,7 @@ class Main extends Component {
             }
         })
     }
-    
+
     componentDidMount(){
         let newLocation = {};
         LocationHelper.getAddress('132 10 AV NW')
@@ -76,7 +76,7 @@ class Main extends Component {
             })
         })
     }
-    
+
 
     render() {
     return (
