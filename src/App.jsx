@@ -7,6 +7,7 @@ import SearchBox from './components/SearchBox.jsx'
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
+import mapAnimator from "./lib/mapAnimationHelper"
 
 class App extends Component {
   constructor(){
@@ -34,7 +35,7 @@ class App extends Component {
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
     // resize the map
-    document.getElementById('map').classList.toggle("map-move");
+    mapAnimator();
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
     this.setState({ address: address, landing: false }, () => {

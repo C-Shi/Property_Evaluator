@@ -2,11 +2,12 @@ const GoogleMap = {
   googleMaps: window.google.maps,
 
   autocomplete: function () {
-    const autocomplete = new this.googleMaps.places.Autocomplete(document.getElementById('searchBox'));
+    const googleMaps = window.google.maps;
+    const autocomplete = new googleMaps.places.Autocomplete(document.getElementById('searchBox'));
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        const circle = new this.googleMaps.Circle({
+        const circle = new googleMaps.Circle({
           center: {
             lat: position.coords.latitude,
             lng: position.coords.longitude
