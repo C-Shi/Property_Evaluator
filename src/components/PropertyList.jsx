@@ -50,7 +50,7 @@ class PropertyList extends Component {
       return (
         <div>
           <div className="main-page">
-            <div className="property-list">{property}</div> 
+            <div className="property-list">{property}</div>
           </div>
           <div id="map" className="map-init"></div>
         </div>
