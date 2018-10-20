@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import GoogleMap from '../lib/GoogleMap';
-import '../style/SearchBox.css'
+import '../style/SearchBox.css';
+import GoogleMap from "../lib/GoogleMap"
 
 class SearchBox extends Component {
 
   componentDidMount() {
-    GoogleMap();
+    GoogleMap.autocomplete()
   }
 
   render() {
