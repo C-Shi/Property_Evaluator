@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Property from './Property';
+import "../style/Map.css"
 
 class PropertyList extends Component {
 
@@ -14,8 +15,6 @@ class PropertyList extends Component {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
       }
     });
-    
-    console.log(this.props.locations)
   }
 
   componentDidUpdate(){
@@ -49,7 +48,7 @@ class PropertyList extends Component {
           <div className="main-page">
               {property}
           </div>
-          <div id="map" style={{"width": "505px", "height": "500px"}}></div>
+          <div id="map" className="map-init"></div>
         </div>
       );
     }

@@ -1,3 +1,4 @@
+import LocationFinder from "./LocationFinder"
 const LocationBuilder = {
   buildInitialPropertyInfo: function (newLocation, data){
       newLocation.address = data[0].address;
@@ -32,6 +33,30 @@ const LocationBuilder = {
         } else {
             newLocation.crime[crime.category] = Number(crime.count)
         }
+    })
+  },
+
+  // this function is querying differnt open data calgary API in sequence
+  constructPropertyInfo: function(address, callback){
+    let newLocation = {};
+    LocationFinder.getAddress(address)
+    .then((res) => {
+        if (!res.data.length) return;
+        this.buildInitialPropertyInfo(newLocation, res.data)
+        LocationFinder.getCommPopulation(newLocation.comm_code)
+        .then((res) => {
+          this.addCommunityPopulationToLocation(newLocation, res.data)
+          LocationFinder.getCrime(newLocation.comm_name)
+            .then(res => {
+              this.addCommunityCrimeToLocation(newLocation, res.data)
+              LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)
+                .then((res) => {
+                    // all info is ready in a templateVar 'newLocation'
+                    // ready to update locations lists
+                    callback(newLocation, Boolean(res.data.length))
+                })
+            })
+        })
     })
   }
 
