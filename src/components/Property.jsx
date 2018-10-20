@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 class Property extends Component {
 
     render() {
+      console.log(this.props.location)
       let crimeInfo = []
       for (var key in this.props.location.crime) {
         crimeInfo.push({type: key, count: this.props.location.crime[key]})

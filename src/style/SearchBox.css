@@ -1,0 +1,24 @@
+.search {
+  width : 70%;
+  position: absolute;
+  left: 15%;
+  top: 20vh;
+}
+.search #searchBox {
+    height: 15vh;
+    font-size:12vh;
+    max-width: 100%;
+}
+.search .search-btn {
+  font-size: 10vh;
+  height: 15vh;
+  padding: 0 10px;
+  margin: 0;
+}
+.search .fa-search {
+  height:100%;
+  width:100%;
+  top:-5px;
+  font-size: 10vh;
+  vertical-align: middle;
+}
