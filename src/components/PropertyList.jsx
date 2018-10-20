@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Property from './Property';
-import "../style/Map.css";
-import "../style/PropertyList.css";
+import "../style/Map.css"
 
 class PropertyList extends Component {
 
@@ -47,7 +46,7 @@ class PropertyList extends Component {
       return (
         <div>
           <div className="main-page">
-            <div className="property-list">{property}</div> 
+              {property}
           </div>
           <div id="map" className="map-init"></div>
         </div>
