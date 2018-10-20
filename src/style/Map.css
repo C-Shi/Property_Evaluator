@@ -13,8 +13,9 @@
 
 @keyframes popout {
   to {
-    transform: translate(-24vw, -16vh) scale(0.625, 1.6);
-    /* -webkit-box-shadow: 5px 5px 5px 3px #7F91A3;
-    box-shadow: 5px 5px 5px 3px #7F91A3; */
+    top: 8vh;
+    left: 5vw;
+    height: 85vh;
+    width: 45vw;
   }
 }
