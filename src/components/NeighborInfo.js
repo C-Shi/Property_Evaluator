@@ -11,12 +11,16 @@ class NeighborInfo extends Component {
       crimeInfo = crimeInfo.map(each => {
         return <li>{each.type} - {each.count}</li>
       })
+
+      let priceInfo = this.props.location.value.map(each => {
+        return <li>{each.year} - {each.price}</li>
+      })
       return (
         <div className="card neighbor-info">
           <div className="card-body">
             <h5 className="card-title">{this.props.location.address}</h5>
             <ul>
-              <li>{this.props.location.value[0].price}</li>
+              {priceInfo}
               {crimeInfo}
             </ul>
           </div>

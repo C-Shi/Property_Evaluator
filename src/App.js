@@ -158,15 +158,6 @@ class App extends Component {
     })
   }
 
-    addCommunityPopulationToLocation(newLocation, data){
-      newLocation.comm_population = [];
-      data.forEach((community) => {
-          newLocation.comm_population.push({
-              year: community.census_year.slice(0, 4),
-              population: community.population
-          })
-      })
-    }
 
     addCommunityCrimeToLocation(newLocation, data){
       newLocation.crime = {}
@@ -203,10 +194,6 @@ class App extends Component {
               })
           })
       })
-    }
-
-    componentDidMount(){
-      
     }
 
   render() {
