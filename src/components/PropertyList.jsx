@@ -19,16 +19,24 @@ class PropertyList extends Component {
   }
 
   componentDidUpdate(){
+    // adding marker to the map and auto adjust zoom
+    const bounds  = new this.googleMaps.LatLngBounds(
+      new this.googleMaps.LatLng(51.014270, -114.062019),
+      new this.googleMaps.LatLng(51.054270, -114.062019),
+    );
     this.props.locations.forEach(location => {
       var myLatlng = new this.googleMaps.LatLng(location.lat, location.lng);
       var marker = new this.googleMaps.Marker({
         position: myLatlng,
         title:"Hello World!"
       });
-      
       // To add the marker to the map, call setMap();
       marker.setMap(this.map);
+      var loc = new this.googleMaps.LatLng(marker.position.lat(), marker.position.lng());
+      bounds.extend(loc);
     })
+    this.map.fitBounds(bounds);
+    this.map.panToBounds(bounds);
   }
 
     render() {
