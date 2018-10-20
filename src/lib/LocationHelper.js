@@ -4,7 +4,9 @@ const LocationHelper = {
   getAddress: function (address){
     return axios.get('https://data.calgary.ca/resource/6mnx-r99s.json',{
         params: {
-        address
+        address,
+        "$order": "roll_year DESC",
+        "$limit": 5
         }
     })
   },
