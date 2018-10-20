@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Property from './Property';
 import MapStyle from "../assest/GoogleMapStyle"
 import "../style/Map.css"
+import "../style/PropertyList.css"
 
 class PropertyList extends Component {
 
