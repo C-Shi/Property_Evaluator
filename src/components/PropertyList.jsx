@@ -44,7 +44,7 @@ class PropertyList extends Component {
   }
 
     render() {
-      const property = this.props.locations.map(location => {
+      const property = this.props.locations.reverse().map(location => {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
