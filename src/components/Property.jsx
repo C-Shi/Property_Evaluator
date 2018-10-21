@@ -15,6 +15,11 @@ class Property extends Component {
       let priceInfo = this.props.location.value.map(each => {
         return <li>{each.year} - {each.price}</li>
       })
+
+      let commPopulation = this.props.location.comm_population.map(each => {
+        return <li>{each.year} - {each.population}</li>
+      })
+
       return (
         <div className="card neighbor-info">
           <div className="card-body">
@@ -22,6 +27,8 @@ class Property extends Component {
             <ul>
               {priceInfo}
               {crimeInfo}
+              {commPopulation}
+              <li>Flooded Chance - {(this.props.location.flood)? 'Yes': 'No'}</li>
               <li>{this.props.location.lat}</li>
               <li>{this.props.location.lng}</li>
             </ul>
