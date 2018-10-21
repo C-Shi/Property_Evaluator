@@ -6,3 +6,16 @@
   height: 50vh;
   z-index: -1;
 }
+
+.map-move {
+  animation: popout 1s ease 0s 1 normal both;
+}
+
+@keyframes popout {
+  to {
+    top: 8vh;
+    left: 5vw;
+    height: 85vh;
+    width: 45vw;
+  }
+}
