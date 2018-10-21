@@ -33,6 +33,7 @@ class PropertyList extends Component {
         position: myLatlng,
         icon: "http://maps.google.com/mapfiles/kml/pal3/icon56.png"
       });
+      
       // To add the marker to the map, call setMap();
       marker.setMap(this.map);
       var loc = new this.googleMaps.LatLng(marker.position.lat(), marker.position.lng());
@@ -44,7 +45,7 @@ class PropertyList extends Component {
 
     render() {
       const property = this.props.locations.map(location => {
-        return <Property location={location}/>
+        return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
       return (

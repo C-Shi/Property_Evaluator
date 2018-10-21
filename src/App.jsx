@@ -50,6 +50,16 @@ class App extends Component {
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
+      console.log(this.state.locations);
+    })
+  }
+
+  deleteProperty = (address) => {
+    let properties = this.state.locations.filter(location => {
+      return location.address !== address
+    });
+    this.setState({
+      locations: properties
     })
   }
 
@@ -65,7 +75,7 @@ class App extends Component {
       return (
         <div className="App">
           <Navbar handleSubmit={this.handleSubmit}/>
-          <PropertyList locations={this.state.locations}/>
+          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
         </div>
       )
     }

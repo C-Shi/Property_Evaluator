@@ -8,7 +8,7 @@ const app = require("express")(),
       morgan      = require('morgan'),
       knexLogger  = require('knex-logger');
 
-const PORT = 8080 || process.env.PORT
+const PORT = 8080 || process.env.PORT;
 
 app.listen(PORT, process.env.IP, () => {
   console.log("Server start")
