@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar.jsx';
 import PropertyList from './components/PropertyList.jsx';
 import SearchBox from './components/SearchBox.jsx'
+import ChoroplethMap from "./components/ChoroplethMap";
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
@@ -59,6 +60,7 @@ class App extends Component {
         <div className="App">
           <SearchBox handleSubmit={this.handleSubmit}/>
           <PropertyList locations={this.state.locations}/>
+          <ChoroplethMap />
         </div>
       )
     }else {
@@ -66,6 +68,7 @@ class App extends Component {
         <div className="App">
           <Navbar handleSubmit={this.handleSubmit}/>
           <PropertyList locations={this.state.locations}/>
+          <ChoroplethMap />
         </div>
       )
     }
