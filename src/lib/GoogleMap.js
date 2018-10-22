@@ -5,18 +5,23 @@ const GoogleMap = {
     this.map = new googleMaps.Map(document.getElementById('choropleth-map'), {
       zoom: zoom,
       center: location,
-      mapTypeControlOptions: {
-        mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
-      },
       styles: style,
     });
   },
 
   // this function will load geojson data
   initChoroplethMap: function (data, style, colorSet) {
-    this.initMap(11, style);
+    // data is the object of community - number pair for different style
+    // style is the mapping style, here is the gray
+    // colorSet is the intenstiy based on community
+    let total = 0;
+    Object.keys(data).forEach(function(community){
+      total += data[community];
+    })
 
-    const googleMaps = window.google.maps;
+    const average = total / Object.keys(data).length
+
+    this.initMap(11, style);
 
     this.map.data.loadGeoJson(
       'https://data.calgary.ca/resource/surr-xmvs.geojson'
@@ -28,15 +33,15 @@ const GoogleMap = {
 
       if (data[communityName] === 0) {
         color = colorSet.none
-      } else if (data[communityName] < 20) {
+      } else if (data[communityName] < 0.5 * average) {
         color = colorSet.few
-      } else if (data[communityName] < 50) {
+      } else if (data[communityName] < 0.75 * average) {
         color = colorSet.some
-      } else if (data[communityName] < 800) {
+      } else if (data[communityName] < average) {
         color = colorSet.average
-      } else if (data[communityName] < 100) {
+      } else if (data[communityName] < 1.25 * average) {
         color = colorSet.many
-      } else if (data[communityName] > 100) {
+      } else if (data[communityName] >= 1.5 * average) {
         color = colorSet.most
       } else {
         color = "transparent"
@@ -45,7 +50,7 @@ const GoogleMap = {
       return ({
         fillColor: color,
         strokeColor: "green",
-        fillOpacity: 0.7,
+        fillOpacity: 1,
         strokeWeight: 1
       });
     });
