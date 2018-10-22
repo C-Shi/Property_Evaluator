@@ -82,31 +82,6 @@ class App extends Component {
     })
   }
 
-  // componentWillMount(){
-  //   this.getChartData();
-  // }
-
-  // getChartData(){
-  //   this.setState({
-  //     chartData: {
-  //       labels: ['Bostonnnn', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-  //       datasets:[
-  //       {
-  //         label:'Population',
-  //         data:[
-  //           617594,
-  //           181045,
-  //           153060,
-  //           106519,
-  //           105162,
-  //           95072
-  //         ],
-  //         backgroundColor:'rgba(255, 99, 132, 0.6)'
-  //       }]
-  //     }
-  //   })
-  // }
-
   render() {
     if(this.state.locations.length === 0) {
       return (
