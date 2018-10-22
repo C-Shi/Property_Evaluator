@@ -18,6 +18,10 @@ class App extends Component {
     this.state = {
       address: '',
       locations: [],
+      propertyValues:{
+        labels: [],
+        datasets:[]
+      },
       page: "searchBox"
     };
 
@@ -83,23 +87,50 @@ class App extends Component {
     //       backgroundColor: 'rgba(45,149,102,0.4)',
     //       borderColor: 'rgba(45,149,102,1)',
     //       borderWidth: 1,
-    //       stack: '2',
+    //       stack: '3',
     //       hoverBackgroundColor: 'rgba(155,49,12,0.4)',
     //       hoverBorderColor: 'rgba(155,59,12,1)',
     //       data: [55, 40, 81, 56, 65, 59, 80]
-    //     }
-    //   ]
-    // }
+        
+      
+    
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
       console.log(this.state.locations);
     })
+    // this.addPropertyValueData();
   }
 
-  addPropertyValueData(newLocation){
-    
-  }
+  // addPropertyValueData(){
+  //   const backgroundColors = [
+  //   'rgba(255, 99, 132, 0.6)',
+  //   'rgba(54, 162, 235, 0.6)',
+  //   'rgba(255, 206, 86, 0.6)',
+  //   'rgba(75, 192, 192, 0.6)',
+  //   'rgba(153, 102, 255, 0.6)']
+  //   const oldPropertyValues = this.state.propertyValues;
+  //   oldPropertyValues.labels = ['2014', '2015', '2016', '2017', '2018'];
+
+  //   this.state.locations.forEach(function(location, index){
+  //     let price = [];
+  //     location.value.reverse().forEach(each => {
+  //       price.push(Number(each.price))
+  //     })
+  //     let newObj = {
+  //       label: location.address,
+  //       backgroundColor: backgroundColors[index],
+  //       borderColor: 'rgba(155,49,12,1)',
+  //       borderWidth: 1,
+  //       stack: String(index + 1),
+  //       data: price
+  //     }
+  //     oldPropertyValues.datasets.push(newObj);
+  //   }) 
+  //   this.setState(oldPropertyValues, () => {
+  //     console.log("--------", this.state.propertyValues);
+  //   })
+  // }
 
   deleteProperty(address) {
     let properties = this.state.locations.filter(location => {
@@ -127,7 +158,7 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
+          <PropertyList locations={this.state.locations} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty}/>
         </div>
         )
     } else if (this.state.page === "searchBox") {
