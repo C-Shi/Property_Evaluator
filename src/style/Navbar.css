@@ -1,11 +1,42 @@
 .navbar-default  {
-  background-color: #FF8C00 ;
+  display: flex;
+  height: 10vh;
+  color: #36454f;
+  color: #2D3A42;
+  opacity: 0.6;
+  animation: navbarScrollDown .5s ease-in 0s 1 normal both;
 }
 
-.navbar-default .navbar-brand {
-  color:#696969;
+.navbar-links {
+  display: flex;
+  height: 10vh;
+  width: 50vw;
+  align-items: center;
 }
 
-.navbar-default .nav-link {
-  color:#696969;
+.navbar-links a {
+  margin: 5vw;
+}
+
+.navbar-search {
+  opacity: 1;
+  width: 50vw;
+  justify-content: center;
+}
+
+.navbar-search #searchBox {
+  width: 40vw;
+  border-radius: 5px;
+  border: 1px solid #C7D8C6;
+}
+
+@keyframes navbarScrollDown {
+  from {
+    height: 0;
+    top: -5vh;
+  }
+  to {
+    top: 0;
+    height: 7vh;
+  }
 }

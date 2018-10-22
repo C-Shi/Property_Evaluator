@@ -35,15 +35,15 @@ class Property extends Component {
             </ul>
             <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>
-        <div class="card">
-        <h5 class="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
+        <div className="card">
+        <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
 
-        <div class="card-body">
+        <div className="card-body">
               <th>Walkability Score : </th>
 
          </div>
 
-        <table class="table table-bordered">
+        <table className="table table-bordered">
             <thead>
                 <tr>
                     <th>Year </th>
