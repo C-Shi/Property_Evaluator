@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
+import Chart from './Chart';
 
 class Property extends Component {
 
     render() {
-      console.log(this.props.location)
       let crimeInfo = []
       for (var key in this.props.location.crime) {
         crimeInfo.push({type: key, count: this.props.location.crime[key]})
@@ -31,7 +31,9 @@ class Property extends Component {
               {populationInfo}
               <li>{this.props.location.lat}</li>
               <li>{this.props.location.lng}</li>
+              <Chart location={this.props.location}/>
             </ul>
+            <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>
         <div class="card">
         <h5 class="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>

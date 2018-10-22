@@ -47,10 +47,39 @@ class App extends Component {
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
-    newLocation.flood = flood
+    newLocation.flood = flood;
+    let valueData = [];
+    newLocation.value.forEach(each => {
+      return valueData.push(each.price);
+    })
+    newLocation.chartData = {
+      labels: ['2014', '2015', '2016', '2017', '2018'],
+      datasets:[
+      {
+        label:'Value',
+        data: valueData,
+        backgroundColor:[
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(153, 102, 255, 0.6)',
+        ]
+      }]
+    }
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
+      console.log(this.state.locations);
+    })
+  }
+
+  deleteProperty = (address) => {
+    let properties = this.state.locations.filter(location => {
+      return location.address !== address
+    });
+    this.setState({
+      locations: properties
     })
   }
 
@@ -78,7 +107,7 @@ class App extends Component {
       renderedCompoenent = (
         <div>
           <SearchBox handleSubmit={this.handleSubmit} />
-          <PropertyList locations={this.state.locations}/>
+          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
         </div>
        ) 
     }else if (this.state.page === "choropleth") {
