@@ -34,15 +34,15 @@ class App extends Component {
     if (!googleAddress) return;
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
-    // resize the map
-    mapAnimator();
+
+    // resize the map wait until page fully setup to animate map
+    this.pageChangeHandler("propertyList")
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
     this.setState({ address: address, landing: false }, () => {
       LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty)
     });
     document.getElementById('searchBox').value = '';
-    this.pageChangeHandler("propertyList")
   }
 
   // take in a newLocation with complete into and add to state.locations array
@@ -55,7 +55,11 @@ class App extends Component {
   }
 
   pageChangeHandler(page) {
-    this.setState({ page })
+    this.setState({ page }, () => {
+      if (page === "propertyList"){
+        setTimeout(mapAnimator, 10)
+      }
+    })
   }
 
   render() {
