@@ -1,0 +1,25 @@
+body {
+  background-image: url('https://images.pexels.com/photos/700974/pexels-photo-700974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+}
+
+.navbar {
+  opacity: 0.6;
+  background: #4DAFFF;
+  animation: navbarScrollDown 1.5s ease-in 0s 1 normal both;
+}
+
+.navbar-search {
+  opacity: 1;
+}
+
+@keyframes navbarScrollDown {
+  from {
+    height: 0;
+    top: -5vh;
+  }
+  to {
+    top: 0;
+    height: 7vh;
+  }
+}

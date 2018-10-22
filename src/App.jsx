@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar.jsx';
 import PropertyList from './components/PropertyList.jsx';
 import SearchBox from './components/SearchBox.jsx'
+// import styles
+import "./style/index.css"
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
