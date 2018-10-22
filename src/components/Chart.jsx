@@ -52,30 +52,6 @@ class Chart extends Component{
                   }
                 }}
             />
-
-            <Pie
-                data={this.props.location.chartData}
-                width={100}
-                height={50}
-                options={{
-                  title: {
-                    display: true,
-                    text: 'Property Value at ' + this.props.location.address,
-                    fontSize: 25
-                  },
-                  legend: {
-                    display: true,
-                    position: 'right'
-                  },
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }]
-                  }
-                }}
-            />
             </div>
         )
     }

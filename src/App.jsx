@@ -51,30 +51,54 @@ class App extends Component {
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
     newLocation.flood = flood;
-    let valueData = [];
-    newLocation.value.forEach(each => {
-      return valueData.push(each.price);
-    })
-    newLocation.chartData = {
-      labels: ['2014', '2015', '2016', '2017', '2018'],
-      datasets:[
-      {
-        label:'Value',
-        data: valueData,
-        backgroundColor:[
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-        ]
-      }]
-    }
+    // let valueData = [];
+    // newLocation.value.forEach(each => {
+    //   return valueData.push(each.price);
+    // })
+    // newLocation.chartData = {
+    //   labels: ['2014', '2015', '2016', '2017', '2018'],
+    //   datasets:[
+    //     {
+    //       label: 'My First dataset',
+    //       backgroundColor: 'rgba(255,99,132,0.2)',
+    //       borderColor: 'rgba(255,99,132,1)',
+    //       borderWidth: 1,
+    //       stack: '1',
+    //       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+    //       hoverBorderColor: 'rgba(255,99,132,1)',
+    //       data: [65, 59, 80, 81, 56, 55, 40]
+    //     },
+    //     {
+    //       label: 'My Second dataset',
+    //       backgroundColor: 'rgba(155,49,12,0.4)',
+    //       borderColor: 'rgba(155,49,12,1)',
+    //       borderWidth: 1,
+    //       stack: '2',
+    //       hoverBackgroundColor: 'rgba(155,49,12,0.4)',
+    //       hoverBorderColor: 'rgba(155,59,12,1)',
+    //       data: [55, 40, 81, 56, 65, 59, 80]
+    //     },
+    //     {
+    //       label: 'My Third dataset',
+    //       backgroundColor: 'rgba(45,149,102,0.4)',
+    //       borderColor: 'rgba(45,149,102,1)',
+    //       borderWidth: 1,
+    //       stack: '2',
+    //       hoverBackgroundColor: 'rgba(155,49,12,0.4)',
+    //       hoverBorderColor: 'rgba(155,59,12,1)',
+    //       data: [55, 40, 81, 56, 65, 59, 80]
+    //     }
+    //   ]
+    // }
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
       console.log(this.state.locations);
     })
+  }
+
+  addPropertyValueData(newLocation){
+    
   }
 
   deleteProperty(address) {
