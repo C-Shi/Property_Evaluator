@@ -46,7 +46,26 @@ class App extends Component {
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
-    newLocation.flood = flood
+    newLocation.flood = flood;
+    let valueData = [];
+    newLocation.value.forEach(each => {
+      return valueData.push(each.price);
+    })
+    newLocation.chartData = {
+      labels: ['2014', '2015', '2016', '2017', '2018'],
+      datasets:[
+      {
+        label:'Value',
+        data: valueData,
+        backgroundColor:[
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(153, 102, 255, 0.6)',
+        ]
+      }]
+    }
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
@@ -62,6 +81,31 @@ class App extends Component {
       locations: properties
     })
   }
+
+  // componentWillMount(){
+  //   this.getChartData();
+  // }
+
+  // getChartData(){
+  //   this.setState({
+  //     chartData: {
+  //       labels: ['Bostonnnn', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+  //       datasets:[
+  //       {
+  //         label:'Population',
+  //         data:[
+  //           617594,
+  //           181045,
+  //           153060,
+  //           106519,
+  //           105162,
+  //           95072
+  //         ],
+  //         backgroundColor:'rgba(255, 99, 132, 0.6)'
+  //       }]
+  //     }
+  //   })
+  // }
 
   render() {
     if(this.state.locations.length === 0) {

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Chart from './Chart';
 
 class Property extends Component {
 
@@ -19,7 +20,6 @@ class Property extends Component {
       let commPopulation = this.props.location.comm_population.map(each => {
         return <li>{each.year} - {each.population}</li>
       })
-
       return (
         <div className="card neighbor-info">
           <div className="card-body">
@@ -31,6 +31,7 @@ class Property extends Component {
               <li>Flooded Chance - {(this.props.location.flood)? 'Yes': 'No'}</li>
               <li>{this.props.location.lat}</li>
               <li>{this.props.location.lng}</li>
+              <Chart location={this.props.location}/>
             </ul>
             <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>
