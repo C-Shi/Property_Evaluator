@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import GoogleMap from "../lib/GoogleMap";
 import "../style/ChoroplethMap.css";
+import ChoroplethMapStyle from "../asset/ChoroplethMapStyle.js"
 
 class ChoroplethMap extends Component {
   constructor(){
@@ -38,7 +39,7 @@ class ChoroplethMap extends Component {
 
   componentDidMount(){
     // this will create a map, taking two argument, data and color set
-    GoogleMap.initChoroplethMap(this.state.community, this.state.color)
+    GoogleMap.initChoroplethMap(this.state.community, ChoroplethMapStyle, this.state.color)
   }
 
   render() {

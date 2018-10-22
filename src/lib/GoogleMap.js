@@ -1,19 +1,20 @@
 const GoogleMap = {
-  initMap: function() {
+  initMap: function(zoom, style) {
     const googleMaps = window.google.maps;
     const location = { lat: 51.044270 , lng: -114.062019};
     this.map = new googleMaps.Map(document.getElementById('choropleth-map'), {
-      zoom: 15,
+      zoom: zoom,
       center: location,
       mapTypeControlOptions: {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
       },
+      styles: style,
     });
   },
 
   // this function will load geojson data
-  initChoroplethMap: function (data, colorSet) {
-    this.initMap();
+  initChoroplethMap: function (data, style, colorSet) {
+    this.initMap(11, style);
 
     const googleMaps = window.google.maps;
 
