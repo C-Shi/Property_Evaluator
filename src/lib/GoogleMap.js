@@ -14,7 +14,7 @@ const GoogleMap = {
   },
 
   // this function will load geojson data
-  initChoroplethMap: function () {
+  initChoroplethMap: function (data, colorSet) {
     this.initMap();
 
     const googleMaps = window.google.maps;
@@ -24,27 +24,31 @@ const GoogleMap = {
       { idPropertyName: 'STATE' }
     );
 
-    // wait for the request to complete by listening for the first feature to be
-    // added
-    googleMaps.event.addListenerOnce(this.map.data, 'addfeature', () => {
-      googleMaps.event.trigger(document.getElementById('census-variable'),
-          'change');
-    });
-
-
-    this.map.data.forEach(function(row) {
-      row.setProperty('community', undefined);
-    });
-
     this.map.data.setStyle(function(feature){
-      var color = 'gray';
-      if (feature.getProperty('name') === "SUNALTA"){
-        color = 'red';
+      let color;
+      const communityName = feature.getProperty('name')
+
+      if (data[communityName] === 0) {
+        color = colorSet.none
+      } else if (data[communityName] < 20) {
+        color = colorSet.few
+      } else if (data[communityName] < 50) {
+        color = colorSet.some
+      } else if (data[communityName] < 800) {
+        color = colorSet.average
+      } else if (data[communityName] < 100) {
+        color = colorSet.many
+      } else if (data[communityName] > 100) {
+        color = colorSet.most
+      } else {
+        color = "transparent"
       }
+
       return ({
         fillColor: color,
         strokeColor: "green",
-        strokeWeight: 2
+        fillOpacity: 0.8,
+        strokeWeight: 1
       });
     });
 

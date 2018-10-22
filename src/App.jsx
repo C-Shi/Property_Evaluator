@@ -58,16 +58,16 @@ class App extends Component {
     if(this.state.locations.length === 0) {
       return (
         <div className="App">
-          <SearchBox handleSubmit={this.handleSubmit}/>
-          <PropertyList locations={this.state.locations}/>
+          {/* <SearchBox handleSubmit={this.handleSubmit}/> */}
+          {/* <PropertyList locations={this.state.locations}/> */}
           <ChoroplethMap />
         </div>
       )
     }else {
       return (
         <div className="App">
-          <Navbar handleSubmit={this.handleSubmit}/>
-          <PropertyList locations={this.state.locations}/>
+          {/* <Navbar handleSubmit={this.handleSubmit}/> */}
+          {/* <PropertyList locations={this.state.locations}/> */}
           <ChoroplethMap />
         </div>
       )
