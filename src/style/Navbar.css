@@ -1,11 +1,30 @@
 .navbar-default  {
-  background-color: #FF8C00 ;
+  /* background-color: #C7D8C6; */
+  color: #36454f;
+  opacity: 0.6;
+  animation: navbarScrollDown 1.5s ease-in 0s 1 normal both;
 }
 
 .navbar-default .navbar-brand {
-  color:#696969;
+  color:#A9B7C0;
+  text-shadow: inset 1vh 1vh 1vh 1vh black;
 }
 
 .navbar-default .nav-link {
-  color:#696969;
+  color:#EFD9C1;
+}
+
+.navbar-search {
+  opacity: 1;
+}
+
+@keyframes navbarScrollDown {
+  from {
+    height: 0;
+    top: -5vh;
+  }
+  to {
+    top: 0;
+    height: 7vh;
+  }
 }

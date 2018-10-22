@@ -1,25 +1,20 @@
 body {
-  background-image: url('https://images.pexels.com/photos/700974/pexels-photo-700974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-color: rgba(169, 183, 192, 1);
   background-size: cover;
+  color: #CCCBC6;
 }
 
-.navbar {
-  opacity: 0.6;
-  background: #4DAFFF;
-  animation: navbarScrollDown 1.5s ease-in 0s 1 normal both;
+.secondBody {
+  background-image: url('https://images.pexels.com/photos/700974/pexels-photo-700974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
 }
 
-.navbar-search {
+.App {
   opacity: 1;
-}
-
-@keyframes navbarScrollDown {
-  from {
-    height: 0;
-    top: -5vh;
-  }
-  to {
-    top: 0;
-    height: 7vh;
-  }
 }

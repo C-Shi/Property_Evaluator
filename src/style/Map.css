@@ -14,9 +14,9 @@
 @keyframes mapMove {
   100% {
     top: 8vh;
-    left: 5vw;
+    left: 0;
     height: 85vh;
-    width: 45vw;
+    width: 50vw;
     box-shadow: 0 0 10vh 5vh rgba(255, 255, 255, 0.3);
   }
 }
