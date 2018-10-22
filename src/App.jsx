@@ -5,6 +5,8 @@ import Navbar from './components/Navbar.jsx';
 import PropertyList from './components/PropertyList.jsx';
 import SearchBox from './components/SearchBox.jsx'
 import ChoroplethMap from "./components/ChoroplethMap";
+// import styles
+import "./style/index.css"
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
@@ -96,8 +98,8 @@ class App extends Component {
     if (this.state.page === "propertyList") {
       renderedCompoenent = (
         <div>
-          <Navbar 
-            handleSubmit={this.handleSubmit} 
+          <Navbar
+            handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
           <PropertyList locations={this.state.locations}/>
@@ -109,12 +111,12 @@ class App extends Component {
           <SearchBox handleSubmit={this.handleSubmit} />
           <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
         </div>
-       ) 
+       )
     }else if (this.state.page === "choropleth") {
       renderedCompoenent = (
         <div>
-          <Navbar 
-            handleSubmit={this.handleSubmit} 
+          <Navbar
+            handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
           <ChoroplethMap />

@@ -5,3 +5,25 @@
     margin-top:15px;
 }
 
+.neighbor-info {
+  opacity: 0.85;
+  background: #6B6D99;
+  border: 3px solid #292DCC;
+  color: #FFC38D;
+  text-shadow: 1px 1px 2px #CC5E29;
+  width: 38vw;
+  animation: propertySlide 5s ease 0s 1 normal both;
+ }
+
+@keyframes propertySlide {
+  0% {
+    left: 100vw;
+  }
+  80% {
+    box-shadow: 3vh 1vh 1vh rgba(0, 0, 0, 0);
+  }
+  100% {
+    left: 7vw;
+    box-shadow: -1vh 1vh 1vh rgba(255, 255, 255, 0.45);
+  }
+}
