@@ -19,7 +19,17 @@ class PropertyList extends Component {
       },
        styles: MapStyle
     });
-  }
+
+    // create a button on the google map, and add event listener to go to choropleth map
+    const mapDiv =  document.getElementById('map');
+    const toChoroplethButton = document.createElement("button")
+    toChoroplethButton.setAttribute("class", "to-choropleth")
+    toChoroplethButton.textContent = "Community Statistics"
+    toChoroplethButton.addEventListener("click", () => {
+      this.props.pageChangeHandler("choropleth")
+    })
+    mapDiv.appendChild(toChoroplethButton);
+}
 
   componentDidUpdate(){
     // adding marker to the map and auto adjust zoom

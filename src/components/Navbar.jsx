@@ -5,6 +5,7 @@ import "../style/Navbar.css"
 
 class Navbar extends Component {
   componentDidMount() {
+    
     GoogleMap.autocomplete()
   }
   render() {

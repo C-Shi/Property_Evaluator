@@ -15,6 +15,24 @@
   animation: propertySlide 5s ease 0s 1 normal both;
  }
 
+ .to-choropleth {
+   position: relative; left: 50%;
+   transform: translateX(-50%);
+   z-index: 1;
+   cursor: pointer;
+   direction: ltr;
+   text-align: center;
+   background-color: #fff;
+   padding: 10px;
+   font-weight: 500;
+   border: 0px;
+   border-radius: 2%;
+ }
+
+ .to-choropleth:hover {
+   background-color: #eee;
+ }
+
 @keyframes propertySlide {
   0% {
     left: 100vw;

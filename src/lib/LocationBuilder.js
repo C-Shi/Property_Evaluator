@@ -37,7 +37,7 @@ const LocationBuilder = {
   },
 
   // this function is querying differnt open data calgary API in sequence
-  constructPropertyInfo: function(address, callback){
+  constructPropertyInfo: function(address, callback, callback2){
     let newLocation = {};
     LocationFinder.getAddress(address)
     .then((res) => {
@@ -54,6 +54,7 @@ const LocationBuilder = {
                     // all info is ready in a templateVar 'newLocation'
                     // ready to update locations lists
                     callback(newLocation, Boolean(res.data.length))
+                    callback2();
                 })
             })
         })
