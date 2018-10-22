@@ -26,12 +26,12 @@ class ChoroplethMap extends Component {
         "ROYAL OAK": 9
       },
       color: {
-        none: "#edf8fb",
-        few: "#ccece6",
-        some: "#99d8c9",
-        average: "#66c2a4",
-        many: "#2ca25f",
-        most: "#006d2c"
+        none: "#fef0d9",
+        few: "#fdd49e",
+        some: "#fdbb84",
+        average: "#fc8d59",
+        many: "#e34a33",
+        most: "#b30000"
       }
     }
   }

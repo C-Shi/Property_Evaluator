@@ -20,8 +20,7 @@ const GoogleMap = {
     const googleMaps = window.google.maps;
 
     this.map.data.loadGeoJson(
-      'https://lift4life-cs-theme.herokuapp.com/data.geojson', 
-      { idPropertyName: 'STATE' }
+      'https://data.calgary.ca/resource/surr-xmvs.geojson'
     );
 
     this.map.data.setStyle(function(feature){
@@ -47,7 +46,7 @@ const GoogleMap = {
       return ({
         fillColor: color,
         strokeColor: "green",
-        fillOpacity: 0.8,
+        fillOpacity: 1,
         strokeWeight: 1
       });
     });

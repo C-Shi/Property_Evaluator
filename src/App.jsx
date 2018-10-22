@@ -16,13 +16,12 @@ class App extends Component {
     this.state = {
       address: '',
       locations: [],
-      landing: true,
-      main: false,
-      heatMap: false
+      page: "searchBox"
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.addProperty = this.addProperty.bind(this)
+    this.pageChangeHandler = this.pageChangeHandler.bind(this)
   }
 
   // this handler handle address covert event on search box submit
@@ -43,6 +42,7 @@ class App extends Component {
       LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty)
     });
     document.getElementById('searchBox').value = '';
+    this.pageChangeHandler("propertyList")
   }
 
   // take in a newLocation with complete into and add to state.locations array
@@ -54,24 +54,46 @@ class App extends Component {
     })
   }
 
+  pageChangeHandler(page) {
+    this.setState({ page })
+  }
+
   render() {
-    if(this.state.locations.length === 0) {
-      return (
-        <div className="App">
-          {/* <SearchBox handleSubmit={this.handleSubmit}/> */}
-          {/* <PropertyList locations={this.state.locations}/> */}
-          <ChoroplethMap />
+    let renderedCompoenent;
+    if (this.state.page === "propertyList") {
+      renderedCompoenent = (
+        <div>
+          <Navbar 
+            handleSubmit={this.handleSubmit} 
+            pageChangeHandler={this.pageChangeHandler}
+          />
+          <PropertyList locations={this.state.locations}/>
         </div>
-      )
-    }else {
-      return (
-        <div className="App">
-          {/* <Navbar handleSubmit={this.handleSubmit}/> */}
-          {/* <PropertyList locations={this.state.locations}/> */}
+        )
+    } else if (this.state.page === "searchBox") {
+      renderedCompoenent = (
+        <div>
+          <SearchBox handleSubmit={this.handleSubmit} />
+          <PropertyList locations={this.state.locations}/>
+        </div>
+       ) 
+    }else if (this.state.page === "choropleth") {
+      renderedCompoenent = (
+        <div>
+          <Navbar 
+            handleSubmit={this.handleSubmit} 
+            pageChangeHandler={this.pageChangeHandler}
+          />
           <ChoroplethMap />
         </div>
       )
     }
+
+    return (
+      <div className="App">
+        {renderedCompoenent}
+      </div>
+    )
   }
 }
 
