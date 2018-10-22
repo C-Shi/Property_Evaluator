@@ -3,7 +3,7 @@ const GoogleMap = {
     const googleMaps = window.google.maps;
     const autocomplete = new googleMaps.places.Autocomplete(document.getElementById('searchBox'));
 
-     if (navigator.geolocation) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         const circle = new googleMaps.Circle({
           center: {

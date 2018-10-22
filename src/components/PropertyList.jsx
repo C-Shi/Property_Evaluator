@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Property from './Property';
+import MapStyle from "../assest/GoogleMapStyle"
 import "../style/Map.css"
+import "../style/PropertyList.css"
+
 
 class PropertyList extends Component {
 
@@ -13,7 +16,8 @@ class PropertyList extends Component {
       center: location,
       mapTypeControlOptions: {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
-      }
+      },
+       styles: MapStyle
     });
   }
 
@@ -27,7 +31,7 @@ class PropertyList extends Component {
       var myLatlng = new this.googleMaps.LatLng(location.lat, location.lng);
       var marker = new this.googleMaps.Marker({
         position: myLatlng,
-        title:"Hello World!"
+        icon: "http://maps.google.com/mapfiles/kml/pal3/icon56.png"
       });
       // To add the marker to the map, call setMap();
       marker.setMap(this.map);
@@ -46,7 +50,7 @@ class PropertyList extends Component {
       return (
         <div>
           <div className="main-page">
-              {property}
+            <div className="property-list">{property}</div>
           </div>
           <div id="map" className="map-init"></div>
         </div>

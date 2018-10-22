@@ -1,4 +1,7 @@
 .property-list{
-    width: 50vw;
+    width: 40vw;
     float: right;
+    margin-right: 40px;
+    margin-top:15px;
 }
+
