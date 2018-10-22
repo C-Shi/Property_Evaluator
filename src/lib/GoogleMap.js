@@ -46,7 +46,7 @@ const GoogleMap = {
       return ({
         fillColor: color,
         strokeColor: "green",
-        fillOpacity: 1,
+        fillOpacity: 0.7,
         strokeWeight: 1
       });
     });
