@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar.jsx';
 import PropertyList from './components/PropertyList.jsx';
 import SearchBox from './components/SearchBox.jsx'
+import ChoroplethMap from "./components/ChoroplethMap";
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
@@ -15,13 +16,12 @@ class App extends Component {
     this.state = {
       address: '',
       locations: [],
-      landing: true,
-      main: false,
-      heatMap: false
+      page: "searchBox"
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.addProperty = this.addProperty.bind(this)
+    this.pageChangeHandler = this.pageChangeHandler.bind(this)
   }
 
   // this handler handle address covert event on search box submit
@@ -34,8 +34,9 @@ class App extends Component {
     if (!googleAddress) return;
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
-    // resize the map
-    mapAnimator();
+
+    // resize the map wait until page fully setup to animate map
+    this.pageChangeHandler("propertyList")
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
     this.setState({ address: address, landing: false }, () => {
@@ -53,22 +54,50 @@ class App extends Component {
     })
   }
 
+  pageChangeHandler(page) {
+    this.setState({ page }, () => {
+      if (page === "propertyList"){
+        setTimeout(mapAnimator, 10)
+      }
+    })
+  }
+
   render() {
-    if(this.state.locations.length === 0) {
-      return (
-        <div className="App">
-          <SearchBox handleSubmit={this.handleSubmit}/>
+    let renderedCompoenent;
+    if (this.state.page === "propertyList") {
+      renderedCompoenent = (
+        <div>
+          <Navbar 
+            handleSubmit={this.handleSubmit} 
+            pageChangeHandler={this.pageChangeHandler}
+          />
           <PropertyList locations={this.state.locations}/>
         </div>
-      )
-    }else {
-      return (
-        <div className="App">
-          <Navbar handleSubmit={this.handleSubmit}/>
+        )
+    } else if (this.state.page === "searchBox") {
+      renderedCompoenent = (
+        <div>
+          <SearchBox handleSubmit={this.handleSubmit} />
           <PropertyList locations={this.state.locations}/>
+        </div>
+       ) 
+    }else if (this.state.page === "choropleth") {
+      renderedCompoenent = (
+        <div>
+          <Navbar 
+            handleSubmit={this.handleSubmit} 
+            pageChangeHandler={this.pageChangeHandler}
+          />
+          <ChoroplethMap />
         </div>
       )
     }
+
+    return (
+      <div className="App">
+        {renderedCompoenent}
+      </div>
+    )
   }
 }
 
