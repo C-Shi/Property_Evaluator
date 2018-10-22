@@ -1,18 +1,23 @@
-.property-list{
-    width: 40vw;
-    float: right;
-    margin-right: 40px;
-    margin-top:15px;
+.property-list {
+  border: 5px solid #C7D8C6;
+  border-radius: 1vw;
+  height: 85vh;
+  width: 50vw;
+  top: 10vh;
+  overflow: scroll;
+  animation: propertyListSlideOut 2s ease 0s 1 normal both;
+}
+
+.neighbor-info:hover {
+  box-shadow: -1vh 1vh 1vh rgba(0, 0, 0, 0.5);
 }
 
 .neighbor-info {
-  opacity: 0.85;
   background: #6B6D99;
-  border: 3px solid #292DCC;
   color: #FFC38D;
   text-shadow: 1px 1px 2px #CC5E29;
-  width: 38vw;
-  animation: propertySlide 5s ease 0s 1 normal both;
+  width: 50vw;
+  animation: propertySlide 2s ease 0s 1 normal both;
  }
 
 @keyframes propertySlide {
@@ -20,10 +25,19 @@
     left: 100vw;
   }
   80% {
-    box-shadow: 3vh 1vh 1vh rgba(0, 0, 0, 0);
+    /* box-shadow: 3vh 1vh 1vh rgba(0, 0, 0, 0); */
   }
   100% {
-    left: 7vw;
-    box-shadow: -1vh 1vh 1vh rgba(255, 255, 255, 0.45);
+    left: 0;
+    /* box-shadow: -3vh 3vh 10vh 10vh rgba(255, 255, 255, 0.45); */
+  }
+}
+
+@keyframes propertyListSlideOut {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 0;
   }
 }
