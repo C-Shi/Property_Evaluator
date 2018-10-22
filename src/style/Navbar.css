@@ -1,21 +1,33 @@
 .navbar-default  {
-  /* background-color: #C7D8C6; */
+  display: flex;
+  height: 10vh;
   color: #36454f;
+  color: #2D3A42;
   opacity: 0.6;
-  animation: navbarScrollDown 1.5s ease-in 0s 1 normal both;
+  animation: navbarScrollDown .5s ease-in 0s 1 normal both;
 }
 
-.navbar-default .navbar-brand {
-  color:#A9B7C0;
-  text-shadow: inset 1vh 1vh 1vh 1vh black;
+.navbar-links {
+  display: flex;
+  height: 10vh;
+  width: 50vw;
+  align-items: center;
 }
 
-.navbar-default .nav-link {
-  color:#EFD9C1;
+.navbar-links a {
+  margin: 5vw;
 }
 
 .navbar-search {
   opacity: 1;
+  width: 50vw;
+  justify-content: center;
+}
+
+.navbar-search #searchBox {
+  width: 40vw;
+  border-radius: 5px;
+  border: 1px solid #C7D8C6;
 }
 
 @keyframes navbarScrollDown {

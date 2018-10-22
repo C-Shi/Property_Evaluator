@@ -5,6 +5,8 @@
   width: 64vw;
   height: 50vh;
   z-index: -1;
+  border: 5px solid #C7D8C6;
+  border-radius: 1vw;
 }
 
 .map-move {
@@ -13,7 +15,7 @@
 
 @keyframes mapMove {
   100% {
-    top: 8vh;
+    top: 0;
     left: 0;
     height: 85vh;
     width: 50vw;

@@ -1,5 +1,12 @@
+/* Color Palette
+Grey Blue: #A9B7C0
+Minty: #C7D8C6
+Light: #EFD9C1
+Powder: #CCCBC6
+*/
+
 body {
-  background-color: rgba(169, 183, 192, 1);
+  background-color: #A9B7C0;
   background-size: cover;
   color: #CCCBC6;
 }

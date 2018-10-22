@@ -1,12 +1,12 @@
-.property-list{
-  border: 3px solid #292DCC;
+.property-list {
+  border: 5px solid #C7D8C6;
+  border-radius: 1vw;
   height: 85vh;
-    width: 50vw;
-    float: right;
-    margin-top:15px;
-    margin-right: 0;
-    overflow: scroll;
-    transition: box-shadow .5s;
+  width: 50vw;
+  top: 10vh;
+  float: right;
+  overflow: scroll;
+  animation: propertyListSlideOut 2s ease 0s 1 normal both;
 }
 
 .neighbor-info:hover {
@@ -18,7 +18,7 @@
   color: #FFC38D;
   text-shadow: 1px 1px 2px #CC5E29;
   width: 50vw;
-  animation: propertySlide 5s ease 0s 1 normal both;
+  animation: propertySlide 2s ease 0s 1 normal both;
  }
 
 @keyframes propertySlide {
@@ -31,5 +31,14 @@
   100% {
     left: 0;
     /* box-shadow: -3vh 3vh 10vh 10vh rgba(255, 255, 255, 0.45); */
+  }
+}
+
+@keyframes propertyListSlideOut {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 0;
   }
 }
