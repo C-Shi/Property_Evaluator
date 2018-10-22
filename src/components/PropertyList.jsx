@@ -4,10 +4,10 @@ import MapStyle from "../assest/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
 
+
 class PropertyList extends Component {
 
   componentDidMount() {
-
     this.googleMaps = window.google.maps;
     const location = { lat: 51.044270 , lng: -114.062019};
 
@@ -17,7 +17,7 @@ class PropertyList extends Component {
       mapTypeControlOptions: {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
       },
-      styles: MapStyle
+       styles: MapStyle
     });
   }
 
