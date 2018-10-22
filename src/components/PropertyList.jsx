@@ -44,7 +44,7 @@ class PropertyList extends Component {
 
     render() {
       const property = this.props.locations.map(location => {
-        return <Property location={location}/>
+        return <Property location={location} />
       }) || ""
 
       return (
