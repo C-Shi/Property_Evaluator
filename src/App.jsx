@@ -24,6 +24,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.addProperty = this.addProperty.bind(this)
     this.pageChangeHandler = this.pageChangeHandler.bind(this)
+    this.deleteProperty = this.deleteProperty.bind(this)
   }
 
   // this handler handle address covert event on search box submit
@@ -76,7 +77,7 @@ class App extends Component {
     })
   }
 
-  deleteProperty = (address) => {
+  deleteProperty(address) {
     let properties = this.state.locations.filter(location => {
       return location.address !== address
     });
@@ -102,7 +103,7 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations}/>
+          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
         </div>
         )
     } else if (this.state.page === "searchBox") {
