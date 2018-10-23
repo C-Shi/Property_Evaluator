@@ -1,10 +1,12 @@
 .map-init {
   position: absolute;
-  top: 40vh;
+  top: 35vh;
   left: 17vw;
   width: 64vw;
   height: 50vh;
-  z-index: -1;
+  z-index: 1;
+  border: 5px solid #C7D8C6;
+  border-radius: 1vw;
 }
 
 .map-move {
@@ -12,11 +14,17 @@
 }
 
 @keyframes mapMove {
+  0% {
+    top: 35vh;
+    left: 17vw;
+    width: 64vw;
+    height: 50vh;
+  }
   100% {
-    top: 8vh;
-    left: 5vw;
+    top: 0;
+    left: 0;
     height: 85vh;
-    width: 45vw;
+    width: 50vw;
     box-shadow: 0 0 10vh 5vh rgba(255, 255, 255, 0.3);
   }
 }

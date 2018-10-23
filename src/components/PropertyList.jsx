@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Property from './Property';
 import BarChart from './BarChart';
-import MapStyle from "../assest/GoogleMapStyle"
+import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
+import "../style/mainPage.css"
 
 
 class PropertyList extends Component {
@@ -20,7 +21,17 @@ class PropertyList extends Component {
       },
        styles: MapStyle
     });
-  }
+
+    // create a button on the google map, and add event listener to go to choropleth map
+    const mapDiv =  document.getElementById('map');
+    const toChoroplethButton = document.createElement("button")
+    toChoroplethButton.setAttribute("class", "to-choropleth")
+    toChoroplethButton.textContent = "Community Statistics"
+    toChoroplethButton.addEventListener("click", () => {
+      this.props.pageChangeHandler("choropleth")
+    })
+    mapDiv.appendChild(toChoroplethButton);
+}
 
   componentDidUpdate(){
     // adding marker to the map and auto adjust zoom
@@ -34,7 +45,7 @@ class PropertyList extends Component {
         position: myLatlng,
         icon: "http://maps.google.com/mapfiles/kml/pal3/icon56.png"
       });
-      
+
       // To add the marker to the map, call setMap();
       marker.setMap(this.map);
       var loc = new this.googleMaps.LatLng(marker.position.lat(), marker.position.lng());
@@ -57,7 +68,9 @@ class PropertyList extends Component {
 
       
       return (
-        <div>
+        <div className="main-page-container">
+          <div className="main-page-map-placeholder">
+          </div>
           <div className="main-page">
             <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button>
             <div className="property-list">

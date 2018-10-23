@@ -17,10 +17,18 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <div class="secondBody"></div>
 
     <div id="root"></div>
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzzCJ-QDAJzcj2Ezewt3ilw08TqD94efM&libraries=places">
+    </script>
+    <script>
+      $(document).ready(function(){
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      })
     </script>
   </body>
 </html>

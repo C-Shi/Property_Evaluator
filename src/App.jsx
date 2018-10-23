@@ -60,12 +60,15 @@ class App extends Component {
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
 
-    // resize the map wait until page fully setup to animate map
-    this.pageChangeHandler("propertyList")
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
-    this.setState({ address: address, landing: false }, () => {
-      LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty)
+    this.setState({ address: address }, () => {
+      LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty, () => {
+        if(this.state.locations.length > 0) {
+          // resize the map wait until page fully setup to animate map
+          this.pageChangeHandler("propertyList")
+        }
+      })
     });
     document.getElementById('searchBox').value = '';
   }
@@ -78,18 +81,23 @@ class App extends Component {
     this.setState(oldState, () => {
       console.log("locations", this.state.locations);
     });
+    // add a populationData property to state.locations.newLocation
     this.addPopulationData(newLocation);
     
+    // reset propertyValues of state
     this.addPropertyValues(newLocation);
     
   }
   
   // take in a newLocation, and assign a new property called populationData
+  // that holds population number over 5 years
   addPopulationData(newLocation){
     let populationChange = [];
     newLocation.comm_population.reverse().forEach(each => {
       populationChange.push(each.population);  
     })
+
+    // collect data for line chart
     newLocation.populationData = {
       labels: ['2013', '2014', '2015', '2016', '2017'],
       datasets:[
@@ -101,6 +109,7 @@ class App extends Component {
       ]
     }
   }
+  
   // take in a newLocation and create an obj for each newLocation, 
   // then add to propertyValues.datasets array
   addPropertyValues(newLocation){
@@ -154,16 +163,22 @@ class App extends Component {
     let properties = this.state.locations.filter(location => {
       return location.address !== address
     });
-    this.setState({
-      locations: properties
+    this.setState({ locations: properties}, () => {
+      if (this.state.locations.length === 0) {
+        this.pageChangeHandler("searchBox")
+      }
     })
+    // remove data of deleted address on bar chart
     this.deletePropertyValues(address);
   }
 
   pageChangeHandler(page) {
+    console.log(this.state.locations.length)
     this.setState({ page }, () => {
-      if (page === "propertyList"){
-        setTimeout(mapAnimator, 10)
+      if (page === "propertyList" && this.state.locations.length > 0){
+        setTimeout(mapAnimator.mapForwardsAnimator, 10)
+      } else if (this.state.locations.length === 0) {
+        setTimeout(mapAnimator.mapBackwardsAnimator, 10)
       }
     })
   }
@@ -187,7 +202,7 @@ class App extends Component {
       renderedCompoenent = (
         <div>
           <SearchBox handleSubmit={this.handleSubmit} />
-          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
+          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty} pageChangeHandler={this.pageChangeHandler}/>
         </div>
        )
     }else if (this.state.page === "choropleth") {

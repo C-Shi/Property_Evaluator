@@ -1,7 +1,17 @@
 #choropleth-map { 
-  width: 50vw;
-  height: 93.5vh; 
-  margin: 0; 
-  padding: 0; 
-  overflow: hidden; 
+  position: absolute;
+  top: 20vh;
+  left: 10vw;
+  width: 80vw;
+  height: 80vh;
+  z-index: -1;
+}
+
+#info-div {
+  position: relative;
+  height: 40%;
+  width: 35%; 
+  left: 65%;
+  z-index: 1;
+  background: white;
 }

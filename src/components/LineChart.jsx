@@ -4,7 +4,7 @@ import {Line} from 'react-chartjs-2';
 class LineChart extends Component{
     render(){
         return (
-            <div className="line-chart">
+            <div style={{width: '500px'}} className="line-chart">
             <Line
                 data={this.props.location.populationData}
                 width={100}
@@ -19,13 +19,6 @@ class LineChart extends Component{
                     display: true,
                     position: 'right'
                   },
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }]
-                  }
                 }}
             />
             </div>
