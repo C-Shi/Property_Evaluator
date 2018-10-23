@@ -3,8 +3,6 @@
   height: 10vh;
   opacity: 0.6;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
-  background-color: #FF8C00 ;
-
 }
 
 .navbar-links {

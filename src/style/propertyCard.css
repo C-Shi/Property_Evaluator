@@ -1,0 +1,54 @@
+.neighbor-info, .cardbody, .card-header, .card table, .card thead, .card tr, .card th, .card tbody, .card td {
+  margin: 0;
+  padding: 2px;
+}
+
+.neighbor-info {
+  background: rgba(198, 215, 197, 0.8);
+
+  border: 3px inset #CCCBC6;
+  border-radius: 20px;
+
+  height: 40.5vh;
+
+  overflow: scroll;
+  margin: 0 2vh 2vh 2vh;
+
+  color: #36454f;
+  animation: propertySlide 2s ease 0s 1 normal both;
+ }
+
+ .card-body {
+  border: 5px inset #EFD9C1;
+  border-radius: 5px;
+
+  background: #CCCBC6;
+
+  height: 40.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: scroll;
+}
+
+.card-body .card-header {
+  align-self: flex-start;
+  width: 40vw;
+}
+
+.card-body table {
+  width: 40vw;
+  table-layout: auto;
+  font-size: 1em;
+}
+
+
+@keyframes propertySlide {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 0;
+  }
+}
