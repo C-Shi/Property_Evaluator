@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import SearchBox from '../components/SearchBox.jsx'
 import GoogleMap from "../lib/GoogleMap"
 import "../style/Navbar.css"
 
 class Navbar extends Component {
   componentDidMount() {
-    
+
     GoogleMap.autocomplete()
   }
   render() {

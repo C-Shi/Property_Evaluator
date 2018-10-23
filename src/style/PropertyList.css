@@ -13,9 +13,9 @@
 }
 
 .neighbor-info {
-  background: #6B6D99;
-  color: #FFC38D;
-  text-shadow: 1px 1px 2px #CC5E29;
+  background: rgba(198, 215, 197, 0.8);
+  color: #373737;
+  text-shadow: 1px 1px 2px #CCCBC6;
   width: 50vw;
   animation: propertySlide 2s ease 0s 1 normal both;
  }
