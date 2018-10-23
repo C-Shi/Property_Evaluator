@@ -7,7 +7,9 @@ const mapAnimator = {
   },
 
   mapBackwardsAnimator: function() {
-    document.getElementById('map').classList.remove("map-move");
+    if (document.getElementById('map')) {
+      document.getElementById('map').classList.remove("map-move");
+    }
   }
 }
 
