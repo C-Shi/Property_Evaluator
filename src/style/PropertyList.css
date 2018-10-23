@@ -1,24 +1,12 @@
 .property-list {
-  border: 5px solid #C7D8C6;
+  border: 7px ridge #C7D8C6;
   border-radius: 1vw;
   height: 85vh;
   width: 50vw;
   top: 10vh;
   overflow: scroll;
-  animation: propertyListSlideOut 1s ease 0s 1 normal both;
+  background-color: rgba(198, 215, 197, 0.7);
 }
-
-.neighbor-info:hover {
-  box-shadow: -1vh 1vh 1vh rgba(0, 0, 0, 0.5);
-}
-
-.neighbor-info {
-  background: rgba(198, 215, 197, 0.8);
-  color: #373737;
-  text-shadow: 1px 1px 2px #CCCBC6;
-  width: 50vw;
-  animation: propertySlide 2s ease 0s 1 normal both;
- }
 
  .to-choropleth {
    position: relative; left: 50%;
@@ -28,7 +16,6 @@
    direction: ltr;
    text-align: center;
    background-color: #fff;
-   padding: 10px;
    font-weight: 500;
    border: 0px;
    border-radius: 2%;
@@ -37,6 +24,7 @@
  .to-choropleth:hover {
    background-color: #eee;
  }
+<<<<<<< HEAD
 
 @keyframes propertySlide {
   0% {
@@ -64,3 +52,5 @@
 .show{
   display: block;
 }
+=======
+>>>>>>> 100f8d5873c33b906b1d61fa7b9da65bec6f900f
