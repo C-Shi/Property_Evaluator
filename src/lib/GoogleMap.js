@@ -27,6 +27,12 @@ const GoogleMap = {
       'https://data.calgary.ca/resource/surr-xmvs.geojson'
     );
 
+    // create a button on the google map, and add event listener to go to choropleth map
+    const mapDiv =  document.getElementById('choropleth-map');
+    const infoDiv = document.createElement("div")
+    infoDiv.setAttribute("class", "info-div")
+    mapDiv.appendChild(infoDiv);
+
     this.map.data.setStyle(function(feature){
       let color;
       const communityName = feature.getProperty('name')

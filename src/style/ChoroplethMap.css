@@ -6,3 +6,12 @@
   height: 80vh;
   z-index: -1;
 }
+
+.info-div {
+  position: relative;
+  height: 40%;
+  width: 35%; 
+  left: 65%;
+  z-index: 1;
+  background: white;
+}
