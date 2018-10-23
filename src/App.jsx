@@ -78,16 +78,17 @@ class App extends Component {
     this.setState(oldState, () => {
       console.log(this.state.locations);
     })
+    console.log("++++this is ", this);
     this.addPropertyValues(newLocation);
   }
 
   addPropertyValues(newLocation){
     const colors = [
-    'rgba(255, 99, 132, 0.6)',
-    'rgba(54, 162, 235, 0.6)',
-    'rgba(255, 206, 86, 0.6)',
-    'rgba(75, 192, 192, 0.6)',
-    'rgba(153, 102, 255, 0.6)'
+    '255, 99, 132',
+    '54, 162, 235',
+    '255, 206, 86',
+    '75, 192, 192',
+    '153, 102, 255'
     ]
     const oldPropertyValues = this.state.propertyValues;
 
@@ -104,12 +105,12 @@ class App extends Component {
         })
         let newObj = {
           label: location.address,
-          backgroundColor: String(colors[index]),
+          backgroundColor: `rgba( ${colors[index]}, 0.6)`,
           borderColor: "black",
           borderWidth: 1,
           data: price,
-          hoverBackgroundColor: 'rgba(155,49,12,0.4)',
-          hoverBorderColor: 'rgba(155,59,12,1)',
+          hoverBackgroundColor: `rgba( ${colors[index]}, 0.8)`,
+          hoverBorderColor: `rgba( ${colors[index]}, 1)`,
         }
         oldPropertyValues.datasets.push(newObj);
       }) 
