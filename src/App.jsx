@@ -71,6 +71,9 @@ class App extends Component {
         }
       })
     });
+
+
+
     document.getElementById('searchBox').value = '';
   }
 
@@ -149,6 +152,32 @@ class App extends Component {
       // console.log("---this.state.propertyValues", this.state.propertyValues);
     })
   }
+addCrime(newLocation) {
+  let crimeData = [];
+         crimeData = Object.keys(newLocation.crime);
+         let crimeCount = [];
+         crimeCount = Object.values(newLocation.crime);
+         newLocation.pieData = {
+          labels: crimeData,
+       datasets:[
+      {
+        label:'Value',
+         data: crimeCount,
+         backgroundColor:[
+           'rgba(255, 99, 132, 0.6)',
+           'rgba(54, 162, 235, 0.6)',
+           'rgba(255, 206, 86, 0.6)',
+           'rgba(75, 192, 192, 0.6)',
+           'rgba(153, 102, 255, 0.6)',
+           'rgba(0, 255, 255, 0.6)',
+           'rgba(0, 0, 128, 0.6)',
+           'rgba(255, 0, 0, 0.6)',
+           'rgba(0, 128, 128, 0.6)',
+           'rgba(0, 0, 0, 0.6)'
+         ]
+       }]
+     }
+}
 
   deletePropertyValues(address){
     let oldDatasets = this.state.propertyValues.datasets.filter(obj => {
