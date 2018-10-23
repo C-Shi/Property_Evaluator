@@ -19,12 +19,37 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.all('*',function(req,res,next)
+{
+    if (!req.get('Origin')) return next();
+
+    res.set('Access-Control-Allow-Origin','*');
+    res.set('Access-Control-Allow-Methods','GET,POST');
+    res.set('Access-Control-Allow-Headers','X-Requested-With,Content-Type');
+
+    if ('OPTIONS' == req.method) return res.send(200);
+
+    next();
+});
 
 app.get("/api", (req, res) => {
   knex.select().table('communities')
   .then((data) => {
-    res.setHeader("Access-Control-Allow-Origin", "*")
     res.json(data)
+  })
+})
+
+app.post("/api/search", (req, res) => {
+  const name = req.body.community
+  knex("communities").where("name", "=", name)
+  .then((data) => {
+    knex("communities").where("name", "=", name)
+    .update({search: data[0].search + 1})
+    .then(() => {
+      res.status(200)
+    })
   })
 })
 

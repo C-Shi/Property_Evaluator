@@ -3,12 +3,13 @@ Grey Blue: #A9B7C0
 Minty: #C7D8C6
 Light: #EFD9C1
 Powder: #CCCBC6
+Charcoal: #36454f
 */
 
 body {
   background-color: #A9B7C0;
   background-size: cover;
-  color: #CCCBC6;
+  color: #36454f;
 }
 
 .secondBody {

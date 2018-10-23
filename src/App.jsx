@@ -11,6 +11,7 @@ import "./style/index.css"
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
 import mapAnimator from "./lib/mapAnimationHelper"
+import LocationFinder from './lib/LocationFinder.js';
 
 class App extends Component {
   constructor(){
@@ -188,7 +189,17 @@ class App extends Component {
   }
   render() {
     let renderedCompoenent;
-    if (this.state.page === "propertyList") {
+    if (this.state.page === "choropleth") {
+    renderedCompoenent = (
+      <div>
+        <Navbar
+          handleSubmit={this.handleSubmit}
+          pageChangeHandler={this.pageChangeHandler}
+        />
+        <ChoroplethMap />
+      </div>
+    )
+    } else if (this.state.locations.length > 0) {
       renderedCompoenent = (
         <div>
           <Navbar
@@ -198,24 +209,14 @@ class App extends Component {
           <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty} toggleModal={this.toggleModal}/>
         </div>
         )
-    } else if (this.state.page === "searchBox") {
+    } else if (this.state.locations.length < 1) {
       renderedCompoenent = (
         <div>
           <SearchBox handleSubmit={this.handleSubmit} />
           <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty} pageChangeHandler={this.pageChangeHandler}/>
         </div>
        )
-    }else if (this.state.page === "choropleth") {
-      renderedCompoenent = (
-        <div>
-          <Navbar
-            handleSubmit={this.handleSubmit}
-            pageChangeHandler={this.pageChangeHandler}
-          />
-          <ChoroplethMap />
-        </div>
-      )
-    }
+      }
 
     return (
       <div className="App">

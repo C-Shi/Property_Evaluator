@@ -1,0 +1,30 @@
+.heatmap-radio {
+  width: 74vw;
+  height: 7vh;
+  position: fixed;
+  top: 8vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.heatmap-radio div {
+  display: flex;
+  height: 100%;
+  width: 18vw;
+  margin: 0;
+  margin-left: -3px;
+  border: 2px solid #36454f;
+  border-radius: 8px 8px 0 0;
+  background-color: rgba(204, 203, 198, 0.5);
+  border-bottom: none;
+}
+
+.heatmap-radio label {
+  margin-left: 8px;
+  color: #36454f;
+}
+
+.heatmap-radio input {
+  visibility: hidden;
+}
