@@ -43,16 +43,18 @@ class ChoroplethMap extends Component {
   componentDidMount(){
     // this will create a map, taking two argument, data and color set
     GoogleMap.initChoroplethMap(this.state.search, ChoroplethMapStyle, this.state.searchColor)
-    
-    // when mount, call data for crime rate
-    // this is a temporary setup for heat map. logic canbe reuse
-    ChoroplethMapHelper.getAllCrime().then(res => {
-       const templateObj = {}
-       res.data.forEach(function(each){
-         templateObj[each.community_name] = Number(each.SUM_count)
-       })
-       console.log(templateObj)
-      this.setState({crime: templateObj})
+
+    ChoroplethMapHelper.fetchData()
+    .then(res => {
+      let tempSearch = {};
+      let tempPopulation = {};
+      let tempCrime = {};
+      res.data.forEach(function(community){
+        tempPopulation[community.name] = community.population;
+        tempCrime[community.name] = community.crime;
+        tempSearch[community.name] = community.search
+      })
+      this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation})
     })
   }
 

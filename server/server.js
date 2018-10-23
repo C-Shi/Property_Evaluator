@@ -8,7 +8,7 @@ const app = require("express")(),
       morgan      = require('morgan'),
       knexLogger  = require('knex-logger');
 
-const PORT = 3002 || process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -21,9 +21,13 @@ app.use(knexLogger(knex));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api", (req, res) => {
-  res.send("api")
+  knex.select().table('communities')
+  .then((data) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.json(data)
+  })
 })
 
 app.listen(PORT, process.env.IP, () => {
-  console.log("Server start")
+  console.log("Server start on PORT: ", PORT)
 })
