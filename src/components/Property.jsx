@@ -35,6 +35,7 @@ class Property extends Component {
             <h5 className="card-title">{this.props.location.address}</h5>
             <ul>
               {priceInfo}
+              {crimeInfoElement}
               {populationInfo}
               <li>{this.props.location.lat}</li>
               <li>{this.props.location.lng}</li>
