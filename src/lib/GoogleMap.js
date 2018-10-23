@@ -15,6 +15,7 @@ const GoogleMap = {
     // style is the mapping style, here is the gray
     // colorSet is the intenstiy based on community
     let total = 0;
+    let outlineWeight = 1;
     Object.keys(data).forEach(function(community){
       total += data[community];
     })
@@ -30,7 +31,9 @@ const GoogleMap = {
     // create a button on the google map, and add event listener to go to choropleth map
     const mapDiv =  document.getElementById('choropleth-map');
     const infoDiv = document.createElement("div")
-    infoDiv.setAttribute("class", "info-div")
+    infoDiv.setAttribute("id", "info-div")
+    infoDiv.setAttribute("class", "alert")
+    infoDiv.setAttribute("class", "alert-secondary")
     mapDiv.appendChild(infoDiv);
 
     this.map.data.setStyle(function(feature){
@@ -57,23 +60,23 @@ const GoogleMap = {
         fillColor: color,
         strokeColor: "green",
         fillOpacity: 1,
-        strokeWeight: 1
+        strokeWeight: outlineWeight,
       });
     });
-    this.map.data.addListener('mouseover', mouseInToRegion);
-    this.map.data.addListener('mouseout', mouseOutOfRegion);
+    this.map.data.addListener('mouseover', mouseOverDataItem);
+    this.map.data.addListener('mouseout', mouseOutOfDataItem);
 
-    function mouseInToRegion(e) {
-      // set the hover state so the setStyle function can change the border
-      console.log(e.feature.l.name, data[e.feature.l.name])
+    function mouseOverDataItem(e) {
+      const communityName = e.feature.getProperty('name');
+      const cases = data[e.feature.getProperty('name')] || "N/A";
+      const info = communityName + ": " + cases
+      document.getElementById("info-div").textContent = info
     }
-
-    function mouseOutOfRegion(e) {
-      // reset the hover state, returning the border to normal
-      e.feature.setProperty('state', 'normal');
+    
+    function mouseOutOfDataItem(e) {
+      this.map.getDiv().removeAttribute('title');
+     
     }
-
-
   },
 
   // this function will enable autocomplete

@@ -7,7 +7,7 @@
   z-index: -1;
 }
 
-.info-div {
+#info-div {
   position: relative;
   height: 40%;
   width: 35%; 
