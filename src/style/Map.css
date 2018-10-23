@@ -5,8 +5,9 @@
   width: 64vw;
   height: 50vh;
   z-index: 1;
-  border: 5px solid #C7D8C6;
+  border: 10px outset #C7D8C6;
   border-radius: 1vw;
+  box-shadow: 0 0 20px #000;
 }
 
 .map-move {

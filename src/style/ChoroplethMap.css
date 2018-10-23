@@ -1,10 +1,12 @@
-#choropleth-map { 
+#choropleth-map {
   position: absolute;
-  top: 20vh;
+  top: 15vh;
   left: 10vw;
   width: 80vw;
   height: 80vh;
   z-index: -1;
+  border: 5px solid #C7D8C6;
+  border-radius: 5px;
 }
 
 #info-div {
@@ -15,3 +17,4 @@
   z-index: 1;
   background: white;
 }
+
