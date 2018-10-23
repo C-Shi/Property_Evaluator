@@ -1,7 +1,7 @@
 const GoogleMap = {
   initMap: function(zoom, style) {
     const googleMaps = window.google.maps;
-    const location = { lat: 51.044270 , lng: -114.062019};
+    const location = { lat: 51.044270 , lng: -113.862019};
     this.map = new googleMaps.Map(document.getElementById('choropleth-map'), {
       zoom: zoom,
       center: location,
@@ -21,7 +21,7 @@ const GoogleMap = {
 
     const average = total / Object.keys(data).length
 
-    this.initMap(11, style);
+    this.initMap(10.5, style);
 
     this.map.data.loadGeoJson(
       'https://data.calgary.ca/resource/surr-xmvs.geojson'
@@ -59,7 +59,7 @@ const GoogleMap = {
 
     function mouseInToRegion(e) {
       // set the hover state so the setStyle function can change the border
-
+      console.log(e.feature.l.name, data[e.feature.l.name])
     }
 
     function mouseOutOfRegion(e) {
