@@ -1,3 +1,4 @@
+import axios from "axios"
 import LocationFinder from "./LocationFinder"
 const LocationBuilder = {
   buildInitialPropertyInfo: function (newLocation, data){
@@ -45,22 +46,33 @@ const LocationBuilder = {
         this.buildInitialPropertyInfo(newLocation, res.data)
         LocationFinder.getCommPopulation(newLocation.comm_code)
         .then((res) => {
+          this.saveSearch(res.data[0].name)
+          .then(() => { return ;})
           this.addCommunityPopulationToLocation(newLocation, res.data)
           LocationFinder.getCrime(newLocation.comm_name)
-            .then(res => {
+          .then(res => {
               this.addCommunityCrimeToLocation(newLocation, res.data)
               LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)
-                .then((res) => {
-                    // all info is ready in a templateVar 'newLocation'
-                    // ready to update locations lists
-                    callback(newLocation, Boolean(res.data.length))
-                    callback2();
-                })
-            })
+              .then((res) => {
+                  // all info is ready in a templateVar 'newLocation'
+                  // ready to update locations lists
+                  callback(newLocation, Boolean(res.data.length))
+                  callback2();
+              })
+          })
         })
     })
-  }
-
+  },
+  // this method will post search community to express and return a promise
+  saveSearch: function(community) {
+    return axios({
+        method: "post",
+        url: "http://localhost:3001/api/search",
+        data: {
+            community
+        }
+    })
+  },
 }
 
 export default LocationBuilder
