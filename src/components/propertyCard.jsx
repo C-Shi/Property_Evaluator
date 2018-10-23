@@ -1,23 +1,30 @@
 import React, {Component} from 'react';
 
 class PropertyCard extends Component {
+
   render() {
+
+    console.log(Object.keys(this.props.location.crime));
+
+    let crimeTotal = 0;
+    for (var key in this.props.location.crime) {
+      crimeTotal += this.props.location.crime[key];
+    }
+
     return (
       <div className="card">
-      <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
+        <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
 
-      <div className="card-body">
-            <th>Walkability Score: </th>
+        <div className="card-body">
+          <p>Walkability Score: </p>
 
           <div>
-            <th>Flood: </th>
-            <td> {this.props.location.flood ? 'true' : 'false'}</td>
-            </div>
+            <p>Flood: {this.props.location.flood ? 'true' : 'false'}</p>
+          </div>
+         </div>
 
+        <table className="table table-bordered">
 
-       </div>
-
-      <table className="table table-bordered">
           <thead>
               <tr>
                   <th>Year </th>
@@ -30,25 +37,22 @@ class PropertyCard extends Component {
           </thead>
 
           <tbody>
-          <tr>
-            <th>Population</th>
-              {this.props.location.comm_population.map(each => {
-              return (
-                <td>{each.population}</td>
-              )
-              })}
-          </tr>
-          <tr>
-              <th>Crime</th>
+
+            <tr>
+              <th>Population</th>
                 {this.props.location.comm_population.map(each => {
                 return (
-                  <td>{each.crime}</td>
+                  <td>{each.population}</td>
                 )
                 })}
-          </tr>
+            </tr>
+            <tr>
+                <th>Crime</th>
+                <td>{crimeTotal}</td>
+            </tr>
 
-      </tbody>
-      </table>
+          </tbody>
+        </table>
       </div>
     )
   }

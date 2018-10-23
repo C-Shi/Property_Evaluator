@@ -5,7 +5,6 @@ import PropertyCard from './propertyCard';
 class Property extends Component {
 
     render() {
-      console.log(this.props.location.crime);
       let crimeInfo = []
       for (var key in this.props.location.crime) {
         crimeInfo.push({type: key, count: this.props.location.crime[key]})
