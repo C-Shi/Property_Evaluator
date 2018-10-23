@@ -11,6 +11,7 @@ import "./style/index.css"
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
 import mapAnimator from "./lib/mapAnimationHelper"
+import LocationFinder from './lib/LocationFinder.js';
 
 class App extends Component {
   constructor(){
