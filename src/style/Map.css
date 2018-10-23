@@ -7,7 +7,6 @@
   z-index: 1;
   border: 10px outset #C7D8C6;
   border-radius: 1vw;
-  box-shadow: 0 0 20px #000;
 }
 
 .map-move {
@@ -26,6 +25,5 @@
     left: 0;
     height: 85vh;
     width: 50vw;
-    box-shadow: 0 0 10vh 5vh rgba(255, 255, 255, 0.3);
   }
 }
