@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Chart from './Chart';
+import LineChart from './LineChart';
 
 class Property extends Component {
 
@@ -31,7 +31,7 @@ class Property extends Component {
               {populationInfo}
               <li>{this.props.location.lat}</li>
               <li>{this.props.location.lng}</li>
-              <Chart location={this.props.location}/>
+              <LineChart location={this.props.location}/>
             </ul>
             <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>

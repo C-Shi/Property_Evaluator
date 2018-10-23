@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
-import {Bar} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 
-class BarChart extends Component{
+class LineChart extends Component{
     render(){
         return (
-            <div className="modal bar-chart">
-            <Bar
-                data={this.props.propertyValues}
+            <div className="line-chart">
+            <Line
+                data={this.props.location.populationData}
                 width={100}
                 height={50}
                 options={{
                   title: {
                     display: true,
-                    text: 'Property Value Comparison',
+                    text: 'Population Change at '+ this.props.location.address,
                     fontSize: 25
                   },
                   legend: {
@@ -28,11 +28,11 @@ class BarChart extends Component{
                   }
                 }}
             />
-        </div>
+            </div>
         )
     }
 
 
 }
 
-export default BarChart;
+export default LineChart;

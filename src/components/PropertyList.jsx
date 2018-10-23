@@ -55,9 +55,11 @@ class PropertyList extends Component {
       (<BarChart propertyValues={this.props.propertyValues}/>) :
       ("")
 
+      
       return (
         <div>
           <div className="main-page">
+            <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button>
             <div className="property-list">
               {barChart}
               {property}
