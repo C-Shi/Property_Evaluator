@@ -110,7 +110,7 @@ class App extends Component {
       ]
     }
   }
-  
+
   // take in a newLocation and create an obj for each newLocation, 
   // then add to propertyValues.datasets array
   addPropertyValues(newLocation){
@@ -184,8 +184,9 @@ class App extends Component {
     })
   }
 
-  toggleModal(){
+  showChart(){
     console.log("modal clicked");
+    document.getElementById('bar-chart').classList.toggle("hidden")
   }
   render() {
     let renderedCompoenent;
@@ -206,7 +207,7 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty} toggleModal={this.toggleModal}/>
+          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty} showChart={this.showChart}/>
         </div>
         )
     } else if (this.state.locations.length < 1) {

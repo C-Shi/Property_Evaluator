@@ -4,11 +4,9 @@ import {Bar} from 'react-chartjs-2';
 class BarChart extends Component{
     render(){
         return (
-            <div className="modal bar-chart">
+            <div id="bar-chart" className="hidden">
             <Bar
                 data={this.props.propertyValues}
-                width={100}
-                height={50}
                 options={{
                   title: {
                     display: true,
