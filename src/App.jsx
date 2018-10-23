@@ -45,12 +45,16 @@ class App extends Component {
     this.setState({ address: address, landing: false }, () => {
       LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty)
     });
+
+
+
     document.getElementById('searchBox').value = '';
   }
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
     newLocation.flood = flood;
+    console.log("FLODD",newLocation.flood);
     let valueData = [];
     newLocation.value.forEach(each => {
       return valueData.push(each.price);
@@ -69,13 +73,43 @@ class App extends Component {
           'rgba(153, 102, 255, 0.6)',
         ]
       }]
+
     }
+    this.addCrime(newLocation);
+
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
       console.log(this.state.locations);
-    })
+    });
+
   }
+addCrime(newLocation) {
+  let crimeData = [];
+         crimeData = Object.keys(newLocation.crime);
+         let crimeCount = [];
+         crimeCount = Object.values(newLocation.crime);
+         newLocation.pieData = {
+          labels: crimeData,
+       datasets:[
+      {
+        label:'Value',
+         data: crimeCount,
+         backgroundColor:[
+           'rgba(255, 99, 132, 0.6)',
+           'rgba(54, 162, 235, 0.6)',
+           'rgba(255, 206, 86, 0.6)',
+           'rgba(75, 192, 192, 0.6)',
+           'rgba(153, 102, 255, 0.6)',
+           'rgba(0, 255, 255, 0.6)',
+           'rgba(0, 0, 128, 0.6)',
+           'rgba(255, 0, 0, 0.6)',
+           'rgba(0, 128, 128, 0.6)',
+           'rgba(0, 0, 0, 0.6)'
+         ]
+       }]
+     }
+}
 
   deleteProperty(address) {
     let properties = this.state.locations.filter(location => {

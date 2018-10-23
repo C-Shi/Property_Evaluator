@@ -10,7 +10,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-default">
-        <a className="navbar-brand" 
+        <a className="navbar-brand"
            onClick={(e) => {
             e.preventDefault();
             this.props.pageChangeHandler("propertyList")
@@ -24,7 +24,7 @@ class Navbar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" 
+              <a className="nav-link"
                  onClick={(e) => {
                    e.preventDefault()
                    this.props.pageChangeHandler("choropleth")
