@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Property from './Property';
 import BarChart from './BarChart';
+import Modal from './Modal';
 import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
@@ -72,8 +73,9 @@ class PropertyList extends Component {
           <div className="main-page-map-placeholder">
           </div>
           <div className="main-page">
-            <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button>
+            {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
             <div className="property-list">
+              <button className="bar-chart-btn" onClick={()=> {this.props.showChart()}}> Display Bar Chart</button>
               {barChart}
               {property}
             </div>
