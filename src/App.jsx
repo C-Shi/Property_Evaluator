@@ -53,23 +53,21 @@ class App extends Component {
         }
       })
     });
-
-
-
     document.getElementById('searchBox').value = '';
   }
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
     newLocation.flood = flood;    
+    // add a populationData property to state.locations.newLocation
+    this.addPopulationData(newLocation);
+    this.addCrime(newLocation);
+
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
       console.log("locations", this.state.locations);
     });
-    // add a populationData property to state.locations.newLocation
-    this.addPopulationData(newLocation);
-    
     // reset propertyValues of state
     this.addPropertyValues(newLocation);
     
@@ -130,7 +128,7 @@ class App extends Component {
       oldPropertyValues.datasets.push(newObj);
     }) 
 
-    this.setState(oldPropertyValues, () => {
+    this.setState({propertyValues: oldPropertyValues}, () => {
       // console.log("---this.state.propertyValues", this.state.propertyValues);
     })
   }
