@@ -63,6 +63,7 @@ const LocationBuilder = {
         })
     })
   },
+  // this method will post search community to express and return a promise
   saveSearch: function(community) {
     return axios({
         method: "post",
@@ -71,7 +72,7 @@ const LocationBuilder = {
             community
         }
     })
-  }
+  },
 }
 
 export default LocationBuilder
