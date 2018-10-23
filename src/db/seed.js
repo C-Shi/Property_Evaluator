@@ -1,3 +1,4 @@
+
 const SeedChoroplethData = {
   search: {
     "DOWNTOWN COMMERCIAL CORE": 1,
