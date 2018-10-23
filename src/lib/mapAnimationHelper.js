@@ -3,7 +3,9 @@
 */
 const mapAnimator = {
   mapForwardsAnimator: function() {
+    if (document.getElementById('map')) {
       document.getElementById('map').classList.add("map-move");
+    }
   },
 
   mapBackwardsAnimator: function() {
