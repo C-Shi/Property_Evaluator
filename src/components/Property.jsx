@@ -9,9 +9,16 @@ class Property extends Component {
         crimeInfo.push({type: key, count: this.props.location.crime[key]})
       }
 
-      crimeInfo = crimeInfo.map(each => {
+      const crimeInfoElement = crimeInfo.map(each => {
         return <li>{each.type} - {each.count}</li>
       })
+
+      var sumCrime =0 ;
+      for (var type of crimeInfo) {
+        sumCrime += type["count"];
+      }
+        console.log("hello", sumCrime);
+        console.log("flood",this.props.location.flood)
 
       let priceInfo = this.props.location.value.map(each => {
         return <li>{each.year} - {each.price}</li>
@@ -65,21 +72,17 @@ class Property extends Component {
                 })}
             </tr>
             <tr>
-                <th>Crime</th>
-                <td>Row 2 Cell 1</td>
-                <td>Row 2 Cell 2</td>
-                <td>Row 2 Cell 3</td>
-                <td>Row 2 Cell 4</td>
-                <td>Row 2 Cell 5</td>
+                <th>Flood</th>
+                <td colspan="5">{this.props.location.flood? "True":"False"}</td>
+
             </tr>
 
             <tr>
-                <th>Flood</th>
-                <td>Row 3 Cell 1</td>
-                <td>Row 3 Cell 2</td>
-                <td>Row 3 Cell 3</td>
-                <td>Row 3 Cell 4</td>
-                <td>Row 3 Cell 5</td>
+                <th>Crime</th>
+                <td colspan="5">{sumCrime} <br/>
+                <button className="btn btn-danger">Show</button>
+                </td>
+
             </tr>
         </tbody>
         </table>
