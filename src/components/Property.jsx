@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LineChart from './LineChart';
+import PropertyCard from './propertyCard';
 
 class Property extends Component {
 
@@ -34,7 +35,7 @@ class Property extends Component {
             <h5 className="card-title">{this.props.location.address}</h5>
             <ul>
               {priceInfo}
-              {crimeInfo}
+              {crimeInfoElement}
               {populationInfo}
               <li>{this.props.location.lat}</li>
               <li>{this.props.location.lng}</li>
@@ -42,8 +43,6 @@ class Property extends Component {
             </ul>
             <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>
-        <div className="card">
-        <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
 
         <div className="card-body">
               <th>Walkability Score : </th>
@@ -86,7 +85,6 @@ class Property extends Component {
             </tr>
         </tbody>
         </table>
-        </div>
         </div>
       );
     }

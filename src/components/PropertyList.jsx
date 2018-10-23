@@ -76,6 +76,7 @@ class PropertyList extends Component {
           <div className="main-page-map-placeholder">
           </div>
           <div className="main-page">
+            {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
             <div className="property-list">
               {button}
               {barChart}
