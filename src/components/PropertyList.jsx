@@ -49,11 +49,15 @@ class PropertyList extends Component {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
+      const barChart = (this.props.page === "propertyList") ?
+      (<BarChart propertyValues={this.props.propertyValues}/>) :
+      ("")
+
       return (
         <div>
           <div className="main-page">
             <div className="property-list">
-              <BarChart propertyValues={this.props.propertyValues}/>
+              {barChart}
               {property}
             </div>
           </div>

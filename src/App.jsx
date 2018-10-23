@@ -19,8 +19,26 @@ class App extends Component {
       address: '',
       locations: [],
       propertyValues:{
-        labels: [],
+        labels: ['2014', '2015', '2016', '2017', '2018'],
         datasets:[]
+        // labels: ["Chocolate", "Vanilla", "Strawberry"],
+        // datasets: [
+        //     {
+        //         label: "Harpo",
+        //         fillColor: "blue",
+        //         data: [3,7,4]
+        //     },
+        //     {
+        //         label: "Chico",
+        //         fillColor: "red",
+        //         data: [4,3,5]
+        //     },
+        //     {
+        //         label: "Groucho",
+        //         fillColor: "green",
+        //         data: [7,2,6]
+        //     }
+        // ]
       },
       page: "searchBox"
     };
@@ -54,84 +72,63 @@ class App extends Component {
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
-    newLocation.flood = flood;
-    // let valueData = [];
-    // newLocation.value.forEach(each => {
-    //   return valueData.push(each.price);
-    // })
-    // newLocation.chartData = {
-    //   labels: ['2014', '2015', '2016', '2017', '2018'],
-    //   datasets:[
-    //     {
-    //       label: 'My First dataset',
-    //       backgroundColor: 'rgba(255,99,132,0.2)',
-    //       borderColor: 'rgba(255,99,132,1)',
-    //       borderWidth: 1,
-    //       stack: '1',
-    //       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-    //       hoverBorderColor: 'rgba(255,99,132,1)',
-    //       data: [65, 59, 80, 81, 56, 55, 40]
-    //     },
-    //     {
-    //       label: 'My Second dataset',
-    //       backgroundColor: 'rgba(155,49,12,0.4)',
-    //       borderColor: 'rgba(155,49,12,1)',
-    //       borderWidth: 1,
-    //       stack: '2',
-    //       hoverBackgroundColor: 'rgba(155,49,12,0.4)',
-    //       hoverBorderColor: 'rgba(155,59,12,1)',
-    //       data: [55, 40, 81, 56, 65, 59, 80]
-    //     },
-    //     {
-    //       label: 'My Third dataset',
-    //       backgroundColor: 'rgba(45,149,102,0.4)',
-    //       borderColor: 'rgba(45,149,102,1)',
-    //       borderWidth: 1,
-    //       stack: '3',
-    //       hoverBackgroundColor: 'rgba(155,49,12,0.4)',
-    //       hoverBorderColor: 'rgba(155,59,12,1)',
-    //       data: [55, 40, 81, 56, 65, 59, 80]
-        
-      
-    
+    newLocation.flood = flood;    
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
       console.log(this.state.locations);
     })
-    // this.addPropertyValueData();
+    this.addPropertyValues(newLocation);
   }
 
-  // addPropertyValueData(){
-  //   const backgroundColors = [
-  //   'rgba(255, 99, 132, 0.6)',
-  //   'rgba(54, 162, 235, 0.6)',
-  //   'rgba(255, 206, 86, 0.6)',
-  //   'rgba(75, 192, 192, 0.6)',
-  //   'rgba(153, 102, 255, 0.6)']
-  //   const oldPropertyValues = this.state.propertyValues;
-  //   oldPropertyValues.labels = ['2014', '2015', '2016', '2017', '2018'];
+  addPropertyValues(newLocation){
+    const colors = [
+    'rgba(255, 99, 132, 0.6)',
+    'rgba(54, 162, 235, 0.6)',
+    'rgba(255, 206, 86, 0.6)',
+    'rgba(75, 192, 192, 0.6)',
+    'rgba(153, 102, 255, 0.6)'
+    ]
+    const oldPropertyValues = this.state.propertyValues;
 
-  //   this.state.locations.forEach(function(location, index){
-  //     let price = [];
-  //     location.value.reverse().forEach(each => {
-  //       price.push(Number(each.price))
-  //     })
-  //     let newObj = {
-  //       label: location.address,
-  //       backgroundColor: backgroundColors[index],
-  //       borderColor: 'rgba(155,49,12,1)',
-  //       borderWidth: 1,
-  //       stack: String(index + 1),
-  //       data: price
-  //     }
-  //     oldPropertyValues.datasets.push(newObj);
-  //   }) 
-  //   this.setState(oldPropertyValues, () => {
-  //     console.log("--------", this.state.propertyValues);
-  //   })
-  // }
+    const found = this.state.locations.forEach(function(location){
+      return location.address === newLocation.address
+    })
 
+    if(found == undefined){
+      oldPropertyValues.datasets = [];
+      this.state.locations.forEach(function(location, index){
+        let price = [];
+        location.value.reverse().forEach(each => {
+          price.push(Number(each.price))
+        })
+        let newObj = {
+          label: location.address,
+          backgroundColor: String(colors[index]),
+          borderColor: "black",
+          borderWidth: 1,
+          data: price,
+          hoverBackgroundColor: 'rgba(155,49,12,0.4)',
+          hoverBorderColor: 'rgba(155,59,12,1)',
+        }
+        oldPropertyValues.datasets.push(newObj);
+      }) 
+    }
+    this.setState(oldPropertyValues, () => {
+      console.log("--------", this.state.propertyValues);
+    })
+  }
+
+  deletePropertyValues(address){
+    let oldDatasets = this.state.propertyValues.datasets.filter(obj => {
+      return obj.label !== address
+    });
+    this.setState({
+      propertyValues: {
+        datasets: oldDatasets
+    }
+    })
+  }
   deleteProperty(address) {
     let properties = this.state.locations.filter(location => {
       return location.address !== address
@@ -139,6 +136,7 @@ class App extends Component {
     this.setState({
       locations: properties
     })
+    this.deletePropertyValues(address);
   }
 
   pageChangeHandler(page) {
@@ -158,7 +156,7 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty}/>
+          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty}/>
         </div>
         )
     } else if (this.state.page === "searchBox") {

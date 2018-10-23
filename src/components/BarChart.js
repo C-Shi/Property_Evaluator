@@ -5,7 +5,7 @@ class BarChart extends Component{
     render(){
         return (
             <div className="chart">
-            <BarChart
+            <Bar
                 data={this.props.propertyValues}
                 width={100}
                 height={50}
