@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import GoogleMap from "../lib/GoogleMap";
-import SeedChoroplethData from "../db/seed"
 import ChoroplethMapHelper from "../lib/ChoroplethMapHelper"
 import "../style/ChoroplethMap.css";
 import ChoroplethMapStyle from "../asset/ChoroplethMapStyle.js"
@@ -34,9 +33,9 @@ class ChoroplethMap extends Component {
         most: "#54278f"
       },
       // this is a temporary setup for heat map
-      search: SeedChoroplethData.search,
-      population: SeedChoroplethData.population,
-      crime: SeedChoroplethData.crime
+      search: {},
+      population: {},
+      crime: {}
     }
   }
 
