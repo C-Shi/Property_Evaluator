@@ -25,7 +25,6 @@ const LocationBuilder = {
         })
     })
   },
-
   addCommunityCrimeToLocation: function (newLocation, data){
     newLocation.crime = {}
     data.forEach((crime) => {

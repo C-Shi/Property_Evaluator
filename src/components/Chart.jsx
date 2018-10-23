@@ -54,7 +54,7 @@ class Chart extends Component{
             />
 
             <Pie
-                data={this.props.location.chartData}
+                data={this.props.location.pieData}
                 width={100}
                 height={50}
                 options={{
