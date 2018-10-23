@@ -92,9 +92,12 @@ class App extends Component {
   }
 
   pageChangeHandler(page) {
+    console.log(this.state.locations.length)
     this.setState({ page }, () => {
-      if (page === "propertyList"){
-        setTimeout(mapAnimator, 10)
+      if (page === "propertyList" && this.state.locations.length > 0){
+        setTimeout(mapAnimator.mapForwardsAnimator, 10)
+      } else if (this.state.locations.length === 0) {
+        setTimeout(mapAnimator.mapBackwardsAnimator, 10)
       }
     })
   }
