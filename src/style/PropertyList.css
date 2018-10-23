@@ -58,6 +58,7 @@
 
 .hidden{
   display: none;
+  width: 200px;
 }
 
 .show{

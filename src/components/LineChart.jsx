@@ -7,8 +7,6 @@ class LineChart extends Component{
             <div style={{width: '500px'}} className="line-chart">
             <Line
                 data={this.props.location.populationData}
-                width={100}
-                height={50}
                 options={{
                   title: {
                     display: true,

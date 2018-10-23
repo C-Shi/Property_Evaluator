@@ -22,24 +22,6 @@ class App extends Component {
       propertyValues:{
         labels: ['2014', '2015', '2016', '2017', '2018'],
         datasets:[]
-        // labels: ["Chocolate", "Vanilla", "Strawberry"],
-        // datasets: [
-        //     {
-        //         label: "Harpo",
-        //         fillColor: "blue",
-        //         data: [3,7,4]
-        //     },
-        //     {
-        //         label: "Chico",
-        //         fillColor: "red",
-        //         data: [4,3,5]
-        //     },
-        //     {
-        //         label: "Groucho",
-        //         fillColor: "green",
-        //         data: [7,2,6]
-        //     }
-        // ]
       },
       page: "searchBox"
     };
