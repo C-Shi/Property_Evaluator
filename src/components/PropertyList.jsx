@@ -59,9 +59,9 @@ class PropertyList extends Component {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
-      let propertyList = "" 
+      let propertyList = ""
       if (this.props.locations.length) {
-        propertyList = "property-list" 
+        propertyList = "property-list"
       }
 
       return (
@@ -70,6 +70,8 @@ class PropertyList extends Component {
           </div>
           <div className="main-page">
             <div className={propertyList}>{property}</div>
+            <div className="property-list">{property}
+            </div>
           </div>
           <div id="map" className="map-init"></div>
         </div>
