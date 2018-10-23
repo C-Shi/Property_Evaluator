@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import GoogleMap from "../lib/GoogleMap";
-import SeedChoroplethData from "../db/seed"
 import ChoroplethMapHelper from "../lib/ChoroplethMapHelper"
 import "../style/ChoroplethMap.css";
 import "../style/heatmapTabs.css";
@@ -35,9 +34,9 @@ class ChoroplethMap extends Component {
         most: "#54278f"
       },
       // this is a temporary setup for heat map
-      search: SeedChoroplethData.search,
-      population: SeedChoroplethData.population,
-      crime: SeedChoroplethData.crime
+      search: {},
+      population: {},
+      crime: {}
     }
   }
 
@@ -45,15 +44,17 @@ class ChoroplethMap extends Component {
     // this will create a map, taking two argument, data and color set
     GoogleMap.initChoroplethMap(this.state.search, ChoroplethMapStyle, this.state.searchColor)
 
-    // when mount, call data for crime rate
-    // this is a temporary setup for heat map. logic canbe reuse
-    ChoroplethMapHelper.getAllCrime().then(res => {
-       const templateObj = {}
-       res.data.forEach(function(each){
-         templateObj[each.community_name] = Number(each.SUM_count)
-       })
-       console.log(templateObj)
-      this.setState({crime: templateObj})
+    ChoroplethMapHelper.fetchData()
+    .then(res => {
+      let tempSearch = {};
+      let tempPopulation = {};
+      let tempCrime = {};
+      res.data.forEach(function(community){
+        tempPopulation[community.name] = community.population;
+        tempCrime[community.name] = community.crime;
+        tempSearch[community.name] = community.search
+      })
+      this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation})
     })
   }
 
