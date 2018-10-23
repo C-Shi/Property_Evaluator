@@ -54,6 +54,19 @@ const GoogleMap = {
         strokeWeight: 1
       });
     });
+    this.map.data.addListener('mouseover', mouseInToRegion);
+    this.map.data.addListener('mouseout', mouseOutOfRegion);
+
+    function mouseInToRegion(e) {
+      // set the hover state so the setStyle function can change the border
+
+    }
+
+    function mouseOutOfRegion(e) {
+      // reset the hover state, returning the border to normal
+      e.feature.setProperty('state', 'normal');
+    }
+
 
   },
 
