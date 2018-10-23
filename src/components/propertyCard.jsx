@@ -19,7 +19,7 @@ class PropertyCard extends Component {
           <p>Walkability Score: </p>
 
           <div>
-            <p>Flood: {this.props.location.flood ? 'true' : 'false'}</p>
+            <p>Flood Risk: {this.props.location.flood ? 'true' : 'false'}</p>
           </div>
          </div>
 
@@ -47,12 +47,13 @@ class PropertyCard extends Component {
                 })}
             </tr>
             <tr>
-                <th>Crime</th>
+                <th>Recorded Crime</th>
                 <td>{crimeTotal}</td>
             </tr>
 
           </tbody>
         </table>
+        <button className="btn btn-danger">Show</button>
       </div>
     )
   }
