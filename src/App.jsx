@@ -11,6 +11,7 @@ import "./style/index.css"
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
 import mapAnimator from "./lib/mapAnimationHelper"
+import LocationFinder from './lib/LocationFinder.js';
 
 class App extends Component {
   constructor(){
@@ -38,12 +39,15 @@ class App extends Component {
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
 
-    // resize the map wait until page fully setup to animate map
-    this.pageChangeHandler("propertyList")
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
-    this.setState({ address: address, landing: false }, () => {
-      LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty)
+    this.setState({ address: address }, () => {
+      LocationBuilder.constructPropertyInfo(this.state.address, this.addProperty, () => {
+        if(this.state.locations.length > 0) {
+          // resize the map wait until page fully setup to animate map
+          this.pageChangeHandler("propertyList")
+        }
+      })
     });
     document.getElementById('searchBox').value = '';
   }
@@ -81,49 +85,54 @@ class App extends Component {
     let properties = this.state.locations.filter(location => {
       return location.address !== address
     });
-    this.setState({
-      locations: properties
+    this.setState({ locations: properties}, () => {
+      if (this.state.locations.length === 0) {
+        this.pageChangeHandler("searchBox")
+      }
     })
   }
 
   pageChangeHandler(page) {
+    console.log(this.state.locations.length)
     this.setState({ page }, () => {
-      if (page === "propertyList"){
-        setTimeout(mapAnimator, 10)
+      if (page === "propertyList" && this.state.locations.length > 0){
+        setTimeout(mapAnimator.mapForwardsAnimator, 10)
+      } else if (this.state.locations.length === 0) {
+        setTimeout(mapAnimator.mapBackwardsAnimator, 10)
       }
     })
   }
 
   render() {
     let renderedCompoenent;
-    if (this.state.page === "propertyList") {
+    if (this.state.page === "choropleth") {
+    renderedCompoenent = (
+      <div>
+        <Navbar
+          handleSubmit={this.handleSubmit}
+          pageChangeHandler={this.pageChangeHandler}
+        />
+        <ChoroplethMap />
+      </div>
+    )
+    } else if (this.state.locations.length > 0) {
       renderedCompoenent = (
         <div>
           <Navbar
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
+          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty} pageChangeHandler={this.pageChangeHandler}/>
         </div>
         )
-    } else if (this.state.page === "searchBox") {
+    } else if (this.state.locations.length < 1) {
       renderedCompoenent = (
         <div>
           <SearchBox handleSubmit={this.handleSubmit} />
-          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty}/>
+          <PropertyList locations={this.state.locations} deleteProperty={this.deleteProperty} pageChangeHandler={this.pageChangeHandler}/>
         </div>
        )
-    }else if (this.state.page === "choropleth") {
-      renderedCompoenent = (
-        <div>
-          <Navbar
-            handleSubmit={this.handleSubmit}
-            pageChangeHandler={this.pageChangeHandler}
-          />
-          <ChoroplethMap />
-        </div>
-      )
-    }
+      }
 
     return (
       <div className="App">

@@ -1,27 +1,40 @@
 const GoogleMap = {
-  initMap: function() {
+  initMap: function(zoom, style) {
     const googleMaps = window.google.maps;
-    const location = { lat: 51.044270 , lng: -114.062019};
-
+    const location = { lat: 51.044270 , lng: -113.862019};
     this.map = new googleMaps.Map(document.getElementById('choropleth-map'), {
-      zoom: 15,
+      zoom: zoom,
       center: location,
-      mapTypeControlOptions: {
-        mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
-      },
+      styles: style,
     });
-
   },
 
   // this function will load geojson data
-  initChoroplethMap: function (data, colorSet) {
-    this.initMap();
+  initChoroplethMap: function (data, style, colorSet) {
+    // data is the object of community - number pair for different style
+    // style is the mapping style, here is the gray
+    // colorSet is the intenstiy based on community
+    let total = 0;
+    let outlineWeight = 1;
+    Object.keys(data).forEach(function(community){
+      total += data[community];
+    })
 
-    const googleMaps = window.google.maps;
+    const average = total / Object.keys(data).length
+
+    this.initMap(10.5, style);
 
     this.map.data.loadGeoJson(
       'https://data.calgary.ca/resource/surr-xmvs.geojson'
     );
+
+    // create a button on the google map, and add event listener to go to choropleth map
+    const mapDiv =  document.getElementById('choropleth-map');
+    const infoDiv = document.createElement("div")
+    infoDiv.setAttribute("id", "info-div")
+    infoDiv.setAttribute("class", "alert")
+    infoDiv.setAttribute("class", "alert-secondary")
+    mapDiv.appendChild(infoDiv);
 
     this.map.data.setStyle(function(feature){
       let color;
@@ -29,15 +42,15 @@ const GoogleMap = {
 
       if (data[communityName] === 0) {
         color = colorSet.none
-      } else if (data[communityName] < 20) {
+      } else if (data[communityName] < 0.5 * average) {
         color = colorSet.few
-      } else if (data[communityName] < 50) {
+      } else if (data[communityName] < 0.75 * average) {
         color = colorSet.some
-      } else if (data[communityName] < 800) {
+      } else if (data[communityName] < average) {
         color = colorSet.average
-      } else if (data[communityName] < 100) {
+      } else if (data[communityName] < 1.25 * average) {
         color = colorSet.many
-      } else if (data[communityName] > 100) {
+      } else if (data[communityName] >= 1.5 * average) {
         color = colorSet.most
       } else {
         color = "transparent"
@@ -46,10 +59,18 @@ const GoogleMap = {
       return ({
         fillColor: color,
         strokeColor: "green",
-        fillOpacity: 0.7,
-        strokeWeight: 1
+        fillOpacity: 1,
+        strokeWeight: outlineWeight,
       });
     });
+    this.map.data.addListener('mouseover', mouseOverDataItem);
+
+    function mouseOverDataItem(e) {
+      const communityName = e.feature.getProperty('name');
+      const cases = data[e.feature.getProperty('name')] || "N/A";
+      const info = communityName + ": " + cases
+      document.getElementById("info-div").textContent = info
+    }
 
   },
 
@@ -71,8 +92,6 @@ const GoogleMap = {
       });
     }
   },
-
-
 }
 
 export default GoogleMap

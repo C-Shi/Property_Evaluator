@@ -38,8 +38,7 @@ const LocationFinder = {
           "$where": query
         }
     })
-  }
-
+  },
 }
 
 export default LocationFinder

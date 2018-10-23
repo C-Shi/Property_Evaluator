@@ -1,0 +1,11 @@
+.main-page-container {
+  position: fixed;
+  display: flex;
+  top: 10vh;
+  z-index: -1;
+}
+
+.main-page-map-placeholder {
+  width: 50vw;
+  height: 85vh;
+}
