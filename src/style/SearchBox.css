@@ -11,6 +11,7 @@
     font-size:12vh;
     max-width: 60vw;
     opacity: 0.8;
+    box-shadow: 0 0 20px #000;
 }
 
 .search input[type=text] {
@@ -25,9 +26,10 @@
   width: 10vw;
   padding: 0 10px;
   margin: 0;
-  border: #C7D8C6 outset 5px;
+  border: #C7D8C6 inset 5px;
   background-color: #CCCBC6;
   border-radius: 0 15px 15px 0;
+  box-shadow: 0 0 20px #000;
 }
 
 .search .fa-search {
