@@ -70,8 +70,6 @@ class PropertyList extends Component {
           </div>
           <div className="main-page">
             <div className={propertyList}>{property}</div>
-            <div className="property-list">{property}
-            </div>
           </div>
           <div id="map" className="map-init"></div>
         </div>

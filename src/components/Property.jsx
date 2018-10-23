@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Chart from './Chart';
+import PropertyCard from './propertyCard';
 
 class Property extends Component {
 
@@ -34,8 +35,6 @@ class Property extends Component {
             <Chart location={this.props.location}/>
             <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>
-        <div className="card">
-        <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
 
         <div className="card-body">
               <th>Walkability Score : </th>
@@ -78,7 +77,6 @@ class Property extends Component {
             </tr>
         </tbody>
         </table>
-        </div>
         </div>
       );
     }
