@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import Chart from './Chart';
+import PropertyCard from './propertyCard';
 
 class Property extends Component {
 
     render() {
+      console.log(this.props.location.crime);
       let crimeInfo = []
       for (var key in this.props.location.crime) {
         crimeInfo.push({type: key, count: this.props.location.crime[key]})
@@ -24,6 +26,7 @@ class Property extends Component {
     return (
         <div className="card neighbor-info">
           <div className="card-body">
+            <PropertyCard location={this.props.location} />
             <h5 className="card-title">{this.props.location.address}</h5>
             <ul>
               {priceInfo}
@@ -35,55 +38,7 @@ class Property extends Component {
             </ul>
             <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
           </div>
-        <div className="card">
-        <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
 
-        <div className="card-body">
-              <th>Walkability Score : </th>
-
-         </div>
-
-        <table className="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Year </th>
-                    <th>2017</th>
-                    <th>2016</th>
-                    <th>2015</th>
-                    <th>2014</th>
-                    <th>2013</th>
-                </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-              <th>Population</th>
-                {this.props.location.comm_population.map(each => {
-                return (
-                  <td>{each.population}</td>
-                )
-                })}
-            </tr>
-            <tr>
-                <th>Crime</th>
-                <td>Row 2 Cell 1</td>
-                <td>Row 2 Cell 2</td>
-                <td>Row 2 Cell 3</td>
-                <td>Row 2 Cell 4</td>
-                <td>Row 2 Cell 5</td>
-            </tr>
-
-            <tr>
-                <th>Flood</th>
-                <td>Row 3 Cell 1</td>
-                <td>Row 3 Cell 2</td>
-                <td>Row 3 Cell 3</td>
-                <td>Row 3 Cell 4</td>
-                <td>Row 3 Cell 5</td>
-            </tr>
-        </tbody>
-        </table>
-        </div>
         </div>
       );
     }
