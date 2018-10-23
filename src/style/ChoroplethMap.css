@@ -8,3 +8,13 @@
   border: 5px solid #C7D8C6;
   border-radius: 5px;
 }
+
+#info-div {
+  position: relative;
+  height: 40%;
+  width: 35%; 
+  left: 65%;
+  z-index: 1;
+  background: white;
+}
+

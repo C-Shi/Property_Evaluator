@@ -1,7 +1,7 @@
 const GoogleMap = {
   initMap: function(zoom, style) {
     const googleMaps = window.google.maps;
-    const location = { lat: 51.044270 , lng: -114.062019};
+    const location = { lat: 51.044270 , lng: -113.862019};
     this.map = new googleMaps.Map(document.getElementById('choropleth-map'), {
       zoom: zoom,
       center: location,
@@ -15,17 +15,26 @@ const GoogleMap = {
     // style is the mapping style, here is the gray
     // colorSet is the intenstiy based on community
     let total = 0;
+    let outlineWeight = 1;
     Object.keys(data).forEach(function(community){
       total += data[community];
     })
 
     const average = total / Object.keys(data).length
 
-    this.initMap(11, style);
+    this.initMap(10.5, style);
 
     this.map.data.loadGeoJson(
       'https://data.calgary.ca/resource/surr-xmvs.geojson'
     );
+
+    // create a button on the google map, and add event listener to go to choropleth map
+    const mapDiv =  document.getElementById('choropleth-map');
+    const infoDiv = document.createElement("div")
+    infoDiv.setAttribute("id", "info-div")
+    infoDiv.setAttribute("class", "alert")
+    infoDiv.setAttribute("class", "alert-secondary")
+    mapDiv.appendChild(infoDiv);
 
     this.map.data.setStyle(function(feature){
       let color;
@@ -51,22 +60,17 @@ const GoogleMap = {
         fillColor: color,
         strokeColor: "green",
         fillOpacity: 1,
-        strokeWeight: 1
+        strokeWeight: outlineWeight,
       });
     });
-    this.map.data.addListener('mouseover', mouseInToRegion);
-    this.map.data.addListener('mouseout', mouseOutOfRegion);
+    this.map.data.addListener('mouseover', mouseOverDataItem);
 
-    function mouseInToRegion(e) {
-      // set the hover state so the setStyle function can change the border
-
+    function mouseOverDataItem(e) {
+      const communityName = e.feature.getProperty('name');
+      const cases = data[e.feature.getProperty('name')] || "N/A";
+      const info = communityName + ": " + cases
+      document.getElementById("info-div").textContent = info
     }
-
-    function mouseOutOfRegion(e) {
-      // reset the hover state, returning the border to normal
-      e.feature.setProperty('state', 'normal');
-    }
-
 
   },
 
@@ -88,37 +92,6 @@ const GoogleMap = {
       });
     }
   },
-
-  loadChoropleth: function(controlDiv, map) {
-    // Set CSS for the control border.
-    var controlUI = document.createElement('div');
-    controlUI.style.backgroundColor = '#fff';
-    controlUI.style.border = '2px solid #fff';
-    controlUI.style.borderRadius = '3px';
-    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-    controlUI.style.cursor = 'pointer';
-    controlUI.style.marginBottom = '22px';
-    controlUI.style.textAlign = 'center';
-    controlUI.title = 'Click to recenter the map';
-    controlDiv.appendChild(controlUI);
-
-    // Set CSS for the control interior.
-    var controlText = document.createElement('div');
-    controlText.style.color = 'rgb(25,25,25)';
-    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-    controlText.style.fontSize = '16px';
-    controlText.style.lineHeight = '38px';
-    controlText.style.paddingLeft = '5px';
-    controlText.style.paddingRight = '5px';
-    controlText.innerHTML = 'Center Map';
-    controlUI.appendChild(controlText);
-
-    // Setup the click event listeners: simply set the map to Chicago.
-    controlUI.addEventListener('click', function() {
-
-    });
-  }
-
 }
 
 export default GoogleMap
