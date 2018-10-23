@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Property from './Property';
+import BarChart from './BarChart';
+import Modal from './Modal';
 import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
@@ -55,21 +57,31 @@ class PropertyList extends Component {
   }
 
     render() {
-      const property = this.props.locations.reverse().map(location => {
+      let property = this.props.locations.map(location => {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
-      let propertyList = ""
-      if (this.props.locations.length) {
-        propertyList = "property-list"
-      }
+      property = property.reverse();
+
+      const button = (this.props.page === 'propertyList') ?
+      (<button className = "bar-chart-btn" onClick={()=> {this.props.showChart()}}> Display Bar Chart</button>) :
+      ("");
+
+      const barChart = (this.props.page === "propertyList") ?
+      (<BarChart propertyValues={this.props.propertyValues}/>) :
+      ("");
 
       return (
         <div className="main-page-container">
           <div className="main-page-map-placeholder">
           </div>
           <div className="main-page">
-            <div className={propertyList}>{property}</div>
+            {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
+            <div className="property-list">
+              {button}
+              {barChart}
+              {property}
+            </div>
           </div>
           <div id="map" className="map-init"></div>
         </div>

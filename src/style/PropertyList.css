@@ -24,3 +24,30 @@
  .to-choropleth:hover {
    background-color: #eee;
  }
+
+@keyframes propertySlide {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes propertyListSlideOut {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 100vw;
+  }
+}
+
+.hidden{
+  display: none;
+  width: 200px;
+}
+
+.show{
+  display: block;
+}
