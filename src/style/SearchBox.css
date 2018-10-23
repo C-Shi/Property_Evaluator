@@ -3,12 +3,20 @@
   position: absolute;
   left: 15vw;
   top: 20vh;
+  opacity: 0.9;
 }
 
 .search #searchBox {
     height: 15vh;
     font-size:12vh;
     max-width: 60vw;
+    opacity: 0.8;
+}
+
+.search input[type=text] {
+  background-color: rgba(210, 209, 203, 0.8);
+  border: #C7D8C6 inset 5px;
+  border-radius: 15px 0 0 15px;
 }
 
 .search .search-btn {
@@ -17,6 +25,9 @@
   width: 10vw;
   padding: 0 10px;
   margin: 0;
+  border: #C7D8C6 outset 5px;
+  background-color: #CCCBC6;
+  border-radius: 0 15px 15px 0;
 }
 
 .search .fa-search {
