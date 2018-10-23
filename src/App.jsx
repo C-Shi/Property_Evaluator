@@ -76,12 +76,13 @@ class App extends Component {
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
-      console.log(this.state.locations);
+      console.log("locations", this.state.locations);
     })
-    console.log("++++this is ", this);
     this.addPropertyValues(newLocation);
   }
 
+  // take in a newLocation and create an obj for each newLocation, 
+  // then add to propertyValues.datasets array
   addPropertyValues(newLocation){
     const colors = [
     '255, 99, 132',
@@ -92,31 +93,31 @@ class App extends Component {
     ]
     const oldPropertyValues = this.state.propertyValues;
 
-    const found = this.state.locations.forEach(function(location){
-      return location.address === newLocation.address
-    })
-
-    if(found == undefined){
+      // create or empty datasets in oldPropertyValues
       oldPropertyValues.datasets = [];
       this.state.locations.forEach(function(location, index){
+        console.log(`location is ${location.address} and index is ${index}`)
+        // stores newLocation assessment value of recent 5 years in price array  
         let price = [];
-        location.value.reverse().forEach(each => {
+        location.value.forEach(each => {
           price.push(Number(each.price))
         })
+        // assign all properties to newLocation
         let newObj = {
           label: location.address,
           backgroundColor: `rgba( ${colors[index]}, 0.6)`,
           borderColor: "black",
           borderWidth: 1,
-          data: price,
+          data: price.reverse(),
           hoverBackgroundColor: `rgba( ${colors[index]}, 0.8)`,
           hoverBorderColor: `rgba( ${colors[index]}, 1)`,
         }
+        // datasets contains newObj for each location
         oldPropertyValues.datasets.push(newObj);
       }) 
-    }
+
     this.setState(oldPropertyValues, () => {
-      console.log("--------", this.state.propertyValues);
+      // console.log("---this.state.propertyValues", this.state.propertyValues);
     })
   }
 

@@ -45,9 +45,11 @@ class PropertyList extends Component {
   }
 
     render() {
-      const property = this.props.locations.reverse().map(location => {
+      let property = this.props.locations.map(location => {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
+
+      property = property.reverse();
 
       const barChart = (this.props.page === "propertyList") ?
       (<BarChart propertyValues={this.props.propertyValues}/>) :
