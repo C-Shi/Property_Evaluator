@@ -1,8 +1,6 @@
 .navbar-default  {
   display: flex;
   height: 10vh;
-  color: #36454f;
-  color: #2D3A42;
   opacity: 0.6;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
 }
@@ -20,7 +18,7 @@
 
 .navbar-search {
   opacity: 1;
-  width: 50vw;
+  max-width: 50vw;
   justify-content: center;
 }
 

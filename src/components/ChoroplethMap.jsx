@@ -3,6 +3,7 @@ import GoogleMap from "../lib/GoogleMap";
 import SeedChoroplethData from "../db/seed"
 import ChoroplethMapHelper from "../lib/ChoroplethMapHelper"
 import "../style/ChoroplethMap.css";
+import "../style/heatmapTabs.css";
 import ChoroplethMapStyle from "../asset/ChoroplethMapStyle.js"
 
 class ChoroplethMap extends Component {
@@ -62,21 +63,22 @@ class ChoroplethMap extends Component {
 
   render() {
     return (
-      <div className="container">
-      <form className="map-radio">
-        <div className="form-check form-check-inline">
-          <label className="form-check-label" for="search_history" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}} >Search History</label>
-          <input className="form-check-input" type="radio" id="inlineRadio1" name="search_history" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}} defaultChecked/>
-        </div>
-        <div className="form-check form-check-inline">
-          <label className="form-check-label" for="community_population" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}} >Community Population</label>
-          <input className="form-check-input" type="radio" id="inlineRadio2"  name="community_population" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}/>
-        </div>
-        <div className="form-check form-check-inline">
-          <label className="form-check-label" for="crime_rate" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}} >Crime Rate</label>
-          <input className="form-check-input" type="radio" id="inlineRadio2"  name="crime_rate" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}/>
-        </div>
-      </form>
+      <div className="container heatmap">
+
+        <form className="map-radio heatmap-radio">
+          <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>
+            <label className="form-check-label" for="inlineRadio1" >Search History</label>
+            <input className="form-check-input" type="radio" id="inlineRadio1" name="heatmap" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}} defaultChecked/>
+          </div>
+          <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>
+            <label className="form-check-label" for="inlineRadio2" >Community Population</label>
+            <input className="form-check-input" type="radio" id="inlineRadio2"  name="heatmap" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}/>
+          </div>
+          <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>
+            <label className="form-check-label" for="inlineRadio3" >Crime Rate</label>
+            <input className="form-check-input" type="radio" id="inlineRadio3"  name="heatmap" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}/>
+          </div>
+        </form>
 
         <div id="choropleth-map"></div>
       </div>

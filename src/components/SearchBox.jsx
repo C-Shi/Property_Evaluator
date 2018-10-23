@@ -15,7 +15,7 @@ class SearchBox extends Component {
             <div className="input-group mb-3">
               <form onSubmit={this.props.handleSubmit} className="form-inline">
                 <input type="text" id="searchBox" name="address"/>
-                  <button className="btn btn-outline-secondary search-btn" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
+                  <button name="search" className="btn btn-outline-secondary search-btn" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
               </form>
             </div>
           </div>
