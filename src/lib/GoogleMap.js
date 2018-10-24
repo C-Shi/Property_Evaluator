@@ -6,6 +6,10 @@ const GoogleMap = {
       zoom: zoom,
       center: location,
       styles: style,
+      zoomControl: false,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
     });
   },
 
@@ -36,21 +40,26 @@ const GoogleMap = {
     infoDiv.setAttribute("class", "alert-secondary")
     mapDiv.appendChild(infoDiv);
 
+    // create legend label
+    // const legendDiv = document.createElement("div")
+    // legendDiv.setAttribute("id", "legend-div")
+    // mapDiv.appendChild(legendDiv)
+    
+    // SET COLOR FOR EACH POLYGON
     this.map.data.setStyle(function(feature){
       let color;
       const communityName = feature.getProperty('name')
-
       if (data[communityName] === 0) {
         color = colorSet.none
       } else if (data[communityName] < 0.5 * average) {
         color = colorSet.few
-      } else if (data[communityName] < 0.75 * average) {
-        color = colorSet.some
       } else if (data[communityName] < average) {
+        color = colorSet.some
+      } else if (data[communityName] < 1.5 * average) {
         color = colorSet.average
-      } else if (data[communityName] < 1.25 * average) {
+      } else if (data[communityName] < 2 * average) {
         color = colorSet.many
-      } else if (data[communityName] >= 1.5 * average) {
+      } else if (data[communityName] >= 2 * average) {
         color = colorSet.most
       } else {
         color = "transparent"
@@ -58,7 +67,7 @@ const GoogleMap = {
 
       return ({
         fillColor: color,
-        strokeColor: "green",
+        strokeColor: "gray",
         fillOpacity: 1,
         strokeWeight: outlineWeight,
       });

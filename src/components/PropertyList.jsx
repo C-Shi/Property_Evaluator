@@ -8,6 +8,12 @@ import "../style/mainPage.css"
 
 
 class PropertyList extends Component {
+  constructor(){
+    super();
+    this.state = {
+      marker: 0
+    }
+  }
 
   componentDidMount() {
     this.googleMaps = window.google.maps;
@@ -21,6 +27,17 @@ class PropertyList extends Component {
       },
        styles: MapStyle
     });
+
+  //   this.googleMaps.event.addListener(this.map, 'click', (event) => {
+  //     if (this.state.marker === 0) {
+  //       var marker = new this.googleMaps.Marker({
+  //         position: event.latLng, 
+  //         map: this.map
+  //       });
+  //       this.setState({marker: 1})
+  //     }
+  //  });
+   
 
     // create a button on the google map, and add event listener to go to choropleth map
     const mapDiv =  document.getElementById('map');

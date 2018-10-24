@@ -74,7 +74,6 @@ const AddressHelper = {
     resultant.push(road);
     resultant.push(quadrant);
     resultant = resultant.join(' ').toUpperCase();
-    console.log(resultant);
 
     return resultant
   }

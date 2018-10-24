@@ -66,7 +66,6 @@ class App extends Component {
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
-      console.log("locations", this.state.locations);
     });
     // reset propertyValues of state
     this.addPropertyValues(newLocation);
@@ -183,7 +182,6 @@ addCrime(newLocation) {
   }
 
   pageChangeHandler(page) {
-    console.log(this.state.locations.length)
     this.setState({ page }, () => {
       if (page === "propertyList" && this.state.locations.length > 0){
         setTimeout(mapAnimator.mapForwardsAnimator, 10)
@@ -194,7 +192,6 @@ addCrime(newLocation) {
   }
 
   showChart(){
-    console.log("modal clicked");
     document.getElementById('bar-chart').classList.toggle("hidden")
   }
   render() {
