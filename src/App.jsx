@@ -42,7 +42,7 @@ class App extends Component {
     if (!googleAddress) return;
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
-
+    if (!address) return ;
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
     this.setState({ address: address }, () => {
