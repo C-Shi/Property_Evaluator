@@ -1,6 +1,6 @@
 .legend {
   position: relative;
-  top: 25%;
+  top: 65%;
   left: 95%;
   height: 35%;
   width: 5%;
@@ -37,6 +37,10 @@
   left: 65%;
   z-index: 1;
   background: white;
+}
+
+.infoWindow {
+  font-size: 1.2em;
 }
 
 
