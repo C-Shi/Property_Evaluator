@@ -1,3 +1,7 @@
+h1 {
+  color: #fff;
+}
+
 .search {
   width : 70vw;
   position: absolute;
@@ -7,35 +11,47 @@
 }
 
 .search #searchBox {
-    height: 15vh;
-    font-size:12vh;
-    max-width: 60vw;
+    /* height: 10vh; */
+    /* font-size:12vh; */
+    width: 60vw;
     opacity: 0.8;
-    box-shadow: 0 0 20px #000;
+    /* box-shadow: 0 0 20px #000; */
 }
 
 .search input[type=text] {
-  background-color: rgba(210, 209, 203, 0.8);
-  border: #C7D8C6 inset 5px;
-  border-radius: 15px 0 0 15px;
+  background: #fff;
+  /* border-radius: 15px 0 0 15px; */
 }
 
-.search .search-btn {
-  font-size: 10vh;
-  height: 15vh;
-  width: 10vw;
-  padding: 0 10px;
-  margin: 0;
-  border: #C7D8C6 inset 5px;
-  background-color: #CCCBC6;
-  border-radius: 0 15px 15px 0;
-  box-shadow: 0 0 20px #000;
+h1.typewriter {
+  width: 80%;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
 }
 
-.search .fa-search {
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+
+
+/* .search .fa-search {
   height:100%;
   width:100%;
   top:-5px;
-  font-size: 10vh;
+  font-size: 2em;
   vertical-align: middle;
-}
+} */

@@ -1,16 +1,17 @@
 .navbar-default  {
   display: flex;
   height: 10vh;
-  opacity: 0.6;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
 }
 
 .navbar-links {
+  color: #fff;
   display: flex;
   height: 10vh;
   width: 50vw;
   align-items: center;
 }
+
 
 .navbar-links a {
   margin: 5vw;
@@ -26,6 +27,11 @@
   width: 40vw;
   border-radius: 5px;
   border: 1px solid #C7D8C6;
+}
+
+.btn-outline-secondary {
+  color: #fff;
+  border-color: #fff;
 }
 
 @keyframes navbarScrollDown {
