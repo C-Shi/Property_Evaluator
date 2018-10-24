@@ -41,8 +41,6 @@ class ChoroplethMap extends Component {
   }
 
   componentDidMount(){
-    // this will create a map, taking two argument, data and color set
-    GoogleMap.initChoroplethMap(this.state.search, ChoroplethMapStyle, this.state.searchColor)
 
     ChoroplethMapHelper.fetchData()
     .then(res => {
@@ -54,8 +52,12 @@ class ChoroplethMap extends Component {
         tempCrime[community.name] = community.crime;
         tempSearch[community.name] = community.search
       })
-      this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation})
+      this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation}, () => {
+        console.log('hit')
+        this.changeDataHandler("search", this.state.searchColor)
+      })
     })
+    
   }
 
   changeDataHandler(dataType, colorSet) {
