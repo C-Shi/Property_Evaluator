@@ -1,11 +1,9 @@
 .property-list {
-  border: 7px ridge #C7D8C6;
   border-radius: 1vw;
   height: 85vh;
   width: 50vw;
   top: 10vh;
   overflow: scroll;
-  background-color: rgba(198, 215, 197, 1);
 }
 
  .to-choropleth {
@@ -24,3 +22,30 @@
  .to-choropleth:hover {
    background-color: #eee;
  }
+
+@keyframes propertySlide {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes propertyListSlideOut {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 100vw;
+  }
+}
+
+.hidden{
+  display: none;
+  width: 200px;
+}
+
+.show{
+  display: block;
+}

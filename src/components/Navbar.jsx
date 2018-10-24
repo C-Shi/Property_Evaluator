@@ -38,8 +38,8 @@ class Navbar extends Component {
         </div>
 
         <form onSubmit={this.props.handleSubmit} className="form-inline my-lg-0 navbar-search">
-            <input type="text" id="searchBox" name="address" className="form-control mr-sm-2"/>
-              <button className="btn btn-outline-secondary my-2 my-sm-0" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i></button>
+            <input type="text" id="searchBox" name="address" className="form-control mr-sm-2" placeholder="add another address to compare?"/>
+            <button className="btn btn-outline-secondary my-2 my-sm-0" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i> Search</button>
         </form>
 
       </nav>

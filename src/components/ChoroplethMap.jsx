@@ -69,15 +69,15 @@ class ChoroplethMap extends Component {
         <form className="map-radio heatmap-radio">
           <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>
             <label className="form-check-label" for="inlineRadio1" >Search History</label>
-            <input className="form-check-input" type="radio" id="inlineRadio1" name="heatmap" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}} defaultChecked/>
+            <input className="form-check-input" type="radio" id="inlineRadio1" name="heatmap" defaultChecked/>
           </div>
           <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>
             <label className="form-check-label" for="inlineRadio2" >Community Population</label>
-            <input className="form-check-input" type="radio" id="inlineRadio2"  name="heatmap" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}/>
+            <input className="form-check-input" type="radio" id="inlineRadio2"  name="heatmap" />
           </div>
           <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>
             <label className="form-check-label" for="inlineRadio3" >Crime Rate</label>
-            <input className="form-check-input" type="radio" id="inlineRadio3"  name="heatmap" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}/>
+            <input className="form-check-input" type="radio" id="inlineRadio3"  name="heatmap" />
           </div>
         </form>
 
