@@ -40,10 +40,34 @@ const GoogleMap = {
     infoDiv.setAttribute("class", "alert-secondary")
     mapDiv.appendChild(infoDiv);
 
+    let legendBar;
+    switch (colorSet.most) {
+      case "#b30000":
+        legendBar = "legend-div-search"
+      break
+      case "#08519c":
+        legendBar = "legend-div-population"
+      break
+      case "#54278f":
+        legendBar = "legend-div-crime"
+      break
+    }
     // create legend label
-    // const legendDiv = document.createElement("div")
-    // legendDiv.setAttribute("id", "legend-div")
-    // mapDiv.appendChild(legendDiv)
+    const legendDiv = document.createElement("div")
+    legendDiv.setAttribute("class", "legend")
+    legendDiv.setAttribute("id", legendBar)
+    const none = document.createElement("p")
+    none.textContent = "None"
+    const ave = document.createElement("p")
+    ave.textContent = "Some"
+    ave.setAttribute("class", "bar-middle")
+    const most = document.createElement("p")
+    most.textContent = "Most"
+    most.setAttribute("class", "bar-bottom")
+    legendDiv.appendChild(none)
+    legendDiv.appendChild(ave)
+    legendDiv.appendChild(most)
+    mapDiv.appendChild(legendDiv)
     
     // SET COLOR FOR EACH POLYGON
     this.map.data.setStyle(function(feature){

@@ -82,7 +82,6 @@ class ChoroplethMap extends Component {
         </form>
 
         <div id="choropleth-map">
-          <div id="legend-div-search"></div>
         </div>
       </div>
     )
