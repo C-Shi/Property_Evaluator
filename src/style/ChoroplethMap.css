@@ -12,7 +12,7 @@
 #info-div {
   position: relative;
   height: 40%;
-  width: 35%; 
+  width: 35%;
   left: 65%;
   z-index: 1;
   background: white;
@@ -25,4 +25,3 @@
   z-index: 1;
   background: linear-gradient(to bottom, #fef0d9, #fdd49e, #fdbb84, #fc8d59,#e34a33, #b30000);
 }
-

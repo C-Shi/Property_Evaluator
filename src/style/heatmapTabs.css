@@ -14,15 +14,19 @@
   width: 18vw;
   margin: 0;
   margin-left: -3px;
-  border: 2px solid #36454f;
+  border: 2px solid #1C2429;
   border-radius: 8px 8px 0 0;
-  background-color: rgba(204, 203, 198, 0.5);
+  background-color: #36454f;
   border-bottom: none;
+}
+
+.heatmap-radio div:hover {
+  background-color: #40525E;
 }
 
 .heatmap-radio label {
   margin-left: 8px;
-  color: #36454f;
+  color: #CCCBC6;
 }
 
 .heatmap-radio input {

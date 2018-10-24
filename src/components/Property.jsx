@@ -11,7 +11,6 @@ class Property extends Component {
       }
 
       const lastYearPropertyValue = this.props.location.comm_population[this.props.location.comm_population.length - 1];
-      console.log(lastYearPropertyValue);
 
     return (
         <div className="card neighbor-info">
