@@ -6,6 +6,9 @@ Powder: #CCCBC6
 Charcoal: #36454f
 */
 
+/** the index css file is used to style the application as a whole. This is where DOM wide styles should go.
+*/
+
 body {
   font-family: 'K2D', sans-serif;
   background-color: #000
