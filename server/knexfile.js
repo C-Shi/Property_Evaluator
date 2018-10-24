@@ -5,10 +5,11 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host     : process.env.DB_HOST,
-      user     : process.env.DB_USER,
-      password : process.env.DB_PASS,
+      host     : "localhost",
+      user     : "realmap",
+      password : "realmap",
       database : "realmap",
+      port     : 5432
     },
     migrations: {
       directory: './db/migrations',
