@@ -8,6 +8,7 @@ Charcoal: #36454f
 
 body {
   font-family: 'K2D', sans-serif;
+  background-color: #000
 }
 
 .secondBody {
@@ -16,7 +17,7 @@ body {
   bottom: 0;
   right: 0;
   position: fixed;
-  opacity: 0.9;
+  opacity: 0.6;
   z-index: -1;
 }
 
