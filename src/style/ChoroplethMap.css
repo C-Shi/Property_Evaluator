@@ -18,3 +18,11 @@
   background: white;
 }
 
+#legend-div-search {
+  position: relative;
+  height: 35%;
+  width: 3%;
+  z-index: 1;
+  background: linear-gradient(to bottom, #fef0d9, #fdd49e, #fdbb84, #fc8d59,#e34a33, #b30000);
+}
+

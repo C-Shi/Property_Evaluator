@@ -9,6 +9,7 @@ module.exports = {
       user     : 'real_map',
       password : 'real_map',
       database : "final_project ",
+
     },
     migrations: {
       directory: './db/migrations',

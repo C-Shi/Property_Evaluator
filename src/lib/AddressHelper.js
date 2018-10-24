@@ -5,7 +5,7 @@ const AddressHelper = {
     southeast: 'SE',
     northeast: 'NE',
   },
- 
+
   roadname: {
     avenue:'AV',
     ave:'AV',
@@ -60,16 +60,16 @@ const AddressHelper = {
 
   convertGoogleAddress: function(address){
     let resultant = address;
- 
+
     resultant = (resultant.split(',')[0]).split(' ');
- 
+
     // working on the elements
     let quadrant = resultant.pop().toLowerCase();
     let road = resultant.pop().toLowerCase();
- 
+
     quadrant = ( this.quadrants[quadrant] ? this.quadrants[quadrant] : quadrant );
     road = ( this.roadname[road] ? this.roadname[road] : road );
- 
+
     // putting the resultant back together
     resultant.push(road);
     resultant.push(quadrant);

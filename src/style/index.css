@@ -7,19 +7,17 @@ Charcoal: #36454f
 */
 
 body {
-  background-color: #A9B7C0;
-  background-size: cover;
-  color: #36454f;
+  font-family: 'K2D', sans-serif;
+  background-color: #000
 }
 
 .secondBody {
-  background-image: url('https://images.pexels.com/photos/700974/pexels-photo-700974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-  opacity: 0.3;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: fixed;
+  opacity: 0.6;
   z-index: -1;
 }
 

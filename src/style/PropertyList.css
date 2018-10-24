@@ -1,24 +1,10 @@
 .property-list {
-  border: 5px solid #C7D8C6;
   border-radius: 1vw;
   height: 85vh;
   width: 50vw;
   top: 10vh;
   overflow: scroll;
-  animation: propertyListSlideOut 1s ease 0s 1 normal both;
 }
-
-.neighbor-info:hover {
-  box-shadow: -1vh 1vh 1vh rgba(0, 0, 0, 0.5);
-}
-
-.neighbor-info {
-  background: rgba(198, 215, 197, 0.8);
-  color: #373737;
-  text-shadow: 1px 1px 2px #CCCBC6;
-  width: 50vw;
-  animation: propertySlide 2s ease 0s 1 normal both;
- }
 
  .to-choropleth {
    position: relative; left: 50%;
@@ -28,7 +14,6 @@
    direction: ltr;
    text-align: center;
    background-color: #fff;
-   padding: 10px;
    font-weight: 500;
    border: 0px;
    border-radius: 2%;
@@ -54,4 +39,13 @@
   100% {
     left: 100vw;
   }
+}
+
+.hidden{
+  display: none;
+  width: 200px;
+}
+
+.show{
+  display: block;
 }

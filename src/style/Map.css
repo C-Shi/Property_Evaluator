@@ -1,13 +1,11 @@
 .map-init {
   position: absolute;
-  top: 35vh;
+  top: 30vh;
   left: 17vw;
   width: 64vw;
   height: 50vh;
   z-index: 1;
-  border: 10px outset #C7D8C6;
   border-radius: 1vw;
-  box-shadow: 0 0 20px #000;
 }
 
 .map-move {

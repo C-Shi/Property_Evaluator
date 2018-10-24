@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Property from './Property';
+import BarChart from './BarChart';
 import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
@@ -7,6 +8,12 @@ import "../style/mainPage.css"
 
 
 class PropertyList extends Component {
+  constructor(){
+    super();
+    this.state = {
+      marker: 0
+    }
+  }
 
   componentDidMount() {
     this.googleMaps = window.google.maps;
@@ -20,6 +27,17 @@ class PropertyList extends Component {
       },
        styles: MapStyle
     });
+
+  //   this.googleMaps.event.addListener(this.map, 'click', (event) => {
+  //     if (this.state.marker === 0) {
+  //       var marker = new this.googleMaps.Marker({
+  //         position: event.latLng, 
+  //         map: this.map
+  //       });
+  //       this.setState({marker: 1})
+  //     }
+  //  });
+   
 
     // create a button on the google map, and add event listener to go to choropleth map
     const mapDiv =  document.getElementById('map');
@@ -55,22 +73,30 @@ class PropertyList extends Component {
   }
 
     render() {
-      const property = this.props.locations.reverse().map(location => {
+      let property = this.props.locations.map(location => {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
-      let propertyList = ""
-      if (this.props.locations.length) {
-        propertyList = "property-list"
-      }
+      property = property.reverse();
+
+      const button = (this.props.page === 'propertyList') ?
+      (<button className = "bar-chart-btn" onClick={()=> {this.props.showChart()}}> Display Bar Chart</button>) :
+      ("");
+
+      const barChart = (this.props.page === "propertyList") ?
+      (<BarChart propertyValues={this.props.propertyValues}/>) :
+      ("");
 
       return (
         <div className="main-page-container">
           <div className="main-page-map-placeholder">
           </div>
           <div className="main-page">
-            <div className={propertyList}>{property}</div>
-            <div className="property-list">{property}
+            {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
+            <div className="property-list">
+              {button}
+              {barChart}
+              {property}
             </div>
           </div>
           <div id="map" className="map-init"></div>
