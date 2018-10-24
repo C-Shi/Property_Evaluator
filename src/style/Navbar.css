@@ -10,10 +10,10 @@
   color: #fff;
   height: 10vh;
   width: 50vw;
-  font-size: 6vh;
+  font-size: 4vh;
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .navbar-search {

@@ -7,6 +7,7 @@ import SearchBox from './components/SearchBox.jsx'
 import ChoroplethMap from "./components/ChoroplethMap";
 // import styles
 import "./style/index.css"
+import "./style/mediaQueries.css"
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
