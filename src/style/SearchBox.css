@@ -3,19 +3,24 @@ h1 {
 }
 
 .search {
-  width : 70vw;
+  width : 64vw;
   position: absolute;
-  left: 15vw;
-  top: 20vh;
+  left: 17vw;
+  top: 15vh;
   opacity: 0.9;
 }
+
 
 .search #searchBox {
     /* height: 10vh; */
     /* font-size:12vh; */
-    width: 60vw;
+    width: 56vw;
     opacity: 0.8;
     /* box-shadow: 0 0 20px #000; */
+}
+
+.search .search-btn {
+  width: 8vw;
 }
 
 .search input[type=text] {
