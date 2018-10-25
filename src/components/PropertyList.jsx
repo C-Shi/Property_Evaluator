@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Property from './Property';
-import BarChart from './BarChart.jsx';
+import BarChart from './BarChart';
+import LineChart from './LineChart';
 import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
@@ -86,6 +87,10 @@ class PropertyList extends Component {
       (<BarChart propertyValues={this.props.propertyValues}/>) :
       ("");
 
+      const lineChart = (this.props.page === "propertyList") ?
+      (<LineChart population={this.props.population}/>) :
+      ("");
+
       return (
         <div className="main-page-container">
           <div className="main-page-map-placeholder">
@@ -93,8 +98,9 @@ class PropertyList extends Component {
           <div className="main-page">
             {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
             <div className="property-list">
-              {button}
+              {/* {button} */}
               {barChart}
+              {lineChart}
               {property}
             </div>
           </div>
