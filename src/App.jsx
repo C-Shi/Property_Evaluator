@@ -217,9 +217,9 @@ addCrime(newLocation) {
     })
   }
 
-  showChart(){
-    document.getElementById('bar-chart').classList.toggle("hidden")
-  }
+  // showChart(){
+  //   document.getElementById('bar-chart').classList.toggle("hidden")
+  // }
 
   render() {
     let renderedCompoenent;
