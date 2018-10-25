@@ -24,6 +24,10 @@ class App extends Component {
         labels: ['2014', '2015', '2016', '2017', '2018'],
         datasets:[]
       },
+      population:{
+        labels: ['2013', '2014', '2015', '2016', '2017'],
+        datasets:[]
+      },
       page: "searchBox"
     };
 
@@ -61,38 +65,19 @@ class App extends Component {
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
     newLocation.flood = flood;
-    // add a populationData property to state.locations.newLocation
-    this.addPopulationData(newLocation);
+ 
     this.addCrime(newLocation);
 
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
+      console.log("state.locations", this.state.locations)
     });
     // reset propertyValues of state
     this.addPropertyValues(newLocation);
+    // reset population of state
+    this.addPopulation(newLocation);
 
-  }
-
-  // take in a newLocation, and assign a new property called populationData
-  // that holds population number over 5 years
-  addPopulationData(newLocation){
-    let populationChange = [];
-    newLocation.comm_population.reverse().forEach(each => {
-      populationChange.push(each.population);
-    })
-
-    // collect data for line chart
-    newLocation.populationData = {
-      labels: ['2013', '2014', '2015', '2016', '2017'],
-      datasets:[
-        {
-          label:'Population',
-          data:populationChange,
-          backgroundColor:'rgba(255, 99, 132, 0.6)'
-        }
-      ]
-    }
   }
 
   // take in a newLocation and create an obj for each newLocation,
@@ -133,6 +118,42 @@ class App extends Component {
       // console.log("---this.state.propertyValues", this.state.propertyValues);
     })
   }
+
+  // take in a newLocation and create an obj for each newLocation,
+  // then add to population.datasets array
+  addPopulation(newLocation){
+    const colors = [
+    '255, 99, 132',
+    '54, 162, 235',
+    '255, 206, 86',
+    '75, 192, 192',
+    '153, 102, 255'
+    ]
+    const oldPopulation = this.state.population;
+    // create or empty datasets in oldPopulation
+    oldPopulation.datasets = [];
+    this.state.locations.forEach(function(location, index){
+      // stores community population of recent 5 years in comm_population array
+      let comm_population = [];
+      location.comm_population.forEach(each => {
+        comm_population.push(Number(each.population))
+      })
+      // assign all properties to newLocation
+      let newObj = {
+        label: location.address,
+        backgroundColor: `rgba( ${colors[index]}, 0.6)`,
+        hoverBackgroundColor: `rgba( ${colors[index]}, 0.8)`,
+        hoverBorderColor: `rgba( ${colors[index]}, 1)`,
+        data: comm_population,
+      }
+      // datasets contains newObj for each location
+      oldPopulation.datasets.push(newObj);
+    })
+    this.setState({population: oldPopulation}, () => {
+      console.log("---this.state.population", this.state.population);
+    })
+  }
+
 addCrime(newLocation) {
   let crimeData = [];
          crimeData = Object.keys(newLocation.crime);
@@ -160,16 +181,18 @@ addCrime(newLocation) {
      }
 }
 
-  deletePropertyValues(address){
-    let oldDatasets = this.state.propertyValues.datasets.filter(obj => {
+// stateKey could be propertyValues or population
+  deletePropertyFromComparison(address, stateKey){
+    let oldDatasets = this.state[stateKey].datasets.filter(obj => {
       return obj.label !== address
     });
     this.setState({
-      propertyValues: {
+      [stateKey]: {
         datasets: oldDatasets
     }
     })
   }
+
   deleteProperty(address) {
     let properties = this.state.locations.filter(location => {
       return location.address !== address
@@ -179,8 +202,9 @@ addCrime(newLocation) {
         this.pageChangeHandler("searchBox")
       }
     })
-    // remove data of deleted address on bar chart
-    this.deletePropertyValues(address);
+    // remove data of deleted address on bar chart and line chart
+    this.deletePropertyFromComparison(address, 'propertyValues');
+    this.deletePropertyFromComparison(address, 'population')
   }
 
   pageChangeHandler(page) {
@@ -196,7 +220,7 @@ addCrime(newLocation) {
   showChart(){
     document.getElementById('bar-chart').classList.toggle("hidden")
   }
-  
+
   render() {
     let renderedCompoenent;
     if (this.state.page === "choropleth") {
@@ -216,7 +240,7 @@ addCrime(newLocation) {
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} deleteProperty={this.deleteProperty} showChart={this.showChart}/>
+          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} population={this.state.population} deleteProperty={this.deleteProperty} showChart={this.showChart}/>
         </div>
         )
     } else if (this.state.locations.length < 1) {

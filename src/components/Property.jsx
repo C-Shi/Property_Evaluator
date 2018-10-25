@@ -15,7 +15,6 @@ class Property extends Component {
     return (
         <div className="card neighbor-info">
           <div className="card-body">
-
               <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
 
               <table className="table table-bordered">

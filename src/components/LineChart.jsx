@@ -6,11 +6,11 @@ class LineChart extends Component{
         return (
             <div style={{width: '500px'}} className="line-chart">
             <Line
-                data={this.props.location.populationData}
+                data={this.props.population}
                 options={{
                   title: {
                     display: true,
-                    text: 'Population Change at '+ this.props.location.address,
+                    text: 'Population Change at Community',
                     fontSize: 25
                   },
                   legend: {
