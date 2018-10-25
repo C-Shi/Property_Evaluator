@@ -40,6 +40,7 @@ const APIModal = () => {
                 </tr>
               </tbody>
             </table>
+            <iframe src="https://codesandbox.io/embed/vrz29w075?autoresize=1&hidenavigation=1&module=%2Fsrc%2Findex.js&view=editor" style={{width:"100%", height:"400px", border:0,  overflow:"hidden"}} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Got it! <i className="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
