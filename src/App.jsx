@@ -33,6 +33,7 @@ class App extends Component {
     this.deleteProperty = this.deleteProperty.bind(this)
   }
 
+
   // this handler handle address covert event on search box submit
   // this handler also responsible for initialize ajax call
   handleSubmit(event) {

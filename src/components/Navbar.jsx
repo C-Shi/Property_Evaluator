@@ -6,11 +6,17 @@ import "../style/Navbar.css"
 class Navbar extends Component {
   componentDidMount() {
     GoogleMap.autocomplete()
-    window.$('[data-toggle="tooltip"]').tooltip();
+    window.$('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
   }
   componentDidUpdate() {
-    window.$('[data-toggle="tooltip"]').tooltip();
+    window.$('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
   }
+
+  componentWillUnmount() {
+    console.log(window.$('[data-toggle="tooltip"]'))
+    window.$('[data-toggle="tooltip"]').tooltip('hide')
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-default">
