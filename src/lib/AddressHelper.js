@@ -65,7 +65,6 @@ const AddressHelper = {
       formattedStreet.forEach((l) => {
         if (!isNaN(l)) {
           resultantStreet.push(l);
-          console.log("resultantStreet after it gets pushed: ", resultantStreet)
         }
       });
       return resultantStreet.join('');
