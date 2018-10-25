@@ -33,7 +33,7 @@
 #info-div {
   position: relative;
   height: 40%;
-  width: 35%; 
+  width: 35%;
   left: 65%;
   z-index: 1;
   background: white;
@@ -56,4 +56,3 @@
 #legend-div-crime {
   background: linear-gradient(to bottom, #f2f0f7, #dadaeb, #bcbddc, #9e9ec8,#756bb1, #54278f);
 }
-

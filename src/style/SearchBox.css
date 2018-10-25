@@ -6,26 +6,26 @@ h1 {
   width : 64vw;
   position: absolute;
   left: 17vw;
-  top: 15vh;
+  top: 10vh;
   opacity: 0.9;
 }
 
+.search form {
+  width: 64vw;
+}
 
 .search #searchBox {
-    /* height: 10vh; */
-    /* font-size:12vh; */
-    width: 56vw;
-    opacity: 0.8;
-    /* box-shadow: 0 0 20px #000; */
+  opacity: 0.8;
+  width: 80%;
 }
 
 .search .search-btn {
-  width: 8vw;
+  width: 20%;
+  min-width: 20%;
 }
 
 .search input[type=text] {
   background: #fff;
-  /* border-radius: 15px 0 0 15px; */
 }
 
 h1.typewriter {
@@ -34,7 +34,7 @@ h1.typewriter {
   border-right: .15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   letter-spacing: .15em; /* Adjust as needed */
-  animation: 
+  animation:
     typing 5s steps(40, end) infinite,
     blink-caret .75s step-end infinite;
 }
@@ -49,13 +49,3 @@ h1.typewriter {
 @keyframes blink-caret {
   from, to { border-color: transparent }
 }
-
-
-
-/* .search .fa-search {
-  height:100%;
-  width:100%;
-  top:-5px;
-  font-size: 2em;
-  vertical-align: middle;
-} */

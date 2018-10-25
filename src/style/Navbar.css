@@ -1,38 +1,42 @@
-.navbar-default  {
-  display: flex;
+.navbar  {
   height: 10vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
+  position: fixed;
+  width: 100vw;;
+  top: 0;
 }
 
 .navbar-links {
   color: #fff;
-  display: flex;
   height: 10vh;
   width: 50vw;
+  font-size: 4vh;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-}
-
-
-.navbar-links a {
-  margin: 5vw;
 }
 
 .navbar-search {
   opacity: 1;
-  max-width: 50vw;
-  justify-content: center;
+  width: 45vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.navbar-search #searchBox {
-  width: 40vw;
+.navbar #searchBox {
+  width: 30vw;
   border-radius: 5px;
   border: 1px solid #C7D8C6;
 }
 
-.btn-outline-secondary {
+.navbar-search-button {
+  width: 10vw;
   color: #fff;
   border-color: #fff;
 }
+
+
 
 @keyframes navbarScrollDown {
   from {

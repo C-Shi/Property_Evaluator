@@ -7,6 +7,7 @@ import SearchBox from './components/SearchBox.jsx'
 import ChoroplethMap from "./components/ChoroplethMap";
 // import styles
 import "./style/index.css"
+import "./style/mediaQueries.css"
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
@@ -58,7 +59,7 @@ class App extends Component {
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
-    newLocation.flood = flood;    
+    newLocation.flood = flood;
     // add a populationData property to state.locations.newLocation
     this.addPopulationData(newLocation);
     this.addCrime(newLocation);
@@ -69,15 +70,15 @@ class App extends Component {
     });
     // reset propertyValues of state
     this.addPropertyValues(newLocation);
-    
+
   }
-  
+
   // take in a newLocation, and assign a new property called populationData
   // that holds population number over 5 years
   addPopulationData(newLocation){
     let populationChange = [];
     newLocation.comm_population.reverse().forEach(each => {
-      populationChange.push(each.population);  
+      populationChange.push(each.population);
     })
 
     // collect data for line chart
@@ -93,7 +94,7 @@ class App extends Component {
     }
   }
 
-  // take in a newLocation and create an obj for each newLocation, 
+  // take in a newLocation and create an obj for each newLocation,
   // then add to propertyValues.datasets array
   addPropertyValues(newLocation){
     const colors = [
@@ -108,7 +109,7 @@ class App extends Component {
     // create or empty datasets in oldPropertyValues
     oldPropertyValues.datasets = [];
     this.state.locations.forEach(function(location, index){
-      // stores newLocation assessment value of recent 5 years in price array  
+      // stores newLocation assessment value of recent 5 years in price array
       let price = [];
       location.value.forEach(each => {
         price.push(Number(each.price))
@@ -125,7 +126,7 @@ class App extends Component {
       }
       // datasets contains newObj for each location
       oldPropertyValues.datasets.push(newObj);
-    }) 
+    })
 
     this.setState({propertyValues: oldPropertyValues}, () => {
       // console.log("---this.state.propertyValues", this.state.propertyValues);
