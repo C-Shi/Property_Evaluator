@@ -41,8 +41,6 @@ class ChoroplethMap extends Component {
   }
 
   componentDidMount(){
-    // this will create a map, taking two argument, data and color set
-    GoogleMap.initChoroplethMap(this.state.search, ChoroplethMapStyle, this.state.searchColor)
 
     ChoroplethMapHelper.fetchData()
     .then(res => {
@@ -54,8 +52,12 @@ class ChoroplethMap extends Component {
         tempCrime[community.name] = community.crime;
         tempSearch[community.name] = community.search
       })
-      this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation})
+      this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation}, () => {
+        console.log('hit')
+        this.changeDataHandler("search", this.state.searchColor)
+      })
     })
+    
   }
 
   changeDataHandler(dataType, colorSet) {
@@ -65,23 +67,23 @@ class ChoroplethMap extends Component {
   render() {
     return (
       <div className="container heatmap">
-
-        <form className="map-radio heatmap-radio">
-          <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>
-            <label className="form-check-label" for="inlineRadio1" >Search History</label>
+        <form className="map-radio heatmap-radio" >
+          <div className="form-check form-check-inline checked" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>
+            <label className="form-check-label" htmlFor="inlineRadio1" >Search History</label>
             <input className="form-check-input" type="radio" id="inlineRadio1" name="heatmap" defaultChecked/>
           </div>
           <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>
-            <label className="form-check-label" for="inlineRadio2" >Community Population</label>
+            <label className="form-check-label" htmlFor="inlineRadio2" >Community Population</label>
             <input className="form-check-input" type="radio" id="inlineRadio2"  name="heatmap" />
           </div>
           <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>
-            <label className="form-check-label" for="inlineRadio3" >Crime Rate</label>
+            <label className="form-check-label" htmlFor="inlineRadio3" >Crime Rate</label>
             <input className="form-check-input" type="radio" id="inlineRadio3"  name="heatmap" />
           </div>
         </form>
 
-        <div id="choropleth-map"></div>
+        <div id="choropleth-map">
+        </div>
       </div>
     )
   }

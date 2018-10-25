@@ -35,6 +35,7 @@ app.all('*',function(req,res,next)
 });
 
 app.get("/api", (req, res) => {
+  console.log(req.query)
   knex.select().table('communities')
   .then((data) => {
     res.json(data)

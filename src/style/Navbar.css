@@ -1,37 +1,72 @@
-.navbar-default  {
-  display: flex;
+.navbar  {
   height: 10vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
+  width: 100vw;
 }
 
 .navbar-links {
   color: #fff;
-  display: flex;
   height: 10vh;
   width: 50vw;
+  font-size: 3vh;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
-
-.navbar-links a {
-  margin: 5vw;
+.navbar-search-button {
+  width: 10vw;
+  color: #fff;
+  border-color: #fff;
 }
 
 .navbar-search {
   opacity: 1;
-  max-width: 50vw;
-  justify-content: center;
+  width: 45vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.navbar-search #searchBox {
-  width: 40vw;
+
+.navbar #searchBox {
+  width: 30vw;
   border-radius: 5px;
-  border: 1px solid #C7D8C6;
 }
 
-.btn-outline-secondary {
-  color: #fff;
+.navbar-links .navbar-link:hover {
+  cursor: pointer;
+}
+
+.navbar-links .navbar-link:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+
+.navbar-links .navbar-link:hover:after {
+	width: 100%;
+	background: #fff;
+}
+
+.modal-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.navbar .btn-outline-secondary {
   border-color: #fff;
+  color: #fff;
+  transition: background-color .5s, color .5s;
+}
+
+.navbar .btn-outline-secondary:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 @keyframes navbarScrollDown {

@@ -10,6 +10,8 @@ class Property extends Component {
         crimeTotal += this.props.location.crime[key];
       }
 
+      const lastYearPropertyValue = this.props.location.comm_population[this.props.location.comm_population.length - 1];
+
     return (
         <div className="card neighbor-info">
           <div className="card-body">
@@ -22,25 +24,17 @@ class Property extends Component {
                   <tr>
                       <th>Year </th>
                       <th>2017</th>
-                      <th>2016</th>
-                      <th>2015</th>
-                      <th>2014</th>
-                      <th>2013</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   <tr>
-                    <th>Population <button className="btn btn-danger">Show</button></th>
-                      {this.props.location.comm_population.map(each => {
-                      return (
-                        <td>{each.population}</td>
-                      )
-                      })}
+                    <th>Population</th>
+                    <td>{lastYearPropertyValue.population}</td>
                   </tr>
 
                   <tr>
-                      <th>Recorded Crime <button className="btn btn-danger">Show</button></th>
+                      <th>Recorded Crime</th>
                       <td colSpan="5">{crimeTotal}</td>
                   </tr>
                   <tr>
@@ -54,6 +48,7 @@ class Property extends Component {
                 </tbody>
               </table>
 
+              <i className="fa fa-times fa-2x delete" aria-hidden="true" onClick={() => {this.props.deleteProperty(this.props.location.address)}}></i>
           </div>
         </div>
       );
@@ -64,4 +59,3 @@ export default Property;
 // <button className="btn btn-danger">Show</button>
 //
 // <Chart location={this.props.location}/>
-// <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>

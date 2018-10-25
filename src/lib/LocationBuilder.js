@@ -48,7 +48,7 @@ const LocationBuilder = {
           this.saveSearch(res.data[0].name)
           .then(() => { return ;})
           this.addCommunityPopulationToLocation(newLocation, res.data)
-          LocationFinder.getCrime(newLocation.comm_name)
+          LocationFinder.getCrime(res.data[0].name)
           .then(res => {
               this.addCommunityCrimeToLocation(newLocation, res.data)
               LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)

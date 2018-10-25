@@ -43,6 +43,18 @@
   font-size: 1em;
 }
 
+.delete {
+  position: absolute;
+  top: 7%;
+  left: 92%;
+  font-size: 2em;
+  vertical-align: center;
+}
+
+.delete:hover {
+  cursor: pointer;
+}
+
 
 @keyframes propertySlide {
   0% {

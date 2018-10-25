@@ -7,6 +7,7 @@ import SearchBox from './components/SearchBox.jsx'
 import ChoroplethMap from "./components/ChoroplethMap";
 // import styles
 import "./style/index.css"
+import "./style/mediaQueries.css"
 // import helper
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
@@ -32,6 +33,7 @@ class App extends Component {
     this.deleteProperty = this.deleteProperty.bind(this)
   }
 
+
   // this handler handle address covert event on search box submit
   // this handler also responsible for initialize ajax call
   handleSubmit(event) {
@@ -42,7 +44,7 @@ class App extends Component {
     if (!googleAddress) return;
     // call helperfunction to obtain address for open data calgary
     const address = AddressHelper.convertGoogleAddress(googleAddress)
-
+    if (!address) return ;
     // setTimeout(() => { google.maps.event.trigger(map, "resize") }, 1);
     // update address query state and start querying open data
     this.setState({ address: address }, () => {
@@ -58,7 +60,7 @@ class App extends Component {
 
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
-    newLocation.flood = flood;    
+    newLocation.flood = flood;
     // add a populationData property to state.locations.newLocation
     this.addPopulationData(newLocation);
     this.addCrime(newLocation);
@@ -66,19 +68,18 @@ class App extends Component {
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
-      console.log("locations", this.state.locations);
     });
     // reset propertyValues of state
     this.addPropertyValues(newLocation);
-    
+
   }
-  
+
   // take in a newLocation, and assign a new property called populationData
   // that holds population number over 5 years
   addPopulationData(newLocation){
     let populationChange = [];
     newLocation.comm_population.reverse().forEach(each => {
-      populationChange.push(each.population);  
+      populationChange.push(each.population);
     })
 
     // collect data for line chart
@@ -94,7 +95,7 @@ class App extends Component {
     }
   }
 
-  // take in a newLocation and create an obj for each newLocation, 
+  // take in a newLocation and create an obj for each newLocation,
   // then add to propertyValues.datasets array
   addPropertyValues(newLocation){
     const colors = [
@@ -109,7 +110,7 @@ class App extends Component {
     // create or empty datasets in oldPropertyValues
     oldPropertyValues.datasets = [];
     this.state.locations.forEach(function(location, index){
-      // stores newLocation assessment value of recent 5 years in price array  
+      // stores newLocation assessment value of recent 5 years in price array
       let price = [];
       location.value.forEach(each => {
         price.push(Number(each.price))
@@ -126,7 +127,7 @@ class App extends Component {
       }
       // datasets contains newObj for each location
       oldPropertyValues.datasets.push(newObj);
-    }) 
+    })
 
     this.setState({propertyValues: oldPropertyValues}, () => {
       // console.log("---this.state.propertyValues", this.state.propertyValues);
@@ -183,7 +184,6 @@ addCrime(newLocation) {
   }
 
   pageChangeHandler(page) {
-    console.log(this.state.locations.length)
     this.setState({ page }, () => {
       if (page === "propertyList" && this.state.locations.length > 0){
         setTimeout(mapAnimator.mapForwardsAnimator, 10)
@@ -194,7 +194,6 @@ addCrime(newLocation) {
   }
 
   showChart(){
-    console.log("modal clicked");
     document.getElementById('bar-chart').classList.toggle("hidden")
   }
   
