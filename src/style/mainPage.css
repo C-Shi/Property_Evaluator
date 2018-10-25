@@ -9,3 +9,69 @@
   width: 50vw;
   height: 85vh;
 }
+
+.main-page-glass {
+  position: fixed;
+  left: 50vw;
+  border-radius: 1vw;
+  height: 80vh;
+  width: 50vw;
+  overflow: hidden;
+}
+
+.main-page-glass::after {
+  background: url('https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  position: fixed;
+  border-radius: 1vw;
+  height: 90vh;
+  width: 60vw;
+  top: 5vh;
+  opacity: 0.4;
+  filter: blur(10px);
+  z-index: -1;
+  animation: main-page-glass-slide-out 2s ease 0s 1 normal both;
+  content: ' ';
+
+}
+
+@keyframes main-page-glass-slide-out {
+  from {
+    left: 100vw;
+  }
+  to {
+    left: 50vw;
+  }
+}
+
+.bar-chart-btn {
+  background: grey;
+  background: rgba(100, 100, 100, 0.3);
+  color: rgb(240, 240, 240);
+
+  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+
+  border: 1px solid rgb(240, 240, 240);
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+
+  margin: 0;
+  margin-left: 5vw;
+}
+
+.bar-chart-btn:focus {
+  outline: none;
+}
+
+.bar-chart-btn:hover {
+  border: 1px solid rgb(200, 200, 200);
+  border-bottom: none;
+  background: lightgrey;
+  background: rgba(150, 150, 150, 0.3);
+}
+
+.bar-chart-btn-active {
+  border: 1px solid rgb(200, 200, 200);
+  border-bottom: none;
+  background: lightgrey;
+  background: rgba(150, 150, 150, 0.3);
+}
