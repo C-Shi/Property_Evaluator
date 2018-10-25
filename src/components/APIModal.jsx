@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const APIModal = () => {
   return(
-    <div className="modal fade" id="api-usage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div className="modal fade" id="api-usage" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
@@ -12,7 +12,7 @@ const APIModal = () => {
             </button>
           </div>
           <div className="modal-body">
-            <p>Website and Developers are welcome to use our API. All API request will be sent in json file. Request should be sent to <a href="http://localhost:3001/api" target="_blank">www.real-map.example/api</a></p>
+            <p>Website and Developers are welcome to use our API. All API request will be sent in json file. Request should be sent to <a href="http://localhost:3001/api/public" target="_blank">www.real-map.example/api/public</a></p>
             <p>What you can do get with our API: </p>
             <ul>
               <li><i className="fa fa-check" aria-hidden="true"></i> Collect Search Count for All Communities within Calgary</li>
@@ -40,6 +40,7 @@ const APIModal = () => {
                 </tr>
               </tbody>
             </table>
+            <iframe src="https://codesandbox.io/embed/vrz29w075?autoresize=1&hidenavigation=1&module=%2Fsrc%2Findex.js&view=editor" style={{width:"100%", height:"400px", border:0,  overflow:"hidden"}} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Got it! <i className="fa fa-thumbs-o-up" aria-hidden="true"></i></button>

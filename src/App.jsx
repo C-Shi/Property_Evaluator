@@ -55,7 +55,7 @@ class App extends Component {
         }
       })
     });
-    document.getElementById('searchBox').value = '';
+    // document.getElementById('searchBox').value = '';
   }
 
   // take in a newLocation with complete into and add to state.locations array
@@ -186,16 +186,20 @@ addCrime(newLocation) {
   pageChangeHandler(page) {
     this.setState({ page }, () => {
       if (page === "propertyList" && this.state.locations.length > 0){
+        document.getElementsByClassName('main-page')[0].classList.add('main-page-glass');
         setTimeout(mapAnimator.mapForwardsAnimator, 10)
-      } else if (this.state.locations.length === 0) {
+      } else if (this.state.locations.length === 0 && this.state.page !== "choropleth") {
         setTimeout(mapAnimator.mapBackwardsAnimator, 10)
+        document.getElementsByClassName('main-page')[0].classList.remove('main-page-glass');
       }
     })
   }
 
   showChart(){
     document.getElementById('bar-chart').classList.toggle("hidden")
+    document.getElementsByClassName('bar-chart-btn')[0].classList.toggle('bar-chart-btn-active');
   }
+
   render() {
     let renderedCompoenent;
     if (this.state.page === "choropleth") {
