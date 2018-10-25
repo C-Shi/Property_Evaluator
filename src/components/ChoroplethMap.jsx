@@ -43,7 +43,6 @@ class ChoroplethMap extends Component {
   componentDidMount(){
     // this will create a map, taking two argument, data and color set
     GoogleMap.initChoroplethMap(this.state.search, ChoroplethMapStyle, this.state.searchColor)
-
     ChoroplethMapHelper.fetchData()
     .then(res => {
       let tempSearch = {};
@@ -61,11 +60,9 @@ class ChoroplethMap extends Component {
   changeDataHandler(dataType, colorSet) {
     GoogleMap.initChoroplethMap(this.state[dataType], ChoroplethMapStyle, colorSet)
   }
-
   render() {
     return (
       <div className="container heatmap">
-
         <form className="map-radio heatmap-radio">
           <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>
             <label className="form-check-label" for="inlineRadio1" >Search History</label>
@@ -80,7 +77,6 @@ class ChoroplethMap extends Component {
             <input className="form-check-input" type="radio" id="inlineRadio3"  name="heatmap" />
           </div>
         </form>
-
         <div id="choropleth-map">
           <div id="legend-div-search"></div>
         </div>

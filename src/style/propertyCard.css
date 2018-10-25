@@ -33,14 +33,17 @@
 }
 
 .card-body .card-header {
-  align-self: flex-start;
+  align-self: center;
   width: 40vw;
 }
-
+.card-body .card-header .fa-times {
+  float: right;
+}
 .card-body table {
   width: 40vw;
   table-layout: auto;
-  font-size: 1em;
+  font-size: 1.2em;
+  height:15vw;
 }
 
 

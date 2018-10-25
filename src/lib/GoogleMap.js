@@ -25,7 +25,6 @@ const GoogleMap = {
     })
 
     const average = total / Object.keys(data).length
-
     this.initMap(10.5, style);
 
     this.map.data.loadGeoJson(
@@ -44,7 +43,7 @@ const GoogleMap = {
     // const legendDiv = document.createElement("div")
     // legendDiv.setAttribute("id", "legend-div")
     // mapDiv.appendChild(legendDiv)
-    
+
     // SET COLOR FOR EACH POLYGON
     this.map.data.setStyle(function(feature){
       let color;

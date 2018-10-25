@@ -9,51 +9,45 @@ class Property extends Component {
       for (var key in this.props.location.crime) {
         crimeTotal += this.props.location.crime[key];
       }
+      const lastYearPopulationValue = this.props.location.comm_population[this.props.location.comm_population.length - 1];
 
+      let lasteyearpriceInfo = this.props.location.value[this.props.location.value.length-5].price;
     return (
         <div className="card neighbor-info">
           <div className="card-body">
-
-              <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}</h5>
-
+              <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}
+              <button className="fa fa-times fa-2x" onClick={() => {this.props.deleteProperty(this.props.location.address)}}></button>
+              </h5>
               <table className="table table-bordered">
-
                 <thead>
                   <tr>
-                      <th>Year </th>
-                      <th>2017</th>
-                      <th>2016</th>
-                      <th>2015</th>
-                      <th>2014</th>
-                      <th>2013</th>
+                    <th>Year </th>
+                    <th>2018</th>
                   </tr>
                 </thead>
-
                 <tbody>
                   <tr>
-                    <th>Population <button className="btn btn-danger">Show</button></th>
-                      {this.props.location.comm_population.map(each => {
-                      return (
-                        <td>{each.population}</td>
-                      )
-                      })}
-                  </tr>
-
-                  <tr>
-                      <th>Recorded Crime <button className="btn btn-danger">Show</button></th>
-                      <td colSpan="5">{crimeTotal}</td>
+                    <th>Population</th>
+                    <td>{lastYearPopulationValue.population}</td>
                   </tr>
                   <tr>
-                    <th>Walkability Score:</th>
-                    <td colSpan="5">Score</td>
+                    <th>Property</th>
+                    <td>{lasteyearpriceInfo}</td>
                   </tr>
                   <tr>
-                    <th>Flood Risk:</th>
+                    <th>Recorded Crime</th>
+                    <td colSpan="5">{crimeTotal}</td>
+                  </tr>
+                  <tr>
+                    <th>Walkability Score</th>
+                    <td colSpan="5"></td>
+                  </tr>
+                  <tr>
+                    <th>Flood Risk</th>
                     <td colSpan="5">{this.props.location.flood ? 'true' : 'false'}</td>
                   </tr>
                 </tbody>
               </table>
-
           </div>
         </div>
       );
