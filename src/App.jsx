@@ -197,6 +197,7 @@ addCrime(newLocation) {
     console.log("modal clicked");
     document.getElementById('bar-chart').classList.toggle("hidden")
   }
+  
   render() {
     let renderedCompoenent;
     if (this.state.page === "choropleth") {

@@ -8,7 +8,7 @@ const app = require("express")(),
       morgan      = require('morgan'),
       knexLogger  = require('knex-logger');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4001;
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
