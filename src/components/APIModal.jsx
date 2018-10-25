@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const APIModal = () => {
   return(
-    <div className="modal fade" id="api-usage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div className="modal fade" id="api-usage" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
