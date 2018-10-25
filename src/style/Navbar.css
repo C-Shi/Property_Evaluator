@@ -1,9 +1,7 @@
 .navbar  {
   height: 10vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
-  position: fixed;
-  width: 100vw;;
-  top: 0;
+  width: 100vw;
 }
 
 .navbar-links {
@@ -16,6 +14,12 @@
   align-items: center;
 }
 
+.navbar-search-button {
+  width: 10vw;
+  color: #fff;
+  border-color: #fff;
+}
+
 .navbar-search {
   opacity: 1;
   width: 45vw;
@@ -24,19 +28,35 @@
   align-items: flex-end;
 }
 
+
 .navbar #searchBox {
   width: 30vw;
   border-radius: 5px;
-  border: 1px solid #C7D8C6;
 }
 
-.navbar-search-button {
-  width: 10vw;
-  color: #fff;
-  border-color: #fff;
+.navbar-links .navbar-link:hover {
+  cursor: pointer;
 }
 
+.navbar-links .navbar-link:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
 
+.navbar-links .navbar-link:hover:after {
+	width: 100%;
+	background: #fff;
+}
+
+.modal-body ul {
+  list-style: none;
+  padding-left: 0;
+}
 
 @keyframes navbarScrollDown {
   from {

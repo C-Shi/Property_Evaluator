@@ -24,6 +24,17 @@ h1 {
   min-width: 20%;
 }
 
+.search .btn-outline-secondary {
+  border-color: #fff;
+  color: #fff;
+  transition: background-color .5s, color .5s;
+}
+
+.search .btn-outline-secondary:hover {
+  background-color: #fff;
+  color: #000;
+}
+
 .search input[type=text] {
   background: #fff;
 }
