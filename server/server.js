@@ -6,9 +6,11 @@ const app = require("express")(),
       knexConfig  = require("./knexfile"),
       knex       = require("knex")(knexConfig[ENV]),
       morgan      = require('morgan'),
+      pg          = require("pg")
       knexLogger  = require('knex-logger');
 
 const PORT = process.env.PORT || 3001;
+const queryHelper = require('./api/query-helper')
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -34,12 +36,44 @@ app.all('*',function(req,res,next)
     next();
 });
 
+// this route is for our internal use
 app.get("/api", (req, res) => {
-  console.log(req.query)
   knex.select().table('communities')
   .then((data) => {
     res.json(data)
   })
+})
+
+// this route is for external use with different query
+app.get("/api/public", (req, res) => {
+  const client = new pg.Client({
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASS,
+    database : process.env.DB_NAME,
+    host     : process.env.DB_HOST,
+    port     : 5432,
+  });
+  
+  client.connect((err) => {
+    if (err) {
+      return console.error("Connection Error", err);
+    }
+
+    queryHelper.queryParser(req.query)
+    .then(function(q){
+      queryHelper.queryBuilder(q)
+      .then((query) => {
+        console.log(query)
+        client.query(query, (err, result) => {
+          if (err) {
+            return console.error("error running query", err);
+          }
+          res.json(result.rows); //output: 1
+          client.end();
+        })
+      })
+    })
+  });
 })
 
 app.post("/api/search", (req, res) => {
