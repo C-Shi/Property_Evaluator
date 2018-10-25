@@ -9,9 +9,9 @@ class Property extends Component {
       for (var key in this.props.location.crime) {
         crimeTotal += this.props.location.crime[key];
       }
-      const lastYearPopulationValue = this.props.location.comm_population[this.props.location.comm_population.length - 1];
-
-      let lasteyearpriceInfo = this.props.location.value[this.props.location.value.length-5].price;
+      const lastYearPopulationValue = this.props.location.comm_population[0].population;
+      let lastYearPriceInfo = this.props.location.value[0].price;
+      lastYearPriceInfo = (lastYearPriceInfo > 1000000) ? lastYearPriceInfo/1000000 + 'M' : String(lastYearPriceInfo/1000) + 'K'
     return (
         <div className="card neighbor-info">
           <div className="card-body">
@@ -28,19 +28,15 @@ class Property extends Component {
                 <tbody>
                   <tr>
                     <th>Population</th>
-                    <td>{lastYearPopulationValue.population}</td>
+                    <td>{lastYearPopulationValue}</td>
                   </tr>
                   <tr>
-                    <th>Property</th>
-                    <td>{lasteyearpriceInfo}</td>
+                    <th>Property Value</th>
+                    <td>{lastYearPriceInfo}</td>
                   </tr>
                   <tr>
-                    <th>Recorded Crime</th>
-                    <td colSpan="5">{crimeTotal}</td>
-                  </tr>
-                  <tr>
-                    <th>Walkability Score</th>
-                    <td colSpan="5"></td>
+                    <th>Crime Rate</th>
+                    <td colSpan="5">{String((crimeTotal/Number(lastYearPopulationValue)).toFixed(2))} case/person</td>
                   </tr>
                   <tr>
                     <th>Flood Risk</th>
@@ -54,8 +50,3 @@ class Property extends Component {
     }
   }
 export default Property;
-
-// <button className="btn btn-danger">Show</button>
-//
-// <Chart location={this.props.location}/>
-// <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>

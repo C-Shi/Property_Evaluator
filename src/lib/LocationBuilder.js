@@ -66,7 +66,7 @@ const LocationBuilder = {
   saveSearch: function(community) {
     return axios({
         method: "post",
-        url: "http://localhost:4001/api/search",
+        url: "http://localhost:3001/api/search",
         data: {
             community
         }
