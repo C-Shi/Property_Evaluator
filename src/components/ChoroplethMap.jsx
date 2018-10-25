@@ -56,7 +56,7 @@ class ChoroplethMap extends Component {
         this.changeDataHandler("search", this.state.searchColor)
       })
     })
-    
+
   }
 
   changeDataHandler(dataType, colorSet) {
