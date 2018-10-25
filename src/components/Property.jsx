@@ -29,12 +29,12 @@ class Property extends Component {
 
                 <tbody>
                   <tr>
-                    <th>Population <button className="btn btn-danger">Show</button></th>
+                    <th>Population</th>
                     <td>{lastYearPropertyValue.population}</td>
                   </tr>
 
                   <tr>
-                      <th>Recorded Crime <button className="btn btn-danger">Show</button></th>
+                      <th>Recorded Crime</th>
                       <td colSpan="5">{crimeTotal}</td>
                   </tr>
                   <tr>
@@ -48,8 +48,7 @@ class Property extends Component {
                 </tbody>
               </table>
 
-              <button className="btn btn-danger" onClick={() => {this.props.deleteProperty(this.props.location.address)}}>Delete</button>
-
+              <i className="fa fa-times fa-2x delete" aria-hidden="true" onClick={() => {this.props.deleteProperty(this.props.location.address)}}></i>
           </div>
         </div>
       );

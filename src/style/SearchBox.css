@@ -15,13 +15,24 @@ h1 {
 }
 
 .search #searchBox {
-  opacity: 0.8;
+  opacity: 0.9;
   width: 80%;
 }
 
 .search .search-btn {
   width: 20%;
   min-width: 20%;
+}
+
+.search .btn-outline-secondary {
+  border-color: #fff;
+  color: #fff;
+  transition: background-color .5s, color .5s;
+}
+
+.search .btn-outline-secondary:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .search input[type=text] {

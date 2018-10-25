@@ -30,7 +30,7 @@ const GoogleMap = {
 
     const average = total / Object.keys(data).length
 
-    this.initMap(10.5, style);
+    this.initMap(10, style);
 
     this.map.data.loadGeoJson(
       'https://data.calgary.ca/resource/surr-xmvs.geojson'

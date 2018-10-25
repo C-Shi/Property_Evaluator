@@ -62,7 +62,7 @@ const AddressHelper = {
     let resultant = address;
 
     resultant = (resultant.split(',')[0]).split(' ');
-
+    if (resultant.length < 2) return false;
     // working on the elements
     let quadrant = resultant.pop().toLowerCase();
     let road = resultant.pop().toLowerCase();
