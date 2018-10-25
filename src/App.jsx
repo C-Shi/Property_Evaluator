@@ -142,8 +142,8 @@ class App extends Component {
       let newObj = {
         label: location.address,
         backgroundColor: `rgba( ${colors[index]}, 0.6)`,
-        hoverBackgroundColor: `rgba( ${colors[index]}, 0.8)`,
-        hoverBorderColor: `rgba( ${colors[index]}, 1)`,
+        borderColor: `rgba( ${colors[index]}, 1)`,
+        pointBorderColor: 'black',
         data: comm_population,
       }
       // datasets contains newObj for each location

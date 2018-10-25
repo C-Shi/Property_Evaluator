@@ -10,13 +10,15 @@ class LineChart extends Component{
                 options={{
                   title: {
                     display: true,
-                    text: 'Population Change at Community',
-                    fontSize: 25
+                    text: 'Community Population',
+                    fontSize: 20,
+                    fontColor: 'black'
                   },
                   legend: {
                     display: true,
-                    position: 'right'
-                  },
+                    position: 'right',
+                    borderColor: 'black'
+                  }
                 }}
             />
             </div>
