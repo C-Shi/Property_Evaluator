@@ -79,7 +79,7 @@ class PropertyList extends Component {
       property = property.reverse();
 
       const button = (this.props.page === 'propertyList') ?
-      (<button className = "bar-chart-btn" onClick={()=> {this.props.showChart()}}> Display Bar Chart</button>) :
+      (<button className = "bar-chart-btn" onClick={()=> {this.props.showChart()}}>Comparison Charts</button>) :
       ("");
 
       const barChart = (this.props.page === "propertyList") ?

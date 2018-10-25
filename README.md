@@ -20,5 +20,4 @@
 - validate queries wont crash the search
 
 ## Styling focus
-- resize searchbar
-- remove shadows and borders
+- fix search animations to be smoother

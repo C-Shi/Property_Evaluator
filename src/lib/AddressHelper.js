@@ -58,6 +58,20 @@ const AddressHelper = {
     way:'WY'
   },
 
+  streetNameHelper: function(street) {
+    if (!isNaN(street[0])) {
+      let formattedStreet = street.split('');
+      let resultantStreet = [];
+      formattedStreet.forEach((l) => {
+        if (!isNaN(l)) {
+          resultantStreet.push(l);
+        }
+      });
+      return resultantStreet.join('');
+    }
+    return street;
+  },
+
   convertGoogleAddress: function(address){
     let resultant = address;
 
@@ -71,6 +85,11 @@ const AddressHelper = {
 
     quadrant = ( this.quadrants[quadrant] ? this.quadrants[quadrant] : quadrant );
     road = ( this.roadname[road] ? this.roadname[road] : road );
+
+    if (resultant.length) {
+      const streetName = this.streetNameHelper(resultant.pop().toLowerCase());
+      resultant.push(streetName);
+    }
 
     // putting the resultant back together
     resultant.push(road);
