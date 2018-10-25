@@ -53,7 +53,6 @@ class ChoroplethMap extends Component {
         tempSearch[community.name] = community.search
       })
       this.setState({crime: tempCrime, search: tempSearch, population: tempPopulation}, () => {
-        console.log('hit')
         this.changeDataHandler("search", this.state.searchColor)
       })
     })
