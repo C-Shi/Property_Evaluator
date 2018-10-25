@@ -12,7 +12,7 @@ const APIModal = () => {
             </button>
           </div>
           <div className="modal-body">
-            <p>Website and Developers are welcome to use our API. All API request will be sent in json file. Request should be sent to <a href="http://localhost:3001/api" target="_blank">www.real-map.example/api</a></p>
+            <p>Website and Developers are welcome to use our API. All API request will be sent in json file. Request should be sent to <a href="http://localhost:3001/api/public" target="_blank">www.real-map.example/api/public</a></p>
             <p>What you can do get with our API: </p>
             <ul>
               <li><i className="fa fa-check" aria-hidden="true"></i> Collect Search Count for All Communities within Calgary</li>
