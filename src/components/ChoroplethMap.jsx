@@ -56,7 +56,7 @@ class ChoroplethMap extends Component {
         this.changeDataHandler("search", this.state.searchColor)
       })
     })
-    
+
   }
 
   changeDataHandler(dataType, colorSet) {
@@ -66,23 +66,18 @@ class ChoroplethMap extends Component {
   render() {
     return (
       <div className="container heatmap">
-        <form className="map-radio heatmap-radio" >
-          <div className="form-check form-check-inline checked" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>
-            <label className="form-check-label" htmlFor="inlineRadio1" >Search History</label>
-            <input className="form-check-input" type="radio" id="inlineRadio1" name="heatmap" defaultChecked/>
-          </div>
-          <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>
-            <label className="form-check-label" htmlFor="inlineRadio2" >Community Population</label>
-            <input className="form-check-input" type="radio" id="inlineRadio2"  name="heatmap" />
-          </div>
-          <div className="form-check form-check-inline" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>
-            <label className="form-check-label" htmlFor="inlineRadio3" >Crime Rate</label>
-            <input className="form-check-input" type="radio" id="inlineRadio3"  name="heatmap" />
-          </div>
-        </form>
 
-        <div id="choropleth-map">
+        <div className="map-radio heatmap-tabs" >
+
+          <button className="heatmap-tab" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>Search History</button>
+
+          <button className="heatmap-tab" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>Community Population</button>
+
+          <button className="heatmap-tab" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>Crime Rate</button>
+
         </div>
+
+        <div id="choropleth-map"></div>
       </div>
     )
   }
