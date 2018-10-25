@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Property from './Property';
-import BarChart from './BarChart';
+import BarChart from './BarChart.jsx';
 import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
@@ -14,7 +14,6 @@ class PropertyList extends Component {
       marker: 0
     }
   }
-
   componentDidMount() {
     this.googleMaps = window.google.maps;
     const location = { lat: 51.044270 , lng: -114.062019};
