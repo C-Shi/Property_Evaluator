@@ -12,13 +12,13 @@ const APIModal = () => {
             </button>
           </div>
           <div className="modal-body">
-            <p>Website and Developers are welcome to use our API. All API request will be sent in json file. Request should be sent to <a href="#">www.real-map.example/api</a></p>
+            <p>Website and Developers are welcome to use our API. All API request will be sent in json file. Request should be sent to <a href="http://localhost:3001/api" target="_blank">www.real-map.example/api</a></p>
             <p>What you can do get with our API: </p>
             <ul>
-              <li><i class="fa fa-check" aria-hidden="true"></i> Collect Search Count for All Communities within Calgary</li>
-              <li><i class="fa fa-check" aria-hidden="true"></i> Use our build-in filter function to query specific type of data</li>
+              <li><i className="fa fa-check" aria-hidden="true"></i> Collect Search Count for All Communities within Calgary</li>
+              <li><i className="fa fa-check" aria-hidden="true"></i> Use our build-in filter function to query specific type of data</li>
             </ul>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Query</th>
