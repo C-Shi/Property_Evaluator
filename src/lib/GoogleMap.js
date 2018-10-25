@@ -29,6 +29,7 @@ const GoogleMap = {
     })
 
     const average = total / Object.keys(data).length
+    this.initMap(10.5, style);
 
     this.initMap(10, style);
 
@@ -59,6 +60,10 @@ const GoogleMap = {
 
 
     // create legend label
+    // const legendDiv = document.createElement("div")
+    // legendDiv.setAttribute("id", "legend-div")
+    // mapDiv.appendChild(legendDiv)
+
     const legendDiv = document.createElement("div")
     legendDiv.setAttribute("class", "legend")
     legendDiv.setAttribute("id", legendBar)
@@ -74,7 +79,7 @@ const GoogleMap = {
     legendDiv.appendChild(ave)
     legendDiv.appendChild(most)
     mapDiv.appendChild(legendDiv)
-    
+
     // SET COLOR FOR EACH POLYGON
     this.map.data.setStyle(function(feature){
       let color;
