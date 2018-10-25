@@ -4,7 +4,7 @@ import {Bar} from 'react-chartjs-2';
 class BarChart extends Component{
     render(){
         return (
-            <div id="bar-chart" className="hidden">
+            <div id="bar-chart">
             <Bar
                 data={this.props.propertyValues}
                 options={{
