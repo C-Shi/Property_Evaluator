@@ -44,7 +44,7 @@ class Property extends Component {
                     <td>{lastYearPriceInfo/1000}</td>
                   </tr>
                   <tr>
-                    <th>Crime Rate <i className="fa fa-caret-down" id="crime-breakdown" aria-hidden="true"></i> <small>(case/person)</small></th>
+                    <th id="crime-breakdown">Crime Rate <i className="fa fa-caret-down" aria-hidden="true"></i> <small>(case/person)</small></th>
                     <td>{String((crimeTotal/Number(lastYearPopulationValue)).toFixed(2))}</td>
                   </tr>
                   <tr>
@@ -72,14 +72,14 @@ class Property extends Component {
                   <tr>
                     <th>Walkability Score</th>
                     <td>
-                      {this.props.location.walkScore.score || 'N/A'} 
+                      {this.props.location.walkScore.score || 'N/A'}
                       <small> {this.props.location.walkScore.description || 'N/A'}</small>
                     </td>
                   </tr>
                   <tr>
                     <th>Transit Score</th>
                     <td>
-                      {this.props.location.transitScore.score || 'N/A'} 
+                      {this.props.location.transitScore.score || 'N/A'}
                       <small> {this.props.location.transitScore.description || 'N/A'}</small>
                     </td>
                   </tr>
