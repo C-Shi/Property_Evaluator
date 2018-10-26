@@ -23,8 +23,8 @@ class Property extends Component {
           <div className="card-body">
               <div className="card-header">
                 <button className="fa fa-times fa-2x" onClick={() => {this.props.deleteProperty(this.props.location.address)}}></button>
-                <h6 className="text-left"><strong>Address:</strong> {this.props.location.address}</h6>
-                <h6 className="text-left"><strong>Community:</strong> {this.props.location.comm_name}</h6>
+                <h5 className="text-left"><strong>Address:</strong> {this.props.location.address}</h5>
+                <h5 className="text-left"><strong>Community:</strong> {this.props.location.comm_name}</h5>
               </div>
 
               <table className="table table-hover">
@@ -56,13 +56,13 @@ class Property extends Component {
                         options={{
                           title: {
                             display: true,
-                            fontSize: 25
+                            fontSize: 20
                           },
                           legend: {
-                            display: true,
+                            display: false,
                             position: 'right',
                             labels: {
-                              fontColor: "#fff"
+                              fontColor: "#fff",
                             }
                           },
                         }}

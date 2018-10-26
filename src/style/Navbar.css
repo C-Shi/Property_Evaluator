@@ -1,14 +1,15 @@
 .navbar  {
   height: 10vh;
+  margin-top:1vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
   width: 100vw;
 }
 
 .navbar-links {
-  color: #fff;
+  color: rgb(220, 220, 220);
   height: 10vh;
   width: 50vw;
-  font-size: 3vh;
+  font-size: 1.7em;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -51,7 +52,7 @@
 
 .navbar-links .navbar-link:hover:after {
 	width: 100%;
-	background: #fff;
+	background: rgb(220, 220, 220);
 }
 
 .modal-body ul {
@@ -60,14 +61,24 @@
 }
 
 .navbar .btn-outline-secondary {
+<<<<<<< HEAD
   border-color: rgba(255, 255, 255, 0.9);
   color: rgba(255, 255, 255, 0.9);
+=======
+  border-color: rgb(220, 220, 220);
+  color: rgb(220, 220, 220);
+>>>>>>> 17c453d85d320b1e4ba02289a34a95e31ebbfd2c
   transition: background-color .5s, color .5s;
 }
 
 .navbar .btn-outline-secondary:hover {
+<<<<<<< HEAD
   background-color: rgba(255, 255, 255, 0.9);
   color: rgba(17, 17, 17, 0.9);
+=======
+  background-color: rgb(220, 220, 220);
+  color: #111;
+>>>>>>> 17c453d85d320b1e4ba02289a34a95e31ebbfd2c
 }
 
 @keyframes navbarScrollDown {
