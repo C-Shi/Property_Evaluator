@@ -77,6 +77,24 @@ const LocationBuilder = {
                       callback2();
                   })
               })
+              .catch(err => {
+                  const noFound = {
+                      walkscore: '',
+                      description: `${err.message}`,
+                      transit: {
+                          score: '',
+                          description: `${err.message}`
+                      }
+                  }
+                  this.addWalkScoreToLocation(newLocation, noFound)
+                  LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)
+                  .then((res) => {
+                      // all info is ready in a templateVar 'newLocation'
+                      // ready to update locations lists
+                      callback(newLocation, Boolean(res.data.length))
+                      callback2();
+                  })
+              })
           })
         })
     })
