@@ -44,7 +44,7 @@ class Property extends Component {
                     <td>{lastYearPriceInfo/1000}</td>
                   </tr>
                   <tr>
-                    <th>Crime Rate <i className="fa fa-caret-down" id="crime-breakdown" aria-hidden="true"></i> <small>(case/person)</small></th>
+                    <th id="crime-breakdown">Crime Rate <i className="fa fa-caret-down" aria-hidden="true"></i> <small>(case/person)</small></th>
                     <td>{String((crimeTotal/Number(lastYearPopulationValue)).toFixed(2))}</td>
                   </tr>
                   <tr>
@@ -56,13 +56,13 @@ class Property extends Component {
                         options={{
                           title: {
                             display: true,
-                            fontSize: 25
+                            fontSize: 20
                           },
                           legend: {
-                            display: true,
+                            display: false,
                             position: 'right',
                             labels: {
-                              fontColor: "#fff"
+                              fontColor: "#fff",
                             }
                           },
                         }}
