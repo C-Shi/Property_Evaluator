@@ -1,7 +1,7 @@
 .property-list {
   border-radius: 1vw;
   height: 80vh;
-  width: 50vw;
+  width: 55vw;
   top: 10vh;
   overflow: scroll;
 }
@@ -29,15 +29,6 @@
   }
   100% {
     left: 0;
-  }
-}
-
-@keyframes propertyListSlideOut {
-  0% {
-    left: 100vw;
-  }
-  100% {
-    left: 100vw;
   }
 }
 

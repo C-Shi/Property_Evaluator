@@ -6,21 +6,21 @@
 }
 
 .main-page-map-placeholder {
-  width: 50vw;
+  width: 60vw;
   height: 85vh;
 }
 
 .main-page-glass {
   position: fixed;
-  left: 50vw;
+  left: 45vw;
   border-radius: 1vw;
   height: 80vh;
-  width: 50vw;
+  width: 60vw;
   overflow: hidden;
 }
 
 .main-page-glass::after {
-  background: #36454f;
+  background: rgba(0,0,0,0.6);
   position: fixed;
   border-radius: 1vw;
   height: 90vh;
@@ -39,7 +39,7 @@
     left: 100vw;
   }
   to {
-    left: 50vw;
+    left: 45vw;
   }
 }
 
