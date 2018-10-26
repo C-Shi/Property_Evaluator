@@ -11,45 +11,35 @@
   overflow: hidden;
 }
 
-.heatmap-tab::after {
-  background: url('https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-  position: fixed;
-  border-radius: 8px 8px 0 0;
-  height: 5vh;
-  width: 15vw;
-  top: 10vh;
-  filter: blur(10px);
-  z-index: -1;
-  content: ' ';
-  opacity: 0.7;
-}
-
 .heatmap-tab {
   display: flex;
-  height: 100%;
   width: 15vw;
   background: none;
-  border: 2px solid #1C2429;
+  border: 1px solid rgb(220, 220, 220);
   border-radius: 8px 8px 0 0;
-  background-color: rgba(64, 82, 94, 0.7);
+  background-color: rgba(17, 17, 17, 0.7);
   border-bottom: none;
-  white-space: nowrap;
+  overflow: hidden;
+  color: rgb(220, 220, 220);
 }
 
 .heatmap-tab:focus {
   outline: none;
+  border: 1px solid rgb(220, 220, 220);
 }
 
 .heatmap-tab:hover {
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid rgba(17, 17, 17, 0.7);
   border-bottom: none;
   background: lightgrey;
-  background: rgba(150, 150, 150, 0.3);
+  background: rgb(210, 210, 210);
+  color: rgba(17, 17, 17, 0.7);
 }
 
 .heatmap-tab-active {
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid rgba(17, 17, 17, 0.7);
   border-bottom: none;
   background: lightgrey;
-  background: rgba(150, 150, 150, 0.3);
+  background: rgb(210, 210, 210);
+  color: rgba(17, 17, 17, 0.7);
 }
