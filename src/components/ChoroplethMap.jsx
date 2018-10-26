@@ -36,7 +36,8 @@ class ChoroplethMap extends Component {
       // this is a temporary setup for heat map
       search: {},
       population: {},
-      crime: {}
+      crime: {},
+      currentActiveTab: "search"
     }
   }
 
@@ -60,7 +61,13 @@ class ChoroplethMap extends Component {
   }
 
   changeDataHandler(dataType, colorSet) {
-    GoogleMap.initChoroplethMap(this.state[dataType], ChoroplethMapStyle, colorSet)
+    GoogleMap.initChoroplethMap(this.state[dataType], ChoroplethMapStyle, colorSet);
+
+    document.getElementById(this.state.currentActiveTab).classList.remove('heatmap-tab-active');
+    this.setState({ currentActiveTab: dataType }, () => {
+      console.log(document.getElementById(this.state.currentActiveTab));
+      document.getElementById(this.state.currentActiveTab).classList.add('heatmap-tab-active');
+    });
   }
 
   render() {
@@ -69,11 +76,11 @@ class ChoroplethMap extends Component {
 
         <div className="map-radio heatmap-tabs" >
 
-          <button className="heatmap-tab" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>Search History</button>
+          <button id="search" className="heatmap-tab heatmap-tab-active" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>Search History</button>
 
-          <button className="heatmap-tab" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>Community Population</button>
+          <button id="population" className="heatmap-tab" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>Community Population</button>
 
-          <button className="heatmap-tab" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>Crime Rate</button>
+          <button id="crime" className="heatmap-tab" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>Crime Rate</button>
 
         </div>
 
