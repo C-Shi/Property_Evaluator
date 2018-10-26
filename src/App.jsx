@@ -237,7 +237,7 @@ addCrime(newLocation) {
             handleSubmit={this.handleSubmit}
             pageChangeHandler={this.pageChangeHandler}
           />
-          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} population={this.state.population} deleteProperty={this.deleteProperty} showChart={this.showChart}/>
+          <PropertyList locations={this.state.locations} page={this.state.page} propertyValues={this.state.propertyValues} population={this.state.population} deleteProperty={this.deleteProperty} pageChangeHandler={this.pageChangeHandler}/>
         </div>
         )
     } else if (this.state.locations.length < 1) {

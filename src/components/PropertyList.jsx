@@ -30,6 +30,7 @@ class PropertyList extends Component {
     toChoroplethButton.setAttribute("class", "to-choropleth")
     toChoroplethButton.textContent = "Community Statistics"
     toChoroplethButton.addEventListener("click", () => {
+      console.log(this.props)
       this.props.pageChangeHandler("choropleth")
     })
     mapDiv.appendChild(toChoroplethButton);
