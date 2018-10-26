@@ -13,28 +13,14 @@
 
 .heatmap-tab {
   display: flex;
-  height: 100%;
   width: 15vw;
   background: none;
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid rgb(220, 220, 220);
   border-radius: 8px 8px 0 0;
   background-color: rgba(17, 17, 17, 0.7);
   border-bottom: none;
-  white-space: nowrap;
-  color: rgb(200, 200, 200);
-}
-
-.heatmap-tab::after {
-  background: white;
-  position: fixed;
-  border-radius: 8px 8px 0 0;
-  height: 10vh;
-  width: 20vw;
-  top: 7.5vh;
-  filter: blur(10px);
-  z-index: -1;
-  content: ' ';
-  opacity: 0.6;
+  overflow: hidden;
+  color: rgb(220, 220, 220);
 }
 
 .heatmap-tab:focus {
@@ -42,22 +28,18 @@
   border: 1px solid rgb(220, 220, 220);
 }
 
-.heamtap-tab:focus .heatmap-tab:after {
-  background: rgb(200, 200, 200);
-}
-
 .heatmap-tab:hover {
-  border: 1px solid rgb(50, 50, 50);
+  border: 1px solid rgba(17, 17, 17, 0.7);
   border-bottom: none;
   background: lightgrey;
-  background: rgba(150, 150, 150, 0.3);
-  color: rgb(20, 20, 20);
+  background: rgb(200, 200, 200);
+  color: rgba(17, 17, 17, 0.7);
 }
 
 .heatmap-tab-active {
-  border: 1px solid rgb(50, 50, 50);
+  border: 1px solid rgba(17, 17, 17, 0.7);
   border-bottom: none;
   background: lightgrey;
-  background: rgba(150, 150, 150, 0.3);
-  color: rgb(20, 20, 20);
+  background: rgb(200, 200, 200);
+  color: rgba(17, 17, 17, 0.7);
 }

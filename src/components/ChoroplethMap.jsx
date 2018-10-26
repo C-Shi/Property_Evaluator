@@ -74,11 +74,11 @@ class ChoroplethMap extends Component {
     return (
       <div className="container heatmap">
 
-        <div className="map-radio heatmap-tabs" >
+        <div className="heatmap-tabs" >
 
           <button id="search" className="heatmap-tab heatmap-tab-active" onClick={() => {this.changeDataHandler("search", this.state.searchColor)}}>Search History</button>
 
-          <button id="population" className="heatmap-tab" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}>Community Population</button>
+          <button id="population" className="heatmap-tab" onClick={() => {this.changeDataHandler("population", this.state.populationColor)}}><span className="heatmap-tab-longname">Community&nbsp;</span>Population</button>
 
           <button id="crime" className="heatmap-tab" onClick={() => {this.changeDataHandler("crime", this.state.crimeColor)}}>Crime Rate</button>
 

@@ -89,7 +89,7 @@ class Property extends Component {
                   </tr>
                 </tbody>
               </table>
-
+              <div className="neighbor-between"> </div>
           </div>
         </div>
       );
