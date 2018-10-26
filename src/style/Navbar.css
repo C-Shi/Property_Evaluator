@@ -61,24 +61,14 @@
 }
 
 .navbar .btn-outline-secondary {
-<<<<<<< HEAD
-  border-color: rgba(255, 255, 255, 0.9);
-  color: rgba(255, 255, 255, 0.9);
-=======
   border-color: rgb(220, 220, 220);
   color: rgb(220, 220, 220);
->>>>>>> 17c453d85d320b1e4ba02289a34a95e31ebbfd2c
   transition: background-color .5s, color .5s;
 }
 
 .navbar .btn-outline-secondary:hover {
-<<<<<<< HEAD
-  background-color: rgba(255, 255, 255, 0.9);
-  color: rgba(17, 17, 17, 0.9);
-=======
   background-color: rgb(220, 220, 220);
   color: #111;
->>>>>>> 17c453d85d320b1e4ba02289a34a95e31ebbfd2c
 }
 
 @keyframes navbarScrollDown {
