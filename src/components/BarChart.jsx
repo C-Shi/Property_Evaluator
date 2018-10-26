@@ -11,7 +11,8 @@ class BarChart extends Component{
                   title: {
                     display: true,
                     text: 'Property Value Comparison',
-                    fontSize: 25
+                    fontSize: 25,
+                    fontColor:'white'
                   },
                   legend: {
                     display: true,
@@ -20,7 +21,20 @@ class BarChart extends Component{
                   scales: {
                     yAxes: [{
                       ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        fontColor:'white',
+                        fontWeight:'bold'
+
+
+                      }
+                    }],
+                    xAxes: [{
+                      ticks: {
+                        fontColor:'white',
+                        fontWeight:'bold'
+
+
+
                       }
                     }]
                   }
