@@ -20,13 +20,13 @@
 }
 
 .main-page-glass::after {
-  background: url('https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background: #36454f;
   position: fixed;
   border-radius: 1vw;
   height: 90vh;
   width: 60vw;
   top: 5vh;
-  opacity: 0.4;
+  opacity: 0.7;
   filter: blur(10px);
   z-index: -1;
   animation: main-page-glass-slide-out 2s ease 0s 1 normal both;

@@ -18,6 +18,7 @@ class Property extends Component {
               <h5 className="card-header">{this.props.location.address} - {this.props.location.comm_name}
                 <button className="fa fa-times fa-2x" onClick={() => {this.props.deleteProperty(this.props.location.address)}}></button>
               </h5>
+
               <table className="table table-bordered">
                 <thead>
                   <tr>
@@ -44,6 +45,7 @@ class Property extends Component {
                   </tr>
                 </tbody>
               </table>
+
           </div>
         </div>
       );
