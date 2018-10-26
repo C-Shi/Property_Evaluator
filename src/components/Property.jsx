@@ -72,14 +72,14 @@ class Property extends Component {
                   <tr>
                     <th>Walkability Score</th>
                     <td>
-                      {this.props.location.walkScore.score || 'N/A'} 
+                      {this.props.location.walkScore.score || 'N/A'}
                       <small> {this.props.location.walkScore.description || 'N/A'}</small>
                     </td>
                   </tr>
                   <tr>
                     <th>Transit Score</th>
                     <td>
-                      {this.props.location.transitScore.score || 'N/A'} 
+                      {this.props.location.transitScore.score || 'N/A'}
                       <small> {this.props.location.transitScore.description || 'N/A'}</small>
                     </td>
                   </tr>
@@ -89,7 +89,7 @@ class Property extends Component {
                   </tr>
                 </tbody>
               </table>
-
+              <div className="neighbor-between"> </div>
           </div>
         </div>
       );
