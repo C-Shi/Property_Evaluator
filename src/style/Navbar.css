@@ -1,14 +1,15 @@
 .navbar  {
   height: 10vh;
+  margin-top:1vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
   width: 100vw;
 }
 
 .navbar-links {
-  color: #fff;
+  color: rgb(220, 220, 220);
   height: 10vh;
   width: 50vw;
-  font-size: 3vh;
+  font-size: 1.7em;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -16,8 +17,8 @@
 
 .navbar-search-button {
   width: 10vw;
-  color: #fff;
-  border-color: #fff;
+  color: rgb(220, 220, 220);
+  border-color: rgb(220, 220, 200);
 }
 
 .navbar-search {
@@ -50,7 +51,7 @@
 
 .navbar-links .navbar-link:hover:after {
 	width: 100%;
-	background: #fff;
+	background: rgb(220, 220, 220);
 }
 
 .modal-body ul {
@@ -59,14 +60,14 @@
 }
 
 .navbar .btn-outline-secondary {
-  border-color: #fff;
-  color: #fff;
+  border-color: rgb(220, 220, 220);
+  color: rgb(220, 220, 220);
   transition: background-color .5s, color .5s;
 }
 
 .navbar .btn-outline-secondary:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: rgb(220, 220, 220);
+  color: #111;
 }
 
 @keyframes navbarScrollDown {
