@@ -77,6 +77,8 @@ const LocationBuilder = {
                       callback2();
                   })
               })
+              // if for some reason walkscore api call is not succeed, will add err message to display
+              // and will still need to request flood issue
               .catch(err => {
                   const noFound = {
                       walkscore: '',
