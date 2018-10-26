@@ -4,22 +4,30 @@ import {Line} from 'react-chartjs-2';
 class LineChart extends Component{
    render(){
        return (
-           <div style={{width: '500px'}} className="line-chart">
+           <div style={{width: '100%'}}>
            <Line
                data={this.props.population}
                options={{
                  title: {
                    display: true,
-                   text: 'Community Population',
+                   text: 'Community Population Trend',
                    fontSize: 25,
                    fontColor: 'white'
                  },
                  legend: {
                    display: true,
-                   position: 'right',
+                   position: 'bottom',
                    labels: {
                        fontColor:'white'
                    }
+                 },
+                 layout: {
+                    padding: {
+                        top: 10,
+                        left: 50,
+                        right: 50,
+                        bottom: 10,
+                    }
                  },
                  scales: {
                    xAxes: [
@@ -33,7 +41,7 @@ class LineChart extends Component{
                        {
                        gridLines: { color: "white" },
                        ticks: {
-                           fontColor: 'white'
+                           fontColor: 'white',
                        }}]
                  }
                }}

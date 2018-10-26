@@ -9,12 +9,7 @@ import "../style/mainPage.css"
 
 
 class PropertyList extends Component {
-  constructor(){
-    super();
-    this.state = {
-      marker: 0
-    }
-  }
+
   componentDidMount() {
     this.googleMaps = window.google.maps;
     const location = { lat: 51.044270 , lng: -114.062019};
@@ -27,16 +22,6 @@ class PropertyList extends Component {
       },
        styles: MapStyle
     });
-
-  //   this.googleMaps.event.addListener(this.map, 'click', (event) => {
-  //     if (this.state.marker === 0) {
-  //       var marker = new this.googleMaps.Marker({
-  //         position: event.latLng,
-  //         map: this.map
-  //       });
-  //       this.setState({marker: 1})
-  //     }
-  //  });
 
 
     // create a button on the google map, and add event listener to go to choropleth map
@@ -72,16 +57,16 @@ class PropertyList extends Component {
     this.map.panToBounds(bounds);
   }
 
+  changeDisplayHandler(){
+    window.$('.property-list .display-option').toggleClass('hidden')
+  }
+
     render() {
       let property = this.props.locations.map(location => {
         return <Property location={location} deleteProperty={this.props.deleteProperty} key={location.address}/>
       }) || ""
 
       property = property.reverse();
-
-      const button = (this.props.page === 'propertyList') ?
-      (<button className = "bar-chart-btn" onClick={()=> {this.props.showChart()}}>Comparison Charts</button>) :
-      ("");
 
       const barChart = (this.props.page === "propertyList") ?
       (<BarChart propertyValues={this.props.propertyValues}/>) :
@@ -96,12 +81,15 @@ class PropertyList extends Component {
           <div className="main-page-map-placeholder">
           </div>
           <div className="main-page">
-            {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
             <div className="property-list">
-              {/* {button} */}
-              {barChart}
-              {lineChart}
-              {property}
+              <button onClick={this.changeDisplayHandler}>Change</button>
+              <div className="display-option hidden">
+                {barChart}
+                {lineChart}         
+              </div>
+              <div className="display-option">
+                {property}
+              </div>
             </div>
           </div>
           <div id="map" className="map-init"></div>
