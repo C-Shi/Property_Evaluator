@@ -9,7 +9,7 @@
   height: 70vh;
   overflow: hidden;
 
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   animation: propertySlide 2s ease 0s 1 normal both;
  }
 

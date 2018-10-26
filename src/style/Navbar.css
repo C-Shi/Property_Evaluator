@@ -14,12 +14,6 @@
   align-items: center;
 }
 
-.navbar-search-button {
-  width: 10vw;
-  color: #fff;
-  border-color: #fff;
-}
-
 .navbar-search {
   opacity: 1;
   width: 45vw;
@@ -28,10 +22,17 @@
   align-items: flex-end;
 }
 
-
 .navbar #searchBox {
   width: 30vw;
   border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-search-button {
+  width: 10vw;
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(17, 17, 17, 0.9);
 }
 
 .navbar-links .navbar-link:hover {
@@ -59,14 +60,14 @@
 }
 
 .navbar .btn-outline-secondary {
-  border-color: #fff;
-  color: #fff;
+  border-color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9);
   transition: background-color .5s, color .5s;
 }
 
 .navbar .btn-outline-secondary:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: rgba(17, 17, 17, 0.9);
 }
 
 @keyframes navbarScrollDown {
