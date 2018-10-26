@@ -36,6 +36,21 @@ const LocationBuilder = {
     })
   },
 
+  addWalkScoreToLocation: function (newLocation, data) {
+      newLocation.walkScore = {
+          score: data.walkscore,
+          description: data.description
+      }
+      newLocation.transitScore = {
+          score: data.transit.score,
+          description: data.transit.description
+      }
+  },
+
+  addTrafficAccident: function(newLocation, data) {
+    newLocation.accident = {}
+  },
+
   // this function is querying differnt open data calgary API in sequence
   constructPropertyInfo: function(address, callback, callback2){
     let newLocation = {};
@@ -51,12 +66,16 @@ const LocationBuilder = {
           LocationFinder.getCrime(res.data[0].name)
           .then(res => {
               this.addCommunityCrimeToLocation(newLocation, res.data)
-              LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)
-              .then((res) => {
-                  // all info is ready in a templateVar 'newLocation'
-                  // ready to update locations lists
-                  callback(newLocation, Boolean(res.data.length))
-                  callback2();
+              LocationFinder.getWalkScore(newLocation)
+              .then(res => {
+                  this.addWalkScoreToLocation(newLocation, res.data)
+                  LocationFinder.getFloodChance(newLocation.lat, newLocation.lng)
+                  .then((res) => {
+                      // all info is ready in a templateVar 'newLocation'
+                      // ready to update locations lists
+                      callback(newLocation, Boolean(res.data.length))
+                      callback2();
+                  })
               })
           })
         })

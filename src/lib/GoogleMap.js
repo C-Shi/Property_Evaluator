@@ -55,6 +55,9 @@ const GoogleMap = {
         legendBar = "legend-div-crime"
         type = "Cases"
       break
+      default :
+        legendBar = "legend-div-search"
+        type = "Search"
     }
 
 

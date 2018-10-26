@@ -43,7 +43,6 @@ const queryHelper = {
   },
 
   queryBuilder: function(qObj) {
-    console.log(qObj)
     let _rawQuery = "";
 
     // building select clause

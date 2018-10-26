@@ -12,7 +12,6 @@ import "./style/mediaQueries.css"
 import LocationBuilder from "./lib/LocationBuilder";
 import AddressHelper from "./lib/AddressHelper";
 import mapAnimator from "./lib/mapAnimationHelper"
-import LocationFinder from './lib/LocationFinder.js';
 
 class App extends Component {
   constructor(){
@@ -71,7 +70,6 @@ class App extends Component {
     const oldState = this.state
     oldState.locations.push(newLocation)
     this.setState(oldState, () => {
-      console.log("state.locations", this.state.locations)
     });
     // reset propertyValues of state
     this.addPropertyValues(newLocation);
@@ -114,9 +112,7 @@ class App extends Component {
       oldPropertyValues.datasets.push(newObj);
     })
 
-    this.setState({propertyValues: oldPropertyValues}, () => {
-      // console.log("---this.state.propertyValues", this.state.propertyValues);
-    })
+    this.setState({propertyValues: oldPropertyValues})
   }
 
   // take in a newLocation and create an obj for each newLocation,
@@ -149,9 +145,7 @@ class App extends Component {
       // datasets contains newObj for each location
       oldPopulation.datasets.push(newObj);
     })
-    this.setState({population: oldPopulation}, () => {
-      console.log("---this.state.population", this.state.population);
-    })
+    this.setState({population: oldPopulation})
   }
 
 addCrime(newLocation) {

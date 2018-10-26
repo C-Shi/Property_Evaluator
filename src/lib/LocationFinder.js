@@ -32,13 +32,26 @@ const LocationFinder = {
   },
 
   getFloodChance: function(lat, lng){
-    const query = `within_circle(polygon, ${lat}, ${lng}, 1000)`
+    const query = `within_circle(polygon, ${lat}, ${lng}, 500)`
     return axios.get('https://data.calgary.ca/resource/ntse-tznh.json',{
         params: {
           "$where": query
         }
     })
   },
+
+  getWalkScore: function(location) {
+    return axios.get('http://api.walkscore.com/score', {
+      params: {
+        format: 'json',
+        wsapikey: process.env.REACT_APP_WALKSCORE,
+        lat: location.lat,
+        lon: location.lng,
+        transit: 1
+      }
+    })
+  },
+
 }
 
 export default LocationFinder

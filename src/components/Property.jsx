@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
 import "../style/propertyCard.css";
 
 class Property extends Component {
     componentDidMount(){
-      console.log(window.$("#crime-breakdown"))
       window.$("#crime-breakdown").click(() => {
         window.$(`.pie-chart[data-id='${this.props.location.address}']`).toggle()
       })
@@ -18,6 +17,7 @@ class Property extends Component {
       }
       const lastYearPopulationValue = this.props.location.comm_population[0].population;
       let lastYearPriceInfo = this.props.location.value[0].price;
+
     return (
         <div className="card neighbor-info" key={this.props.location.address}>
           <div className="card-body">
@@ -67,6 +67,20 @@ class Property extends Component {
                           },
                         }}
                     />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Walkability Score</th>
+                    <td>
+                      {this.props.location.walkScore.score || 'N/A'} 
+                      <small> {this.props.location.walkScore.description || 'N/A'}</small>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Transit Score</th>
+                    <td>
+                      {this.props.location.transitScore.score || 'N/A'} 
+                      <small> {this.props.location.transitScore.description || 'N/A'}</small>
                     </td>
                   </tr>
                   <tr>

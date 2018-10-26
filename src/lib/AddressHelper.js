@@ -76,7 +76,6 @@ const AddressHelper = {
     let resultant = address;
 
     resultant = (resultant.split(',')[0]).split(' ');
-        console.log(resultant)
 
     if (resultant.length < 2) return false;
     // working on the elements

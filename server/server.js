@@ -63,7 +63,6 @@ app.get("/api/public", (req, res) => {
     .then(function(q){
       queryHelper.queryBuilder(q)
       .then((query) => {
-        console.log(query)
         client.query(query, (err, result) => {
           if (err) {
             return console.error("error running query", err);
