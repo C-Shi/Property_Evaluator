@@ -6,7 +6,7 @@ class Property extends Component {
     componentDidMount(){
       console.log(window.$("#crime-breakdown"))
       window.$("#crime-breakdown").click(() => {
-        window.$(".pie-chart").toggle()
+        window.$(`.pie-chart[data-id='${this.props.location.address}']`).toggle()
       })
     }
 
@@ -48,7 +48,7 @@ class Property extends Component {
                     <td>{String((crimeTotal/Number(lastYearPopulationValue)).toFixed(2))}</td>
                   </tr>
                   <tr>
-                    <td colSpan='2' className="pie-chart" style={{display: "none"}}>
+                    <td colSpan='2' className="pie-chart" data-id={this.props.location.address} style={{display: "none"}}>
                     <Pie
                         data={this.props.location.pieData}
                         width={100}
@@ -60,7 +60,10 @@ class Property extends Component {
                           },
                           legend: {
                             display: true,
-                            position: 'right'
+                            position: 'right',
+                            labels: {
+                              fontColor: "#fff"
+                            }
                           },
                         }}
                     />

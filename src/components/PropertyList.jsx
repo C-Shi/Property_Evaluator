@@ -33,6 +33,12 @@ class PropertyList extends Component {
       this.props.pageChangeHandler("choropleth")
     })
     mapDiv.appendChild(toChoroplethButton);
+
+    if (this.props.locations.length === 0) {
+      window.$('.property-list button').addClass('hidden')
+    } else {
+      window.$('.property-list button').removeClass('hidden')
+    }
 }
 
   componentDidUpdate(){
@@ -55,10 +61,21 @@ class PropertyList extends Component {
     })
     this.map.fitBounds(bounds);
     this.map.panToBounds(bounds);
+
+    if (this.props.locations.length === 0) {
+      window.$('.property-list button').addClass('hidden')
+    } else {
+      window.$('.property-list button').removeClass('hidden')
+    }
   }
 
-  changeDisplayHandler(){
+  changeDisplayHandler(e){
     window.$('.property-list .display-option').toggleClass('hidden')
+    if (e.target.textContent === "Display Chart"){
+      e.target.textContent = "Show Details"
+    } else {
+      e.target.textContent = "Display Chart"
+    }
   }
 
     render() {
@@ -82,7 +99,7 @@ class PropertyList extends Component {
           </div>
           <div className="main-page">
             <div className="property-list">
-              <button onClick={this.changeDisplayHandler}>Change</button>
+              <button onClick={this.changeDisplayHandler} className="hidden">Display Chart</button>
               <div className="display-option hidden">
                 {barChart}
                 {lineChart}         

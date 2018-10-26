@@ -23,6 +23,14 @@
    background-color: #eee;
  }
 
+ .property-list>button {
+   width: 100%;
+   background-color: rgb(204, 194, 194);
+   color: rgb(32, 23, 23);
+   border-radius: 1vw;
+   line-height: 2em;
+ }
+
 @keyframes propertySlide {
   0% {
     left: 100vw;
