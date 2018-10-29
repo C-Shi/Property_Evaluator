@@ -63,14 +63,18 @@ class PropertyList extends Component {
         content: ""
       });
 
-      // console.log(location)
       infoWindow.setContent(
         '<div style="line-height:1.00;overflow:hidden;white-space:nowrap;" class="infoWindow">' +
         'Community: ' + location.comm_name + '<br><br>' + 'Address' + ': ' +
         location.address + '</div>');
 
+      // add click listener
+      console.log(window.$(`[data-scroll='${location.address}']`))
       this.googleMaps.event.addListener(marker, 'click', () => {
         infoWindow.open(this.map, marker);
+        window.$(".property-list").animate({
+            scrollTop: window.$(`[data-scroll='${location.address}']`).offset().top
+        }, 400);
       })
 
     })
