@@ -1,10 +1,6 @@
 .navbar  {
-<<<<<<< HEAD
-  height: 11vh;
-=======
   height: 10vh;
   margin-top:2vh;
->>>>>>> 88bc64e5f37b1c18ef4cce6908c68b7d3a6c6b49
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
   width: 100vw;
   background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0));
@@ -66,24 +62,14 @@
 }
 
 .navbar .btn-outline-secondary {
-<<<<<<< HEAD
-  border-color: rgba(255, 255, 255, 0.9);
-  color: rgba(255, 255, 255, 0.9);
-=======
   border-color: rgb(220, 220, 220);
   color: rgb(220, 220, 220);
->>>>>>> 88bc64e5f37b1c18ef4cce6908c68b7d3a6c6b49
   transition: background-color .5s, color .5s;
 }
 
 .navbar .btn-outline-secondary:hover {
-<<<<<<< HEAD
-  background-color: rgba(255, 255, 255, 0.9);
-  color: rgba(17, 17, 17, 0.9);
-=======
   background-color: rgb(220, 220, 220);
   color: #111;
->>>>>>> 88bc64e5f37b1c18ef4cce6908c68b7d3a6c6b49
 }
 
 @keyframes navbarScrollDown {
