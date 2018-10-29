@@ -52,13 +52,31 @@ class PropertyList extends Component {
       var myLatlng = new this.googleMaps.LatLng(location.lat, location.lng);
       var marker = new this.googleMaps.Marker({
         position: myLatlng,
-        icon: "http://maps.google.com/mapfiles/kml/pal3/icon56.png"
       });
 
       // To add the marker to the map, call setMap();
       marker.setMap(this.map);
       var loc = new this.googleMaps.LatLng(marker.position.lat(), marker.position.lng());
       bounds.extend(loc);
+      // add info window for each place
+      const infoWindow = new this.googleMaps.InfoWindow({
+        content: ""
+      });
+
+      infoWindow.setContent(
+        '<div style="line-height:1.00;overflow:hidden;white-space:nowrap;" class="infoWindow">' +
+        'Community: ' + location.comm_name + '<br><br>' + 'Address' + ': ' +
+        location.address + '</div>');
+
+      // add click listener
+      console.log(window.$(`[data-scroll='${location.address}']`))
+      this.googleMaps.event.addListener(marker, 'click', () => {
+        infoWindow.open(this.map, marker);
+        window.$(".property-list").animate({
+            scrollTop: window.$(`[data-scroll='${location.address}']`).offset().top
+        }, 400);
+      })
+
     })
     this.map.fitBounds(bounds);
     this.map.panToBounds(bounds);

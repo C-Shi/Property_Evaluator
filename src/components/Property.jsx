@@ -20,7 +20,7 @@ class Property extends Component {
 
     return (
         <div className="card neighbor-info" key={this.props.location.address}>
-          <div className="card-body">
+          <div className="card-body" data-scroll={this.props.location.address}>
               <div className="card-header">
                 <button className="fa fa-times fa-2x" onClick={() => {this.props.deleteProperty(this.props.location.address)}}></button>
                 <h5 className="text-left"><strong>Address:</strong> {this.props.location.address}</h5>

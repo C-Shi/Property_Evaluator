@@ -137,9 +137,9 @@ class App extends Component {
       // assign all properties to newLocation
       let newObj = {
         label: location.address,
+        borderColor: `rgba( ${colors[index]}, 1)`,
+        fill: false,
         backgroundColor: `rgba( ${colors[index]}, 0.6)`,
-        hoverBackgroundColor: `rgba( ${colors[index]}, 0.8)`,
-        hoverBorderColor: `rgba( ${colors[index]}, 1)`,
         data: comm_population,
       }
       // datasets contains newObj for each location
@@ -211,11 +211,6 @@ addCrime(newLocation) {
         document.getElementsByClassName('main-page')[0].classList.remove('main-page-glass');
       }
     })
-  }
-
-  showChart(){
-    document.getElementById('bar-chart').classList.toggle("hidden")
-    document.getElementsByClassName('bar-chart-btn')[0].classList.toggle('bar-chart-btn-active');
   }
 
   render() {
