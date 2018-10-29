@@ -3,6 +3,7 @@
   margin-top:2vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
   width: 100vw;
+  background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0));
 }
 
 .navbar-links {

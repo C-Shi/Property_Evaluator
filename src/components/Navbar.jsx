@@ -24,9 +24,9 @@ class Navbar extends Component {
              onClick={(e) => {
               e.preventDefault();
               this.props.pageChangeHandler("propertyList")
-             }} 
+             }}
              data-toggle="tooltip" data-placement="bottom" title="Compare values, community populations and safety across properties"
-          >Real Map
+          ><i class="fa fa-home" aria-hidden="true"></i> Property Evaluater
           </a>
 
           <a className="navbar-link"
@@ -35,12 +35,12 @@ class Navbar extends Component {
                this.props.pageChangeHandler("choropleth")
               }}
               data-toggle="tooltip" data-placement="bottom" title="Compare population, popularity, crime info across communities"
-          >Statistics
+          ><i class="fa fa-area-chart" aria-hidden="true"></i> Statistics
           </a>
           <span data-toggle="modal" data-target="#api-usage">
             <a className="navbar-link"
             data-toggle="tooltip" data-placement="bottom" title="For websites or developers who want to access our search data"
-             >API
+             ><i class="fa fa-code" aria-hidden="true"></i> API
             </a>
           </span>
         </div>
@@ -49,7 +49,7 @@ class Navbar extends Component {
             <input type="text" id="searchBox" name="address" className="form-control mr-sm-2" placeholder="add another address to compare?"/>
             <button className="navbar-search-button btn btn-outline-secondary my-2 my-sm-0" id="button-addon2"> <i className="fa fa-search" aria-hidden="true"></i> <span className="search-text">Search</span></button>
         </form>
-        
+
         <APIModal />
 
       </nav>
