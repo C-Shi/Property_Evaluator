@@ -1,7 +1,7 @@
 .property-list {
   border-radius: 1vw;
   height: 80vh;
-  width: 50vw;
+  width: 55vw;
   top: 10vh;
   overflow: scroll;
 }
@@ -23,21 +23,20 @@
    background-color: #eee;
  }
 
+ .property-list>button {
+   width: 100%;
+   background-color: rgb(204, 194, 194);
+   color: rgb(32, 23, 23);
+   border-radius: 1vw;
+   line-height: 2em;
+ }
+
 @keyframes propertySlide {
   0% {
     left: 100vw;
   }
   100% {
     left: 0;
-  }
-}
-
-@keyframes propertyListSlideOut {
-  0% {
-    left: 100vw;
-  }
-  100% {
-    left: 100vw;
   }
 }
 
@@ -49,3 +48,4 @@
 .show{
   display: block;
 }
+

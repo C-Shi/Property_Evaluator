@@ -53,7 +53,7 @@ app.get("/api/public", (req, res) => {
     host     : process.env.DB_HOST,
     port     : 5432,
   });
-  
+
   client.connect((err) => {
     if (err) {
       return console.error("Connection Error", err);
@@ -63,7 +63,6 @@ app.get("/api/public", (req, res) => {
     .then(function(q){
       queryHelper.queryBuilder(q)
       .then((query) => {
-        console.log(query)
         client.query(query, (err, result) => {
           if (err) {
             return console.error("error running query", err);

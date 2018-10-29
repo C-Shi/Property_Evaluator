@@ -26,6 +26,7 @@ const GoogleMap = {
     let type = "";
     Object.keys(data).forEach(function(community){
       total += data[community];
+
     })
 
     const average = total / Object.keys(data).length
@@ -55,6 +56,9 @@ const GoogleMap = {
         legendBar = "legend-div-crime"
         type = "Cases"
       break
+      default :
+        legendBar = "legend-div-search"
+        type = "Search"
     }
 
 

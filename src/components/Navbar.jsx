@@ -13,7 +13,6 @@ class Navbar extends Component {
   }
 
   componentWillUnmount() {
-    console.log(window.$('[data-toggle="tooltip"]'))
     window.$('[data-toggle="tooltip"]').tooltip('hide')
   }
 

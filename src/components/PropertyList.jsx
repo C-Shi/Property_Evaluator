@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Property from './Property';
-import BarChart from './BarChart.jsx';
+import BarChart from './BarChart';
+import LineChart from './LineChart';
 import MapStyle from "../asset/GoogleMapStyle"
 import "../style/Map.css"
 import "../style/PropertyList.css"
@@ -8,12 +9,7 @@ import "../style/mainPage.css"
 
 
 class PropertyList extends Component {
-  constructor(){
-    super();
-    this.state = {
-      marker: 0
-    }
-  }
+
   componentDidMount() {
     this.googleMaps = window.google.maps;
     const location = { lat: 51.044270 , lng: -114.062019};
@@ -27,16 +23,6 @@ class PropertyList extends Component {
        styles: MapStyle
     });
 
-  //   this.googleMaps.event.addListener(this.map, 'click', (event) => {
-  //     if (this.state.marker === 0) {
-  //       var marker = new this.googleMaps.Marker({
-  //         position: event.latLng,
-  //         map: this.map
-  //       });
-  //       this.setState({marker: 1})
-  //     }
-  //  });
-
 
     // create a button on the google map, and add event listener to go to choropleth map
     const mapDiv =  document.getElementById('map');
@@ -44,9 +30,16 @@ class PropertyList extends Component {
     toChoroplethButton.setAttribute("class", "to-choropleth")
     toChoroplethButton.textContent = "Community Statistics"
     toChoroplethButton.addEventListener("click", () => {
+      console.log(this.props)
       this.props.pageChangeHandler("choropleth")
     })
     mapDiv.appendChild(toChoroplethButton);
+
+    if (this.props.locations.length === 0) {
+      window.$('.property-list button').addClass('hidden')
+    } else {
+      window.$('.property-list button').removeClass('hidden')
+    }
 }
 
   componentDidUpdate(){
@@ -69,6 +62,21 @@ class PropertyList extends Component {
     })
     this.map.fitBounds(bounds);
     this.map.panToBounds(bounds);
+
+    if (this.props.locations.length === 0) {
+      window.$('.property-list button').addClass('hidden')
+    } else {
+      window.$('.property-list button').removeClass('hidden')
+    }
+  }
+
+  changeDisplayHandler(e){
+    window.$('.property-list .display-option').toggleClass('hidden')
+    if (e.target.textContent === "Display Chart"){
+      e.target.textContent = "Show Details"
+    } else {
+      e.target.textContent = "Display Chart"
+    }
   }
 
     render() {
@@ -78,12 +86,12 @@ class PropertyList extends Component {
 
       property = property.reverse();
 
-      const button = (this.props.page === 'propertyList') ?
-      (<button className = "bar-chart-btn" onClick={()=> {this.props.showChart()}}>Comparison Charts</button>) :
-      ("");
-
       const barChart = (this.props.page === "propertyList") ?
       (<BarChart propertyValues={this.props.propertyValues}/>) :
+      ("");
+
+      const lineChart = (this.props.page === "propertyList") ?
+      (<LineChart population={this.props.population}/>) :
       ("");
 
       return (
@@ -91,11 +99,15 @@ class PropertyList extends Component {
           <div className="main-page-map-placeholder">
           </div>
           <div className="main-page">
-            {/* <button id="modal" onClick={()=> {this.props.toggleModal()}}> Modal </button> */}
             <div className="property-list">
-              {button}
-              {barChart}
-              {property}
+              <button onClick={this.changeDisplayHandler} className="hidden">Display Chart</button>
+              <div className="display-option hidden">
+                {barChart}
+                {lineChart}
+              </div>
+              <div className="display-option">
+                {property}
+              </div>
             </div>
           </div>
           <div id="map" className="map-init"></div>
