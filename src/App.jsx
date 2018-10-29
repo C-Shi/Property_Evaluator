@@ -64,7 +64,7 @@ class App extends Component {
   // take in a newLocation with complete into and add to state.locations array
   addProperty(newLocation, flood){
     newLocation.flood = flood;
- 
+
     this.addCrime(newLocation);
 
     const oldState = this.state
@@ -75,7 +75,6 @@ class App extends Component {
     this.addPropertyValues(newLocation);
     // reset population of state
     this.addPopulation(newLocation);
-
   }
 
   // take in a newLocation and create an obj for each newLocation,

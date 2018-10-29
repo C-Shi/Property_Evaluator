@@ -9,7 +9,6 @@ class Property extends Component {
       })
     }
 
-
     render() {
       let crimeTotal = 0;
       for (var key in this.props.location.crime) {
@@ -52,14 +51,14 @@ class Property extends Component {
                     <Pie
                         data={this.props.location.pieData}
                         width={100}
-                        height={50}
+                        height={55}
                         options={{
                           title: {
                             display: true,
                             fontSize: 20
                           },
                           legend: {
-                            display: false,
+                            display: true,
                             position: 'right',
                             labels: {
                               fontColor: "#fff",
