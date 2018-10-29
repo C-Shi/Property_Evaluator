@@ -75,7 +75,7 @@ class PropertyList extends Component {
     if (e.target.textContent === "Display Chart"){
       e.target.textContent = "Show Details"
     } else {
-      e.target.textContent = "Display Chart"
+      e.target.textContent = `Display Chart`
     }
   }
 
