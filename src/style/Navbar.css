@@ -1,6 +1,6 @@
 .navbar  {
   height: 10vh;
-  margin-top:1vh;
+  margin-top:2vh;
   animation: navbarScrollDown .5s ease-in 0s 1 normal both;
   width: 100vw;
 }
@@ -15,12 +15,6 @@
   align-items: center;
 }
 
-.navbar-search-button {
-  width: 10vw;
-  color: rgb(220, 220, 220);
-  border-color: rgb(220, 220, 200);
-}
-
 .navbar-search {
   opacity: 1;
   width: 45vw;
@@ -29,10 +23,17 @@
   align-items: flex-end;
 }
 
-
 .navbar #searchBox {
   width: 30vw;
   border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-search-button {
+  width: 10vw;
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(17, 17, 17, 0.9);
 }
 
 .navbar-links .navbar-link:hover {

@@ -1,5 +1,5 @@
 h1 {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .search {
@@ -22,21 +22,26 @@ h1 {
 .search .search-btn {
   width: 20%;
   min-width: 20%;
+  background: rgba(17, 17, 17, 0.9);
 }
 
 .search .btn-outline-secondary {
-  border-color: #fff;
-  color: #fff;
+  border-color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   transition: background-color .5s, color .5s;
 }
 
 .search .btn-outline-secondary:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: rgba(17, 17, 17, 0.9);
 }
 
 .search input[type=text] {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.search input[type=text]:focus {
+  outline-color: white;
 }
 
 h1.typewriter {

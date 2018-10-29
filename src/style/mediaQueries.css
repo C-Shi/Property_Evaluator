@@ -3,3 +3,10 @@
     visibility: hidden;
   }
 }
+
+@media only screen and (min-width : 100px) and (max-width : 1170px) {
+  .heatmap-tab-longname {
+    visibility: hidden;
+    width: 0;
+  }
+}
