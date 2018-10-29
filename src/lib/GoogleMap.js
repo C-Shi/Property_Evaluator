@@ -26,6 +26,7 @@ const GoogleMap = {
     let type = "";
     Object.keys(data).forEach(function(community){
       total += data[community];
+
     })
 
     const average = total / Object.keys(data).length
