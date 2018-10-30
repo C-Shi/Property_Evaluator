@@ -31,6 +31,10 @@
    line-height: 2em;
  }
 
+ .property-list-chart-button:focus {
+  outline: none;
+ }
+
 @keyframes propertySlide {
   0% {
     left: 100vw;
@@ -48,4 +52,3 @@
 .show{
   display: block;
 }
-

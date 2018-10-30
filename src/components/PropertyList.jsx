@@ -118,7 +118,7 @@ class PropertyList extends Component {
           </div>
           <div className="main-page">
             <div className="property-list">
-              <button onClick={this.changeDisplayHandler} className="hidden">Display Chart</button>
+              <button onClick={this.changeDisplayHandler} className="hidden property-list-chart-button">Display Chart</button>
               <div className="display-option hidden">
                 {barChart}
                 {lineChart}
