@@ -27,20 +27,14 @@ class Property extends Component {
               </div>
 
               <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Year </th>
-                    <th>2018</th>
-                  </tr>
-                </thead>
                 <tbody>
-                  <tr>
-                    <th>Population <small>(people)</small></th>
-                    <td>{lastYearPopulationValue}</td>
-                  </tr>
                   <tr>
                     <th>Property Value <small>(K) </small></th>
                     <td>{lastYearPriceInfo/1000}</td>
+                  </tr>
+                  <tr>
+                    <th>Population <small>(people)</small></th>
+                    <td>{lastYearPopulationValue}</td>
                   </tr>
                   <tr>
                     <th id="crime-breakdown">Crime Rate <i className="fa fa-caret-down" aria-hidden="true"></i> <small>(case/person)</small></th>
