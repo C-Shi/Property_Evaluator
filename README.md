@@ -1,23 +1,25 @@
-#Real Map v0.25.0
+# Property Evaluator
 
-#Testing Address that have enough data
-517 10 ST NE Calgary, AB, T2E 4M4
-938 Rundle Crescent Northeast, Calgary, AB, Canada
-204 18 St NW, Calgary, AB, Canada
+Property Evaluator is an application that allows the user to view indepth data about addresses in the city of Calgary. This application gives you information about an address including the property value, walkability score, where it's located in the city and its surrounding communities crime rate and population.
 
-##Address may be not work
-3413 1 St Ne, Calgary
+## Screenshots
 
-## Features
-- React Native
-- Build Cutom API query language
-- generate and dowload report
-- add distance calculation ...
-- mobile response
+!["Property Evaluators landing page"](https://raw.githubusercontent.com/MaxHalleran/real_map/master/docs/landing_page.png)
+!["The detailed property breakdown"](https://raw.githubusercontent.com/MaxHalleran/real_map/master/docs/single_address_view.png)
+!["A breakdown of the property value trend as well as the population trend in the surrounding community"](https://raw.githubusercontent.com/MaxHalleran/real_map/master/docs/chart_view.png)
+!["A heat map showing density of popularity, crime and population within the city"](https://raw.githubusercontent.com/MaxHalleran/real_map/master/docs/heatmap.png)
+!["Our applications api endpoint"](https://raw.githubusercontent.com/MaxHalleran/real_map/master/docs/api.png)
 
+## Dependencies and API's
 
-## Bugs
-- validate queries wont crash the search
+- PSQL
+- knex
+- Node.js
+- Express
+- React
+- Chart.js
+- Google Maps
+- Open Data Calgary
+- Walkscore.com
 
-## Styling focus
-- fix search animations to be smoother
+## Setting up the project
