@@ -37,8 +37,8 @@ class Property extends Component {
                     <td>{lastYearPopulationValue}</td>
                   </tr>
                   <tr>
-                    <th id="crime-breakdown">Crime Rate <i className="fa fa-caret-down" aria-hidden="true"></i> <small>(case/person)</small></th>
-                    <td>{String((crimeTotal/Number(lastYearPopulationValue)).toFixed(2))}</td>
+                    <th id="crime-breakdown">Crime Chance <i className="fa fa-caret-down" aria-hidden="true"></i> <small>(per yr)</small></th>
+                    <td>{String(((crimeTotal/Number(lastYearPopulationValue)) * 100 ).toFixed(2))}%</td>
                   </tr>
                   <tr>
                     <td colSpan='2' className="pie-chart" data-id={this.props.location.address} style={{display: "none"}}>
