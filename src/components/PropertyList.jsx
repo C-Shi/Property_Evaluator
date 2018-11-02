@@ -17,10 +17,8 @@ class PropertyList extends Component {
     this.map = new this.googleMaps.Map(document.getElementById('map'), {
       zoom: 15,
       center: location,
-      mapTypeControlOptions: {
-        mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
-      },
-       styles: MapStyle
+      mapTypeControl: false,
+      styles: MapStyle
     });
 
 

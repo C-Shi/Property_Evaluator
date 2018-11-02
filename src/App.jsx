@@ -58,7 +58,7 @@ class App extends Component {
         }
       })
     });
-    // document.getElementById('searchBox').value = '';
+    document.getElementById('searchBox').value = '';
   }
 
   // take in a newLocation with complete into and add to state.locations array
