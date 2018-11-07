@@ -21,5 +21,3 @@ Property Evaluator is an application that allows the user to view indepth data a
 - Google Maps
 - Open Data Calgary
 - Walkscore.com
-
-## Setting up the project
