@@ -20,23 +20,23 @@ Property Evaluator is a data visualization and comparison application, servering
 1. As a developer, you will be able to use our open API endpoint to query specific part of our database using filter function that provided in the API document
 
 ## Live Demo
-1. When user enter an address on the search bar, Property Evaluator provide detailed information about the property, including where it is located on the map
+1. When user enter an address on the search bar, Property Evaluator provide detailed information about the property, including where it is located on the map <br/>
 ![search](./docs/Search.gif)
 
-2. When user adding additional address, information will slide in on top of the first address, allow comparison between different properties
+2. When user adding additional address, information will slide in on top of the first address, allow comparison between different properties <br/>
 ![compare](./docs/PieCompare.gif)
 
-3. User can view property value trending and community population trending in the form of chart. This allow user to see the overall trending of property as well as comparison between different properties
-![graph](./docs/graph.gif)
+3. User can view property value trending and community population trending in the form of chart. This allow user to see the overall trending of property as well as comparison between different properties <br/>
+![graph](./docs/graph.gif) 
 
-4. When user choose to see communitity statistics, choropleth map with 3 options is displayed
+4. When user choose to see communitity statistics, choropleth map with 3 options is displayed <br/>
 ![choropleth](./docs/choropleth.gif)
 
-5. Developer can follow API documentation to set request to our API endpoint and collect information
+5. Developer can follow API documentation to set request to our API endpoint and collect information <br/>
 ![api](./docs/api.gif)
 
 ## Tech Stack
-PostgreSQL | Node.js | Express | React
+PostgreSQL | Node.js | Express | React <br/>
 ![stack](./docs/stack.png)
 
 ## Getting Started
